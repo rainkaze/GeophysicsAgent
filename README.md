@@ -1,61 +1,70 @@
 # 工程物探勘察方案推荐 Agent
 
-课程结课汇报用的前后端分离原型：Vue 3 + TypeScript 前端、FastAPI + Pydantic 后端、OpenAI 兼容模型接口、本地课程知识检索和物探参数工具。
+《Introductory Engineering Geophysics（工程地球物理导论）》课程项目 Demo。
+
+输入一段自然语言描述的场地条件，输出**可核对的工程物探勘察方案**：
+六种方法（GPR / DC-ERT / 面波 / 磁法 / FDEM / DAS）的逐项比选、按物理关系反算的
+采集参数、外业布置与工作量估算、风险与验证措施，以及完整的执行轨迹。
+
+技术栈：Vue 3 + TypeScript + Vite 前端，FastAPI + Pydantic 后端，OpenAI 兼容模型接口。
+
+## 它和"直接用大模型"的区别
+
+| 环节 | 通用大模型 | 本 Agent |
+|---|---|---|
+| 数值来源 | 模型自己写 | 代码按公式反算，模型不得改动 |
+| 方法比选 | 凭语感排序 | 6 方法 × 目标 × 介质 × 埋深 × 干扰的确定性评估 |
+| 结构 | 一段散文 | 机读 `SurveyPlan` + 渲染正文，二者同源 |
+| 自检 | 无 | 14 条规则校验，不通过则回灌修复 |
+| 可复现 | 每次不同 | `temperature=0`，同一输入同一结果 |
+| 故障 | 直接报错 | 模型不可用自动降级为规则方案 |
+| 追问 | 上下文丢失 | 会话内条件合并（"埋深改成 60 m 呢？"） |
 
 ## 当前能力
 
-- 支持自然语言描述勘察场景。
-- 后端检索项目内课程知识条目，记录来源文件、页码和核对状态。
-- LLM 可调用工程物探参数查询工具，查询结果会送回模型继续生成建议。
-- 页面展示回答、检索依据、工具比较和执行状态。
-- 模型配置只从项目根目录本机 `.env` 读取；密钥不进入浏览器。
+- 自然语言场景 → 结构化条件抽取（目标、介质、埋深范围、地表、干扰、预算）
+- 六种方法的深度可行性、垂向分辨率、相对成本、限制与适用性判定
+- 采集参数反算：天线频率与时窗、电极距与排列长度、道间距、测网密度、光缆长度
+- 外业布置与工作量：测线数、总测线长度、测点数、相对成本档
+- 方案自检与修复：校验失败自动回灌模型，仍失败则回退规则方案
+- 课程知识检索：BM25 + IDF + 字段加权，输出命中词与相关性等级
+- 多轮追问：会话内条件合并
+- 完整可观测：每步耗时、模型调用次数与 token 用量、执行轨迹
 
-知识条目尚需人工对照 PDF 逐条核验；标注“待人工核对”的内容不能作为最终课程引用。参数是教学演示经验数据，不能替代仪器参数、现场试验或专业判断。
+## 快速开始
 
-## 配置
+### 1. 配置模型
 
-将 `.env.example` 复制为 `.env`，按模型服务商文档填写 `LLM_BASE_URL`、`LLM_API_KEY`、`LLM_MODEL`。不要把 `.env` 提交至 GitHub。若服务商提供 OpenAI 兼容 Chat Completions 接口，填对应 API 根地址；本项目只将密钥交给后端 SDK。
+复制 `.env.example` 为 `.env`，填写 `LLM_BASE_URL` / `LLM_API_KEY` / `LLM_MODEL`。
+`.env` 已被 `.gitignore` 忽略，密钥不会进入浏览器或版本库。
+没有可用模型时也可以运行：系统会走规则方案（`mode=degraded`），用于课堂演示兜底。
 
-## Python 环境（只有一个）
+### 2. 启动后端（PyCharm 推荐）
 
-本项目**只有一个 Python 项目和一个虚拟环境**，都在 `backend/` 下：
+项目**只有一个** Python 环境：`backend/.venv`。
 
-- `backend/pyproject.toml`：唯一的项目定义（源码布局 `backend/src/geophysics_agent`）
-- `backend/uv.lock`：依赖锁定
-- `backend/.venv`：唯一的虚拟环境
-
-项目根目录**没有** `pyproject.toml`，也没有根级 `.venv`。曾有一份根级 `pyproject.toml` 与一套残留的 Streamlit 环境（pandas/pyarrow/streamlit），会导致 PyCharm 认错环境、报 `does not match the project environment path` 和 `No module named 'fastapi'`，现已移除。**不要在新位置再执行 `uv sync` 或创建第二个 `.venv`。**
-
-## 启动后端
-
-### PyCharm 启动（推荐，无需命令行）
-
-1. `Settings → Project → Python Interpreter → Add Interpreter → Add Local Interpreter → Select existing`
+1. `Settings → Project → Python Interpreter → Add Interpreter → Add Local → Select existing`
 2. 选择 `backend/.venv/Scripts/python.exe`
-3. 新建运行配置（**用普通的 Python 配置，不要选 PyCharm 的 uv 运行器**）：
+3. 新建运行配置（**用普通 Python 配置，不要用 PyCharm 的 uv 运行器**）：
    - Script path：`backend/run_api.py`
    - Working directory：项目根目录 `geophysics_agent_demo2`
    - Interpreter：上一步的 `backend/.venv/Scripts/python.exe`
-4. 点绿色运行按钮即可启动，等价于直接执行 `backend/.venv/Scripts/python.exe backend/run_api.py`。
+4. 点绿色运行按钮。等价于 `backend/.venv/Scripts/python.exe backend/run_api.py`
 
-`run_api.py` 支持三个可选环境变量（在运行配置的 Environment variables 中设置）：`APP_PORT`（默认 8000，端口被占用时改这里）、`APP_HOST`（默认 127.0.0.1）、`APP_RELOAD=1`（开启热重载，调试断点会失效）。
+可选环境变量：`APP_HOST`（默认 127.0.0.1）、`APP_PORT`（默认 8000）、
+`APP_RELOAD=1`（热重载，调试断点会失效）。
 
-### 命令行启动（备用）
-
-在项目根目录执行：
+命令行方式：
 
 ```powershell
 uv sync --project backend --extra dev
 uv run --project backend uvicorn geophysics_agent.main:app --app-dir backend/src --reload
 ```
 
-`--extra dev` 会一并安装 pytest / ruff / mypy；只跑服务时可省略。`uv sync` 只在首次搭环境或更新依赖后需要执行。
+后端地址 `http://127.0.0.1:8000`，健康检查 `/api/v1/health`，
+交互式文档 `/docs`，演示场景 `/api/v1/scenarios`。
 
-后端地址 `http://127.0.0.1:8000`，健康检查 `/api/v1/health`，交互式接口文档 `/docs`。
-
-## 启动前端
-
-另开终端。PowerShell 如果提示禁止运行 `npm.ps1`，不要修改系统执行策略，改用 Windows 命令入口：
+### 3. 启动前端
 
 ```powershell
 cd frontend
@@ -63,25 +72,57 @@ npm.cmd install
 npm.cmd run dev
 ```
 
-打开 `http://localhost:5173`。需要 Node.js/npm；关闭服务按 Ctrl+C。
+打开 `http://localhost:5173`。
 
 ## 检查
 
 ```powershell
-cd frontend
-npm run typecheck
-npm run build
-```
+cd backend
+.venv\Scripts\python.exe -m pytest -q
+.venv\Scripts\python.exe -m ruff check .
+.venv\Scripts\python.exe -m ruff format --check .
+.venv\Scripts\python.exe -m mypy src --ignore-missing-imports
 
-后端检查配置见 `backend/pyproject.toml`。依赖安装需要能访问 PyPI/npm registry；在使用 Clash 时可在当前终端临时设置 HTTP_PROXY/HTTPS_PROXY 指向本机代理端口，不必写入项目文件。
+cd ..\frontend
+npm.cmd run typecheck
+npm.cmd run build
+```
 
 ## 目录
 
-- `backend/src/geophysics_agent/api`：HTTP 路由。
-- `backend/src/geophysics_agent/agent`：LLM Agent 调度和提示词。
-- `backend/src/geophysics_agent/knowledge`：本地课程知识检索。
-- `backend/src/geophysics_agent/tools`：参数表与可调用工具。
-- `backend/data/knowledge`：带出处元数据的知识条目。
-- `backend/data/book`、`backend/data/PPT`：本地资料源，不要将受版权保护的整本书提交到公开仓库。
-- `frontend/src`：Vue 页面、API 客户端与样式。
-- `docs`：架构、知识库和课堂演示文档。
+```
+backend/
+  src/geophysics_agent/
+    api/         HTTP 路由与依赖注入
+    agent/       编排层：抽取、检索、规划、校验、渲染、会话、轨迹
+    analysis/    确定性计算层：方法数据、物理关系、评估器、外业设计
+    knowledge/   知识库加载与 BM25 检索
+    domain/      领域模型与 API 契约
+    core/        配置
+  data/
+    knowledge/   带出处元数据的课程知识条目
+    book/ PPT/   本地资料源（版权原因未纳入版本库）
+  tests/         55 项测试，含离线 Fake 模型用例
+frontend/
+  src/api/       类型定义与 API 客户端
+  src/components/ 方法比选、方案详情、证据列表、执行轨迹
+  src/views/     主页面
+docs/
+  architecture.md   分层、数据流、设计决策
+  agent-workflow.md 状态机、校验规则、降级路径
+  knowledge-base.md 知识库维护
+  demo-script.md    课堂演示脚本
+```
+
+## 文档
+
+- [架构与数据流](docs/architecture.md)
+- [Agent 工作流程](docs/agent-workflow.md)
+- [知识库维护](docs/knowledge-base.md)
+- [课堂演示脚本](docs/demo-script.md)
+
+## 边界说明
+
+知识条目尚需人工对照 PDF 逐条核验，标注"待人工核对"的内容不能作为最终课程引用。
+参数是教学演示经验数据，不能替代仪器参数、现场试验或专业判断。
+物探解释具有多解性，方案必须结合钻孔、原位测试与工程师复核。

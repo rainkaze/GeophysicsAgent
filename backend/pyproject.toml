@@ -1,6 +1,6 @@
 [project]
 name = "geophysics-agent"
-version = "0.1.0"
+version = "0.2.0"
 description = "面向工程物探勘察方案推荐的课程项目 Agent"
 requires-python = ">=3.12"
 dependencies = [
@@ -29,3 +29,10 @@ target-version = "py312"
 [tool.pytest.ini_options]
 pythonpath = ["src"]
 testpaths = ["tests"]
+
+[tool.mypy]
+python_version = "3.12"
+mypy_path = "src"
+ignore_missing_imports = true
+warn_unused_ignores = true
+
