@@ -1,0 +1,188 @@
+# 工程物探课程与参考知识库
+
+## SEIS-REF-001｜折射地震方法与适用前提
+
+折射波沿界面附近传播后返回地表，只有观测点超过临界距离后才可能接收到；折射波成为首波还与交叉距离有关。外业排列长度和炮检距需要覆盖目标所需的传播距离。
+
+- 来源：F054Lect20261014SeismicRefraction.pdf
+- 页码：13
+- 状态：课件文本已定位，待对照原页核图
+- 引用：F054Lect20261014SeismicRefraction.pdf, PDF p.13; crossover distance also discussed on p.32.
+- 关键词：地震折射、折射波、首波、速度结构、速度反转
+- URL：无
+
+## ERT-001｜直流电阻率解释的多解性
+
+课件指出，均匀介质中视电阻率等于该介质的真电阻率；非均匀地下结构中视电阻率受电流场和电极装置影响，不能直接当作某一深度的真电阻率。
+
+- 来源：F054Lect20261021DCERTIPfinal.pdf
+- 页码：5
+- 状态：课件文本已定位，待对照原页核图
+- 引用：F054Lect20261021DCERTIPfinal.pdf, PDF p.5.
+- 关键词：直流电阻率、ERT、视电阻率、真电阻率、电极装置
+- URL：无
+
+## FEM-001｜频率域电磁法的频率与探测深度
+
+FDEM 的正交分量在一定假设下可换算为视电导率；同相分量对金属等离散高导体可能更敏感。视电导率代表仪器附近一个或多个地层的综合响应，探测深度受线圈间距、方向、工作频率及各层电导率影响。
+
+- 来源：F054Lect20261028FEM.pdf
+- 页码：27
+- 状态：课件文本已定位，待对照原页核图
+- 引用：F054Lect20261028FEM.pdf, PDF p.27.
+- 关键词：频率域电磁、FEM、FDEM、视电导率、趋肤深度、线圈
+- URL：无
+
+## TEM-001｜瞬变电磁法的感应响应
+
+课程材料指出，TEM 更适合寻找相对围岩具有明显高电导率差异的目标；趋肤深度随频率和电导率变化，是理解电磁场传播衰减的尺度之一，不能将单一经验深度当作固定保证值。
+
+- 来源：F054Lect20261104TEM.pdf
+- 页码：5
+- 状态：课件文本已定位，待对照原页核图
+- 引用：F054Lect20261104TEM.pdf, PDF p.5; skin-depth concept on p.14.
+- 关键词：瞬变电磁、TEM、高导目标、趋肤深度、衰减、电性结构
+- URL：无
+
+## ERT-ARRAY-001｜视电阻率需结合电极装置解释
+
+视电阻率计算与电极间距和排列几何有关；不同装置对地下结构的灵敏度不同。选择 Wenner、Schlumberger 或偶极类装置时，应结合目标几何、测线条件和所需覆盖深度，解释中不能把装置响应等同于局部真电阻率。
+
+- 来源：F054Lect20261021DCERTIPfinal.pdf
+- 页码：17
+- 状态：课件文本已定位，待对照原页核图
+- 引用：F054Lect20261021DCERTIPfinal.pdf, PDF pp.17–18.
+- 关键词：Wenner、温纳、Schlumberger、施隆贝谢、电极排列、装置灵敏度
+- URL：无
+
+## IP-001｜激发极化视充电率对噪声较敏感
+
+课件说明，视充电率信号幅度通常明显小于电阻率测量信号，容易受各类噪声影响；视充电率剖面是表观响应，仍需像电阻率数据一样进行反演解释。导电覆盖层可能进一步增加解释难度。
+
+- 来源：F054Lect20261021DCERTIPfinal.pdf
+- 页码：90
+- 状态：课件文本已定位，待对照原页核图
+- 引用：F054Lect20261021DCERTIPfinal.pdf, PDF p.90.
+- 关键词：激发极化、IP、视充电率、噪声、导电覆盖层
+- URL：无
+
+## PETROPHYS-001｜工程物探依靠对地下物性的间接观测
+
+近地表地球物理方法测量物理场响应，再由响应推断地下物性分布；地质解释需要认识不同岩土与流体的物性以及方法自身的敏感性，不能把测得异常直接等同于唯一岩性或目标。
+
+- 来源：F054Lect20260916Materials.pdf
+- 页码：8
+- 状态：课件文本已定位，待对照原页核图
+- 引用：F054Lect20260916Materials.pdf, PDF p.8.
+- 关键词：岩土物性、物探原理、间接观测、异常解释、地质解释
+- URL：无
+
+## GPR-001｜地震速度受岩土物性和饱和状态共同影响
+
+课件举例说明，非饱和土变为饱和土时，密度和体积模量变化会影响地震波速度；P 波速度可能明显变化，而 S 波速度变化可能较小。速度变化也可能由岩性、胶结、流体和压实状态等因素引起，因此速度异常不能直接唯一对应某一种地质目标。
+
+- 来源：F054Lect20260916Materials.pdf
+- 页码：21
+- 状态：课件文本已定位，待对照原页核图
+- 引用：F054Lect20260916Materials.pdf, PDF p.21.
+- 关键词：地震速度、P波、S波、饱和度、体积模量、孔隙流体
+- URL：无
+
+## EXT-EPA-GPR-001｜GPR响应、衰减与探测深度权衡
+
+GPR利用介电常数、电导率和磁导率差异产生的反射；实际探测深度通常受介质电导率导致的衰减控制。导电黏土或盐水环境可能显著限制探测深度。提高天线频率通常提高分辨率但增加衰减，频率选择需结合目标与场地条件。雷达异常与地质/水文性质并非唯一对应，必要时应进行目标标定。
+
+- 来源：US EPA Environmental Geophysics: Ground Penetrating Radar
+- 页码：未标注
+- 状态：外部权威来源已核对
+- 引用：U.S. EPA, Ground Penetrating Radar (GPR), Environmental Geophysics.
+- 关键词：GPR、探地雷达、电导率、黏土、衰减、天线频率、分辨率
+- URL：https://www.epa.gov/environmental-geophysics/ground-penetrating-radar-gpr
+
+## EXT-EPA-ERT-001｜电阻率反演的非唯一性
+
+直流电阻率测量及其反演存在等值性/非唯一解释问题：不同地下电阻率结构可能产生相近的地表电位数据。装置选择需结合场地条件和调查目标，解释应由地质资料约束。
+
+- 来源：US EPA Environmental Geophysics: Electrical Resistivity
+- 页码：未标注
+- 状态：外部权威来源已核对
+- 引用：U.S. EPA, Electrical Resistivity, Environmental Geophysics.
+- 关键词：电阻率、ERT、直流电法、非唯一性、等值性、反演
+- URL：https://www.epa.gov/environmental-geophysics/electrical-resistivity
+
+## EXT-USGS-TEM-001｜瞬变电磁深度受记录时间、地电结构与噪声影响
+
+瞬变电磁法记录发射电流关断后的衰减二次场，晚时间数据对应更深部响应；可用于估计电阻率随深度变化。实际探测深度受地电结构、背景电磁噪声及发射接收配置共同控制，针对具体目标应进行数值模拟评估可探测性。
+
+- 来源：USGS, Transient electromagnetic sounding for groundwater
+- 页码：未标注
+- 状态：外部权威来源已核对
+- 引用：Fitterman, D.V. & Stewart, M.T. (1986). Geophysics, 51(4), 995–1005. DOI: 10.1190/1.1442158.
+- 关键词：瞬变电磁、TEM、TDEM、二次场、晚时间、电磁噪声、电阻率
+- URL：https://pubs.usgs.gov/publication/70014543
+
+## EXT-EPA-MULTI-001｜场地物探解释应采用多证据约束
+
+环境与工程场地物探通常依据多种方法的相互印证提供证据，单一方法一般不能独立给出确定性结论；磁法可用于铁磁性目标，GPR可用于管线和空洞等目标，但解释均受场地条件与干扰影响。
+
+- 来源：US EPA, Reference Guide: Use of Airborne, Surface, and Borehole Geophysical Techniques at Contaminated Sites
+- 页码：未标注
+- 状态：外部权威来源已核对
+- 引用：U.S. EPA, Reference Guide: Use of Airborne, Surface, and Borehole Geophysical Techniques at Contaminated Sites.
+- 关键词：多方法、交叉验证、磁法、管线、工程勘察、污染场地
+- URL：https://www.epa.gov/system/files/documents/2024-11/epa-reference-guide-use-of-airborne-surface-borehole-geophysical-techniques-at-contaminated-sites.pdf
+
+## BOOK-INTRO-GEO-001｜物探方法响应不同的地下物性
+
+地球物理方法对不同物性具有选择性，方法适用范围受目标物性对比和调查尺度影响。方法选择应从目标与围岩的物性差异出发，而不是仅按地质目标名称匹配。
+
+- 来源：An Introduction to Geophysical Exploration.pdf
+- 页码：15
+- 状态：原书可提取文本，待人工核对
+- 引用：An Introduction to Geophysical Exploration, PDF p.15 (printed chapter page 2).
+- 关键词：物性、方法选择、磁化率、电阻率、地震速度、目标对比
+- URL：无
+
+## BOOK-INTRO-GEO-002｜岩石电阻率区间重叠导致岩性解释非唯一
+
+书中指出不同岩石类型的电阻率范围有显著重叠，因此不能仅凭电阻率数据唯一识别岩性；有效电阻率还与孔隙和孔隙水有关。应结合地质和钻孔信息约束解释。
+
+- 来源：An Introduction to Geophysical Exploration.pdf
+- 页码：197
+- 状态：原书可提取文本，待人工核对
+- 引用：An Introduction to Geophysical Exploration, PDF p.197 (printed Chapter 8 p.184).
+- 关键词：岩石电阻率、孔隙水、岩性识别、非唯一性、电法
+- URL：无
+
+## BOOK-INTRO-GEO-003｜黏土层中地震速度可随压实程度变化
+
+书中讨论连续速度变化介质时指出，较厚碎屑沉积层（例如黏土层）可能因埋深增加及压实作用而呈现速度随深度逐渐增加的情况；这类模型不能简单等同于清晰的分层界面。
+
+- 来源：An Introduction to Geophysical Exploration.pdf
+- 页码：125
+- 状态：原书可提取文本，待人工核对
+- 引用：An Introduction to Geophysical Exploration, PDF p.125.
+- 关键词：黏土、速度梯度、压实、折射地震、连续速度变化
+- URL：无
+
+## PAPER-ERT-UNC-001｜ERT 反演存在多个同样拟合观测数据的地下模型
+
+ERT 反演通常具有非唯一性：多个不同的地下电阻率模型可能对测量数据给出相近解释。模型集合和不确定性分析可用于呈现多个合理解释，而不是只报告单一平滑剖面；具体研究结果依赖数据、先验和反演设置。
+
+- 来源：Arboleda-Zapata et al., A comprehensive workflow to analyze ensembles of globally inverted 2D electrical resistivity models
+- 页码：未标注
+- 状态：论文摘要与出版信息已核对
+- 引用：Arboleda-Zapata et al., Journal of Applied Geophysics; see linked publisher record.
+- 关键词：ERT、电阻率反演、非唯一性、模型集合、不确定性、多解
+- URL：https://www.sciencedirect.com/science/article/pii/S0926985121002603
+
+## PAPER-MASW-UNC-001｜MASW 的 Vs 剖面反演应考虑不确定性
+
+表面波色散数据反演可用于推断场地 Vs 结构，但不同模型参数化和实验色散数据误差会影响 Vs 剖面。研究提出将色散数据不确定性传播到 Vs 剖面的方法，因此工程解释不宜把单一反演曲线视为唯一真实模型。
+
+- 来源：A procedure for developing uncertainty-consistent Vs profiles from inversion of surface wave dispersion data
+- 页码：未标注
+- 状态：论文摘要与 DOI 已核对
+- 引用：Soil Dynamics and Earthquake Engineering, 145 (2021), 106622.
+- 关键词：MASW、面波、Vs、横波速度、色散曲线、反演不确定性
+- URL：https://doi.org/10.1016/j.soildyn.2021.106622

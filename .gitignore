@@ -1,0 +1,36 @@
+# 本地密钥与环境配置
+.env
+.env.*
+!.env.example
+
+# Python 与 uv
+.venv/
+.uv-cache/
+__pycache__/
+*.py[cod]
+*.egg-info/
+dist/
+build/
+
+# 前端依赖与构建缓存
+node_modules/
+*.tsbuildinfo
+
+# IDE、日志与测试缓存
+.idea/
+.vscode/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+*.log
+
+# 本地生成数据与系统文件
+data/local/
+backend/data/source_documents/**
+!backend/data/source_documents/**/README.md
+backend/data/book/**
+!backend/data/book/**/README.md
+backend/data/PPT/**
+!backend/data/PPT/**/README.md
+.DS_Store
+Thumbs.db
