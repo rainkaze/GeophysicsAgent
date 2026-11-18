@@ -1,4 +1,4 @@
-"""方法评估器：把"目标 + 介质 + 埋深 + 干扰"变成六种方法的确定性评估。
+"""方法评估器：把"目标 + 介质 + 埋深 + 干扰"变成八种方法的确定性评估。
 
 这是整个 agent 的**事实来源**。大模型只能引用这里的数字，不能自己编。
 判定顺序严格固定，便于解释与测试：
@@ -27,11 +27,14 @@ from geophysics_agent.analysis.physics import (
     design_fdem,
     design_gpr,
     design_magnetic,
+    design_refraction,
     design_surface_wave,
+    design_tem,
 )
 from geophysics_agent.analysis.tables import (
     BASE_MAX_DEPTH,
     BASE_SUITABILITY,
+    GPR_TARGET_RESOLUTION_M,
     INAPPLICABLE_REASON,
     MEDIUM_CONSTRAINTS,
     TARGET_CONTRAST,
@@ -161,7 +164,12 @@ def _acquisition_and_resolution(
     depth = depth_range.design_depth_m
 
     if method is Method.GPR:
-        gpr = design_gpr(medium, depth, max_depth)
+        resolution_req = (
+            GPR_TARGET_RESOLUTION_M.get(conditions.target)
+            if conditions.target is not None
+            else None
+        )
+        gpr = design_gpr(medium, depth, max_depth, resolution_req)
         return (
             AcquisitionParams(
                 items={
@@ -211,6 +219,23 @@ def _acquisition_and_resolution(
             sw.array_length_m,
         )
 
+    if method is Method.REFRACTION:
+        refr = design_refraction(depth)
+        return (
+            AcquisitionParams(
+                items={
+                    "道间距": f"{refr.spacing_m:g} m",
+                    "排列长度": f"{refr.array_length_m:g} m（{refr.channels} 道）",
+                    "震源": "锤击或落重，多次叠加；深部目标可加大锤重",
+                    "环境": "避开交通振动时段，记录背景噪声",
+                }
+            ),
+            refr.resolution_m,
+            refr.note,
+            refr.spacing_m,
+            refr.array_length_m,
+        )
+
     if method is Method.MAGNETIC:
         mag = design_magnetic(depth)
         return (
@@ -242,6 +267,23 @@ def _acquisition_and_resolution(
             fdem_design.resolution_m,
             fdem_design.note,
             fdem_design.station_spacing_m,
+            None,
+        )
+
+    if method is Method.TEM:
+        tem = design_tem(depth)
+        return (
+            AcquisitionParams(
+                items={
+                    "回线边长": f"{tem.line_spacing_m:g} m",
+                    "测点距": f"{tem.station_spacing_m:g} m",
+                    "记录": "关断后测二次场衰减，晚时间道对应深部",
+                    "校正": "避开电力线与管线，先做背景噪声测量",
+                }
+            ),
+            tem.resolution_m,
+            tem.note,
+            tem.station_spacing_m,
             None,
         )
 
@@ -285,15 +327,6 @@ def _limitations(conditions: SiteConditions, method: Method, extra_notes: list[s
     return unique[:6]
 
 
-def _state_tier(suitability: Suitability) -> int:
-    """当前判定状态：可用优先，受限其次，仅可辅助最后。"""
-    return {
-        Suitability.APPLICABLE: 0,
-        Suitability.CONSTRAINED: 1,
-        Suitability.SUPPORT: 2,
-    }.get(suitability, 3)
-
-
 def _promotion_tier(method: Method, target: Target) -> int:
     """基础物性适配度：越接近"首选"，越优先被指定为主方法。"""
     base = BASE_SUITABILITY[target][method]
@@ -307,44 +340,40 @@ def _promotion_tier(method: Method, target: Target) -> int:
 def _promote_primary(
     methods: dict[Method, MethodAssessment], target: Target, warnings: list[str]
 ) -> list[Method]:
-    """当没有任何方法判为"首选"时，按"当前判定 → 基础适配度 → 深度余量"指定主方法。
+    """指定主方法，且只在方法确实合适时才指定，绝不"强行选一个不合适的方法"。
 
-    只按深度余量排序会把 DAS 这类"深度大但成本高、依赖钻孔"的方法抬成主方法；
-    只按基础适配度排序又会把"已判为受限"的方法抬回来（例如 15 m 溶洞里的 GPR）。
-    因此先看当前判定状态，再看基础适配度，最后比余量。
+    顺序：首选 → 适用。受限/仅辅助/不可行都不被强行抬成主方法；
+    当八种演示方法都只落在"受限/仅辅助/不可行"时，如实返回空并提示，
+    交由 renderer / fallback 输出"没有合适主方法，建议扩展方法或钻探为主"。
     """
     primary = [m for m in METHOD_ORDER if methods[m].suitability is Suitability.PRIMARY]
     if primary:
         return primary
 
-    candidates = [
-        method
-        for method in METHOD_ORDER
-        if methods[method].feasible
-        and methods[method].suitability
-        in (Suitability.APPLICABLE, Suitability.SUPPORT, Suitability.CONSTRAINED)
-    ]
-    if not candidates:
-        warnings.append("当前条件下没有可行方法，建议改用钻探为主或分段设计")
-        return []
-
-    candidates.sort(
-        key=lambda method: (
-            _state_tier(methods[method].suitability),
-            _promotion_tier(method, target),
-            -methods[method].depth_margin,
+    applicable = [m for m in METHOD_ORDER if methods[m].suitability is Suitability.APPLICABLE]
+    if applicable:
+        applicable.sort(key=lambda m: (-methods[m].depth_margin, _promotion_tier(m, target)))
+        best = applicable[0]
+        warnings.append(
+            f"当前埋深下没有方法判为“首选”，按深度余量改以 "
+            f"{methods[best].method_cn}（余量 {methods[best].depth_margin:.2f}×）为主方法"
         )
-    )
-    best = candidates[0]
-    warnings.append(
-        f"当前埋深下没有方法判为“首选”，按判定状态与深度余量改以 "
-        f"{methods[best].method_cn}（余量 {methods[best].depth_margin:.2f}×）为主方法"
-    )
-    return [best]
+        return [best]
+
+    constrained = [m for m in METHOD_ORDER if methods[m].suitability is Suitability.CONSTRAINED]
+    if constrained:
+        names = "、".join(methods[m].method_cn for m in constrained[:3])
+        warnings.append(
+            f"八种演示方法在当前条件下均受限（{names}等），没有可直接推荐的主方法，"
+            "建议扩展方法范围（反射/微动/重力/测井等）或钻探为主、分段设计"
+        )
+    else:
+        warnings.append("当前条件下没有可行方法，建议改用钻探为主或分段设计")
+    return []
 
 
 def assess(conditions: SiteConditions) -> AssessmentBundle:
-    """对六种方法做完整评估，并给出推荐主辅方法与外业设计。
+    """对八种方法做完整评估，并给出推荐主辅方法与外业设计。
 
     ``conditions`` 必须包含 target / medium / depth，否则抛 ``ValueError``。
     """

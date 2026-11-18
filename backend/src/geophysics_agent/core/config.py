@@ -16,7 +16,6 @@ class Settings(BaseSettings):
     """应用配置；密钥只从环境或本机 .env 读取，绝不进入浏览器。"""
 
     # --- 模型 ---
-    llm_provider: str = "openai_compatible"
     llm_base_url: str = ""
     llm_api_key: str = ""
     llm_model: str = ""
@@ -26,11 +25,17 @@ class Settings(BaseSettings):
     enable_llm: bool = True
 
     # --- 应用 ---
-    app_env: str = "development"
     app_log_level: str = "INFO"
 
     # --- 检索 ---
     knowledge_top_k: int = Field(default=5, ge=1, le=10)
+
+    # --- 语义检索（对齐 Dify：向量 Embedding + Rerank）---
+    dashscope_api_key: str = ""
+    dashscope_base_url: str = "https://dashscope.aliyuncs.com/compatible-mode/v1"
+    embedding_model: str = "text-embedding-v4"
+    rerank_model: str = "qwen3-rerank"
+    enable_semantic_retrieval: bool = True
 
     # --- 规划与校验 ---
     planner_max_repairs: int = Field(default=1, ge=0, le=3)

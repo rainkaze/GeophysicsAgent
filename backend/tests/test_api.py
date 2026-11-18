@@ -47,6 +47,17 @@ def test_short_message_is_rejected(client: TestClient) -> None:
     assert response.status_code == 422
 
 
+def test_short_but_meaningful_message_reaches_clarification(client: TestClient) -> None:
+    """6 个字的输入也要能进入追问流程——这是讲稿里的标准演示句，不能被字数门槛挡住。"""
+    response = client.post("/api/v1/recommend", json={"message": "我想做个物探"})
+
+    assert response.status_code == 200
+    payload = response.json()
+    assert payload["mode"] == "clarification"
+    assert payload["questions"]
+    assert "我是「工程物探勘察方案推荐」助手" in payload["answer"]
+
+
 def test_recommend_returns_structured_plan(client: TestClient) -> None:
     response = client.post("/api/v1/recommend", json={"message": get_scenario("4").query})
 

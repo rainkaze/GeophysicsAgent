@@ -10,48 +10,41 @@ from enum import Enum
 
 
 class Method(str, Enum):
-    """课程覆盖的六种工程物探方法。"""
+    """课程覆盖的八种工程物探方法。"""
 
     GPR = "gpr"
     DC = "dc"
     SURFACE_WAVE = "surface_wave"
+    REFRACTION = "refraction"
     MAGNETIC = "magnetic"
     FDEM = "fdem"
+    TEM = "tem"
     DAS = "das"
 
     @property
     def cn(self) -> str:
         return _METHOD_CN[self]
 
-    @property
-    def short_cn(self) -> str:
-        return _METHOD_SHORT_CN[self]
-
 
 _METHOD_CN: dict[Method, str] = {
     Method.GPR: "探地雷达（GPR）",
     Method.DC: "直流电阻率（DC/ERT）",
     Method.SURFACE_WAVE: "面波地震（MASW）",
+    Method.REFRACTION: "地震折射（Refraction）",
     Method.MAGNETIC: "磁法勘探",
     Method.FDEM: "频域电磁（FDEM）",
+    Method.TEM: "瞬变电磁（TEM）",
     Method.DAS: "分布式光纤声学（DAS）",
-}
-
-_METHOD_SHORT_CN: dict[Method, str] = {
-    Method.GPR: "GPR",
-    Method.DC: "DC/ERT",
-    Method.SURFACE_WAVE: "面波",
-    Method.MAGNETIC: "磁法",
-    Method.FDEM: "FDEM",
-    Method.DAS: "DAS",
 }
 
 METHOD_ORDER: tuple[Method, ...] = (
     Method.GPR,
     Method.DC,
     Method.SURFACE_WAVE,
+    Method.REFRACTION,
     Method.MAGNETIC,
     Method.FDEM,
+    Method.TEM,
     Method.DAS,
 )
 

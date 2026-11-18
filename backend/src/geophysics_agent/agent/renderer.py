@@ -77,7 +77,8 @@ def _primary_section(plan: SurveyPlan, bundle: AssessmentBundle) -> list[str]:
         return [
             "### 主方法",
             "",
-            "当前条件下没有可承担主方法的方案，建议先做方法试验或分段设计。",
+            "八种演示方法在当前条件下均受限或不适用，没有可直接推荐的主方法。",
+            "建议扩展方法范围（反射/微动/重力/测井等），或钻探为主、分段设计。",
             "",
         ]
 
@@ -187,7 +188,7 @@ def render(
     parts.extend(["", "## 三、方案要点", ""])
     parts.extend(_primary_section(plan, bundle))
 
-    supports = [item for item in plan.items if item.role is Role.SUPPORT]
+    supports = [item for item in plan.items if item.role in (Role.SUPPORT, Role.VERIFICATION)]
     if supports:
         parts.extend(["", "### 辅助与验证方法", ""])
         for item in supports:
@@ -258,6 +259,11 @@ def render_clarification(conditions: SiteConditions, questions: list[str]) -> st
         "# 需要补充信息",
         "",
         (
+            "我是「工程物探勘察方案推荐」助手：从八种工程物探方法（GPR／直流电阻率／面波／"
+            "地震折射／磁法／FDEM／TEM／DAS）里比选方案，按物理关系反算采集参数，并估算外业工作量。"
+        ),
+        "",
+        (
             f"目前已确认：{known_text}。还缺关键字段，无法给出可靠方案——"
             "物探方法的选择高度依赖目标物性差异与埋深，缺项时给出的方案容易变成「按名称套方法」。"
         ),
@@ -271,7 +277,7 @@ def render_clarification(conditions: SiteConditions, questions: list[str]) -> st
             "",
             "## 补齐后我会做什么",
             "",
-            "1. 用六种方法的深度-分辨率-成本评估表逐项校核；",
+            "1. 用八种方法的深度-分辨率-成本评估表逐项校核；",
             "2. 按物理关系反算排列长度、电极距、天线频率等采集参数；",
             "3. 生成方案并用规则校验器自检，冲突时自动修正。",
         ]

@@ -52,16 +52,13 @@ def repair_draft(
 
 
 def fallback_plan(bundle: AssessmentBundle) -> PlanDraft:
-    """不依赖模型的规则方案，保证任何情况下都有物理上成立的输出。"""
+    """不依赖模型的规则方案，保证任何情况下都有物理上成立的输出。
+
+    与模型草案遵循同一原则：评估器没有推荐主方法时，**不强行指定一个不合适的方法**，
+    而是如实地"不指定主方法"，把八种方法都列为不建议/受限，并建议扩展方法或钻探为主。
+    """
     items: list[PlanItem] = []
     primary_method = bundle.recommended_primary[0] if bundle.recommended_primary else None
-
-    if primary_method is None:
-        feasible = [
-            method for method in bundle.recommended_support if bundle.methods[method].feasible
-        ]
-        feasible.sort(key=lambda method: bundle.methods[method].depth_margin, reverse=True)
-        primary_method = feasible[0] if feasible else None
 
     if primary_method is not None:
         primary = bundle.methods[primary_method]
@@ -89,19 +86,25 @@ def fallback_plan(bundle: AssessmentBundle) -> PlanDraft:
             )
         )
 
-    for method in bundle.recommended_support:
-        if method == primary_method:
-            continue
-        if len([item for item in items if item.role is Role.SUPPORT]) >= 2:
-            break
-        assessment = bundle.methods[method]
-        items.append(
-            PlanItem(
-                method=method,
-                role=Role.SUPPORT,
-                rationale=f"{assessment.method_cn} 可提供交叉验证：{assessment.suitability_reason}",
+    # 辅助方法只在有主方法时才有意义；无主方法时统一按"不建议/受限"如实列出
+    if primary_method is not None:
+        # 评估器推荐了多个主方法时，其余主方法作为辅助列出，而不是"不建议采用"
+        support_candidates = [
+            method
+            for method in bundle.recommended_primary[1:] + bundle.recommended_support
+            if method != primary_method
+        ]
+        for method in support_candidates:
+            if len([item for item in items if item.role is Role.SUPPORT]) >= 2:
+                break
+            assessment = bundle.methods[method]
+            items.append(
+                PlanItem(
+                    method=method,
+                    role=Role.SUPPORT,
+                    rationale=f"{assessment.method_cn} 可提供交叉验证：{assessment.suitability_reason}",
+                )
             )
-        )
 
     assigned = {item.method for item in items}
     for method in METHOD_ORDER:
@@ -115,6 +118,8 @@ def fallback_plan(bundle: AssessmentBundle) -> PlanDraft:
             )
         elif assessment.suitability is Suitability.NOT_APPLICABLE:
             reason = f"物性不匹配：{assessment.suitability_reason}"
+        elif assessment.suitability is Suitability.CONSTRAINED:
+            reason = f"受限，不宜作为主方法：{assessment.suitability_reason}"
         else:
             reason = f"本次不作为主要手段：{assessment.suitability_reason}"
         items.append(PlanItem(method=method, role=Role.EXCLUDED, rationale=reason))
@@ -138,12 +143,20 @@ def fallback_plan(bundle: AssessmentBundle) -> PlanDraft:
         )
     )
 
-    primary_cn = bundle.methods[primary_method].method_cn if primary_method else "方法试验"
-    return PlanDraft(
-        summary=(
+    if primary_method is not None:
+        summary = (
             f"针对{bundle.target_cn}（{bundle.medium_cn}，{bundle.depth_range}），"
-            f"建议以{primary_cn}为主，配合辅助方法交叉验证，并以钻探验证异常。"
-        ),
+            f"建议以{bundle.methods[primary_method].method_cn}为主，配合辅助方法交叉验证，并以钻探验证异常。"
+        )
+    else:
+        summary = (
+            f"针对{bundle.target_cn}（{bundle.medium_cn}，{bundle.depth_range}），"
+            "八种演示方法在当前条件下均受限或不适用，没有可直接推荐的主方法，"
+            "建议扩展方法范围（反射/微动/重力/测井等）或钻探为主、分段设计。"
+        )
+
+    return PlanDraft(
+        summary=summary,
         items=items,
         risks=risks[:5],
         verification=[

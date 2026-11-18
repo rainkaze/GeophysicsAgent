@@ -13,7 +13,7 @@ from geophysics_agent.analysis.physics import (
     gpr_velocity_m_per_ns,
 )
 from geophysics_agent.domain.conditions import DepthRange, SiteConditions
-from geophysics_agent.domain.enums import Medium, Method, Suitability, Target
+from geophysics_agent.domain.enums import Interference, Medium, Method, Suitability, Target
 
 
 def _conditions(target: Target, medium: Medium, depth: float, **kwargs) -> SiteConditions:
@@ -69,6 +69,41 @@ def test_no_method_can_cover_very_deep_target() -> None:
     assert any("没有可行方法" in warning for warning in bundle.warnings)
 
 
+def test_all_constrained_reports_no_primary_honestly() -> None:
+    """UXO 在强人文干扰下：磁法/FDEM 均被降为受限，评估器不强行指定主方法。"""
+    conditions = _conditions(
+        Target.UXO,
+        Medium.SAND,
+        3.0,
+        interference=[
+            Interference.REBAR,
+            Interference.FENCE,
+            Interference.MACHINERY,
+            Interference.POWERLINE,
+        ],
+    )
+    bundle = assess(conditions)
+
+    assert bundle.recommended_primary == []
+    assert any("没有可直接推荐" in warning for warning in bundle.warnings)
+
+
+def test_refraction_is_primary_for_site_investigation() -> None:
+    """工程勘察：地震折射是基岩面/覆盖层厚度的经典主方法之一。"""
+    bundle = assess(_conditions(Target.SITE_INVESTIGATION, Medium.BEDROCK, 20.0))
+
+    assert bundle.methods[Method.REFRACTION].suitability is Suitability.PRIMARY
+    assert bundle.methods[Method.REFRACTION].feasible
+
+
+def test_tem_covers_deep_aquifer() -> None:
+    """含水层：TEM 是深部低阻体的经典方法，应可行且适用。"""
+    bundle = assess(_conditions(Target.AQUIFER, Medium.SAND, 40.0))
+
+    assert bundle.methods[Method.TEM].feasible
+    assert bundle.methods[Method.TEM].suitability is Suitability.APPLICABLE
+
+
 # ---------------------------------------------------------------- 干扰判定
 def test_severe_interference_downgrades_magnetic_in_urban_site() -> None:
     conditions = extract_conditions(
@@ -117,6 +152,14 @@ def test_gpr_velocity_and_resolution_are_physical() -> None:
     assert design.antenna_mhz <= 100.0
     assert 0.1 < design.resolution_m < 1.5
     assert design.window_ns > 0
+
+
+def test_gpr_utility_uses_high_frequency_for_resolution() -> None:
+    """浅层管线是小目标，GPR 应选较高频率（≥250 MHz）而非 100 MHz。"""
+    bundle = assess(_conditions(Target.UTILITY, Medium.FILL, 3.0))
+
+    frequency = bundle.methods[Method.GPR].acquisition.items["天线中心频率"]
+    assert frequency.startswith(("250", "500"))
 
 
 # ---------------------------------------------------------------- 外业设计

@@ -37,6 +37,7 @@ from geophysics_agent.domain.schemas import (
     build_condition_view,
 )
 from geophysics_agent.knowledge.retriever import Retriever
+from geophysics_agent.knowledge.semantic import build_semantic_client
 
 logger = logging.getLogger(__name__)
 
@@ -54,7 +55,10 @@ class AgentRunner:
     ) -> None:
         self._settings = settings
         self._llm = llm
-        self._retriever = retriever or Retriever(top_k=settings.knowledge_top_k)
+        self._retriever = retriever or Retriever(
+            top_k=settings.knowledge_top_k,
+            semantic=build_semantic_client(settings),
+        )
         self._sessions = sessions or SessionStore(
             max_sessions=settings.session_max_sessions,
             ttl_minutes=settings.session_ttl_minutes,
@@ -92,7 +96,7 @@ class AgentRunner:
             return self._clarification(conditions, questions, trace, conversation, started)
 
         # 3) 检索课程证据 ------------------------------------------------------
-        with trace.step("retrieve", "BM25 检索课程知识") as handle:
+        with trace.step("retrieve", "混合检索课程知识（BM25+向量+Rerank）") as handle:
             retrieval = self._retriever.search(message)
             handle.detail = (
                 f"命中 {len(retrieval.evidence)} 条，相关性={retrieval.quality}，"
@@ -102,7 +106,7 @@ class AgentRunner:
                 handle.warn(f"证据相关性{retrieval.quality}，不能作为强依据")
 
         # 4) 确定性评估（工具调用）--------------------------------------------
-        with trace.step("assess", "六种方法深度/分辨率/成本评估") as handle:
+        with trace.step("assess", "八种方法深度/分辨率/成本评估") as handle:
             bundle = assess(conditions)
             handle.detail = (
                 f"设计埋深 {bundle.design_depth_m:g} m，"
@@ -289,9 +293,3 @@ def build_runner(settings: Settings | None = None) -> AgentRunner:
 
         _runner = AgentRunner(settings=resolved, llm=build_llm(resolved))
     return _runner
-
-
-def reset_runner() -> None:
-    """测试或配置变更后重建 runner。"""
-    global _runner
-    _runner = None

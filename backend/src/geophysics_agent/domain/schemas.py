@@ -22,7 +22,11 @@ Mode = Literal["agent", "clarification", "degraded"]
 class RecommendRequest(BaseModel):
     """一次勘察方案推荐请求。"""
 
-    message: str = Field(min_length=8, max_length=6000, description="自然语言场景描述")
+    message: str = Field(
+        min_length=2,
+        max_length=6000,
+        description="自然语言场景描述（最短 2 字即可，信息不全时走追问而不是报错）",
+    )
     conversation_id: str | None = Field(default=None, description="会话 id，缺省则新建")
     reset: bool = Field(default=False, description="为 true 时清空该会话历史后再处理")
 

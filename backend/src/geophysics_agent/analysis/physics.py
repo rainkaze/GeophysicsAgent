@@ -107,12 +107,6 @@ def gpr_wavelength_m(medium: Medium, frequency_mhz: float) -> float:
     return gpr_velocity_m_per_ns(medium) * 1000.0 / frequency_mhz
 
 
-def gpr_skin_depth_m(medium: Medium, frequency_mhz: float) -> float:
-    """趋肤深度 δ≈503√(ρ/f)（m），ρ 由电导率换算。"""
-    resistivity = 1000.0 / CONDUCTIVITY_MS_PER_M[medium]
-    return 503.0 * math.sqrt(resistivity / frequency_mhz)
-
-
 def _reachable_depth(base_depth_m: float, frequency_mhz: float) -> float:
     """按经验关系把基准频率下的可达深度换算到目标频率。
 
@@ -121,18 +115,43 @@ def _reachable_depth(base_depth_m: float, frequency_mhz: float) -> float:
     return base_depth_m * math.sqrt(GPR_BASE_FREQ_MHZ / frequency_mhz)
 
 
-def design_gpr(medium: Medium, required_depth_m: float, base_depth_m: float) -> GprDesign:
-    """按目标深度选择天线频率，并给出分辨率、时窗与点距。"""
+def design_gpr(
+    medium: Medium,
+    required_depth_m: float,
+    base_depth_m: float,
+    min_resolution_m: float | None = None,
+) -> GprDesign:
+    """按目标深度与分辨率选择天线频率，并给出分辨率、时窗与点距。
+
+    小目标（管线/UXO）需要更高频率以获得足够分辨率；当"能分辨目标的频率"
+    覆盖不了 1.3× 目标深度时，优先保分辨率（否则小目标根本分辨不出），
+    并在 note 里如实标注"深度覆盖可能不足"。
+    """
     safety = 1.3
+    velocity = gpr_velocity_m_per_ns(medium)
+
+    def resolution_of(frequency_mhz: float) -> float:
+        return gpr_wavelength_m(medium, frequency_mhz) / 4.0
+
     chosen = GPR_ANTENNAS_MHZ[-1]
-    reachable = _reachable_depth(base_depth_m, chosen)
+    # 第一遍：同时满足深度覆盖 + 分辨率要求（若有）的最高频率
     for frequency in GPR_ANTENNAS_MHZ:
-        candidate = _reachable_depth(base_depth_m, frequency)
-        if candidate >= required_depth_m * safety:
-            chosen, reachable = frequency, candidate
+        reachable = _reachable_depth(base_depth_m, frequency)
+        ok_resolution = min_resolution_m is None or resolution_of(frequency) <= min_resolution_m
+        if reachable >= required_depth_m * safety and ok_resolution:
+            chosen = frequency
             break
 
-    velocity = gpr_velocity_m_per_ns(medium)
+    # 第二遍：小目标的分辨率要求与深度冲突时，选"能分辨目标的最低频率"（尽量保深度）
+    resolution_limited = False
+    if min_resolution_m is not None and resolution_of(chosen) > min_resolution_m:
+        for frequency in reversed(GPR_ANTENNAS_MHZ):  # 低→高
+            if resolution_of(frequency) <= min_resolution_m:
+                chosen = frequency
+                resolution_limited = True
+                break
+
+    reachable = _reachable_depth(base_depth_m, chosen)
     wavelength = gpr_wavelength_m(medium, chosen)
     resolution = wavelength / 4.0
     window = 2.0 * required_depth_m * safety / velocity
@@ -143,6 +162,8 @@ def design_gpr(medium: Medium, required_depth_m: float, base_depth_m: float) -> 
         f"λ={wavelength:.2f} m，分辨率按 λ/4 取 {resolution:.2f} m；"
         f"时窗按 t=2d/v 取 {window:.0f} ns"
     )
+    if resolution_limited:
+        note += f"；受小目标尺寸限制，{chosen:g} MHz 的深度覆盖可能不足，需低频复核或加密点距"
     return GprDesign(
         chosen, round(reachable, 1), round(resolution, 2), round(window, 0), spacing, note
     )
@@ -161,7 +182,7 @@ def design_dc(depth_m: float, electrodes: int = 48) -> ArrayDesign:
     resolution = 0.15 * depth_m
     note = (
         f"有效深度≈0.25×排列长度，目标 {depth_m:g} m 需排列长约 {needed:.0f} m；"
-        f"{electrodes} 道电极取电极距 {spacing:g} m，实际排列长 {array_length:.0f} m；"
+        f"{electrodes} 道电极取电极距 {spacing:g} m，实际排列长 {array_length:g} m；"
         f"垂向分辨率按 0.15×深度估约 {resolution:.1f} m"
     )
     return ArrayDesign(round(array_length, 1), spacing, electrodes, round(resolution, 1), note)
@@ -175,7 +196,21 @@ def design_surface_wave(depth_m: float, channels: int = 24) -> ArrayDesign:
     resolution = 0.2 * depth_m
     note = (
         f"排列长度取 2.5×目标深度≈{needed:.0f} m；{channels} 道取道间距 {spacing:g} m，"
-        f"实际排列长 {array_length:.0f} m；分层分辨率按 0.2×深度估约 {resolution:.1f} m"
+        f"实际排列长 {array_length:g} m；分层分辨率按 0.2×深度估约 {resolution:.1f} m"
+    )
+    return ArrayDesign(round(array_length, 1), spacing, channels, round(resolution, 1), note)
+
+
+def design_refraction(depth_m: float, channels: int = 24) -> ArrayDesign:
+    """按 4 倍关系反算折射排列长度与道间距（有效深度≈0.25×排列长度）。"""
+    needed = depth_m * 4.0
+    spacing = max(1.0, math.ceil(needed / (channels - 1) * 2.0) / 2.0)
+    array_length = spacing * (channels - 1)
+    resolution = 0.2 * depth_m
+    note = (
+        f"有效深度≈0.25×排列长度，目标 {depth_m:g} m 需排列长约 {needed:.0f} m；"
+        f"{channels} 道取道间距 {spacing:g} m，实际排列长 {array_length:g} m；"
+        f"分层分辨率按 0.2×深度估约 {resolution:.1f} m"
     )
     return ArrayDesign(round(array_length, 1), spacing, channels, round(resolution, 1), note)
 
@@ -207,6 +242,20 @@ def design_fdem(depth_m: float) -> GridDesign:
         station,
         resolution,
         f"按目标 {depth_m:g} m 选线圈距 {coil:g} m、{band}；扩散场垂向分辨率约 0.4×深度≈{resolution:g} m",
+    )
+
+
+def design_tem(depth_m: float) -> GridDesign:
+    """TEM 按目标深度建议回线边长与测点距。"""
+    loop = max(10.0, round(depth_m * 0.5, 0))
+    station = max(5.0, round(depth_m * 0.5, 0))
+    resolution = round(0.3 * depth_m, 1)
+    return GridDesign(
+        loop,
+        station,
+        resolution,
+        f"按目标 {depth_m:g} m 建议回线边长约 {loop:g} m、测点距 {station:g} m；"
+        f"扩散场垂向分辨率约 0.3×深度≈{resolution:g} m，深部探测需增大发射磁矩并延长记录时间",
     )
 
 

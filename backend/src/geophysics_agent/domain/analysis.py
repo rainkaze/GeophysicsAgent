@@ -16,9 +16,6 @@ class AcquisitionParams(BaseModel):
 
     items: dict[str, str] = Field(default_factory=dict)
 
-    def as_lines(self) -> list[str]:
-        return [f"{key}：{value}" for key, value in self.items.items()]
-
 
 class MethodAssessment(BaseModel):
     """单一方法在给定目标/介质/埋深/干扰下的确定性评估。"""
@@ -63,7 +60,7 @@ class FieldDesign(BaseModel):
 
 
 class AssessmentBundle(BaseModel):
-    """一次评估的完整产物：六种方法 + 推荐主辅 + 外业设计 + 提示。"""
+    """一次评估的完整产物：八种方法 + 推荐主辅 + 外业设计 + 提示。"""
 
     target_cn: str
     medium_cn: str
@@ -82,6 +79,3 @@ class AssessmentBundle(BaseModel):
         from geophysics_agent.domain.enums import METHOD_ORDER
 
         return [self.methods[method] for method in METHOD_ORDER if method in self.methods]
-
-    def get(self, method: Method) -> MethodAssessment | None:
-        return self.methods.get(method)

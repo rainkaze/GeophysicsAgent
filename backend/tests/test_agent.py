@@ -38,7 +38,7 @@ def test_no_llm_falls_back_to_rule_plan(make_runner: Callable[..., AgentRunner])
     assert response.plan is not None
     assert response.plan.degraded is True
     assert response.plan.primary_method() is Method.DC
-    assert len(response.plan.items) == 6
+    assert len(response.plan.items) == 8
     assert "规则引擎" in response.answer
 
 

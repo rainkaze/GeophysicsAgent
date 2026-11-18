@@ -1,4 +1,4 @@
-"""HTTP 路由：只做协议转换、鉴权边界与错误映射，不含业务逻辑。"""
+"""HTTP 路由：只做协议转换与错误映射，不含业务逻辑。"""
 
 from __future__ import annotations
 

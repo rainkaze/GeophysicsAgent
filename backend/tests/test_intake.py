@@ -43,6 +43,14 @@ def test_ambiguous_target_prefers_plume_over_aquifer() -> None:
     assert conditions.target is Target.PLUME
 
 
+def test_site_investigation_target_from_bedrock_cover() -> None:
+    """ "覆盖层厚度/基岩面"应识别为工程勘察。"""
+    conditions = extract_conditions("基岩场地，需要查明覆盖层厚度与基岩面埋深。")
+
+    assert conditions.target is Target.SITE_INVESTIGATION
+    assert conditions.medium is Medium.BEDROCK
+
+
 def test_surface_detection() -> None:
     assert extract_conditions("地表为碎石覆盖，地形起伏较大").surface is Surface.GRAVEL
     assert extract_conditions("道路和小区绿化带内查找管线").surface is Surface.GRASS

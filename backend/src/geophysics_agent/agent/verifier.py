@@ -29,19 +29,26 @@ def verify(
     violations: list[Violation] = []
     primary_item = draft.primary()
 
-    # --- 结构：必须有且只有一个主方法 ---
+    # --- 结构：必须有且只有一个主方法（评估器确实有推荐时）---
     if primary_item is None:
-        feasible_exists = any(item.feasible for item in bundle.methods.values())
-        if feasible_exists:
+        if bundle.recommended_primary:
             violations.append(
-                Violation(code="V001", severity="error", message="方案没有指定主方法")
+                Violation(
+                    code="V001",
+                    severity="error",
+                    message=(
+                        "方案没有指定主方法（评估器推荐："
+                        + "、".join(method.cn for method in bundle.recommended_primary)
+                        + "）"
+                    ),
+                )
             )
         else:
             violations.append(
                 Violation(
                     code="V001",
                     severity="warning",
-                    message="六种方法在当前埋深下均不可行，方案应以钻探为主并分段设计",
+                    message="八种演示方法在当前条件下没有合适主方法，方案如实不指定主方法",
                 )
             )
         return violations
@@ -72,14 +79,16 @@ def verify(
         )
 
     if assessment.depth_margin < 1.15:
-        # 若本来就没有任何方法满足余量要求，问题不在模型的选择，而在线索本身不足；
-        # 此时只提示，不强制打回，否则"所有方法都临界"的场地永远得不到方案。
+        # 若本来就没有任何"可作主方法"的方法满足余量要求，问题不在模型的选择，
+        # 而在线索本身不足；此时只提示，不强制打回，否则"所有方法都临界"的场地永远得不到方案。
+        # 只把"首选/适用/受限"视为可作主方法的候选；辅助（SUPPORT）不单独定案，不算更优替换。
         adequate = [
             candidate
             for candidate in bundle.methods.values()
             if candidate.feasible
             and candidate.depth_margin >= 1.15
-            and candidate.suitability is not Suitability.NOT_APPLICABLE
+            and candidate.suitability
+            in (Suitability.PRIMARY, Suitability.APPLICABLE, Suitability.CONSTRAINED)
         ]
         if adequate:
             violations.append(

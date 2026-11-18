@@ -114,6 +114,3 @@ class SurveyPlan(BaseModel):
             if item.role is Role.PRIMARY:
                 return item.method
         return None
-
-    def methods_with_role(self, role: Role) -> list[Method]:
-        return [item.method for item in self.items if item.role is role]

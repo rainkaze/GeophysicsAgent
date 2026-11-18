@@ -30,7 +30,15 @@ TARGET_ALIASES: dict[Target, tuple[str, ...]] = {
     Target.UXO: ("uxo", "未爆", "炸弹", "弹药", "爆炸物"),
     Target.LIQUEFACTION: ("液化", "liquefaction"),
     Target.AQUIFER: ("含水层", "地下水", "aquifer"),
-    Target.SITE_INVESTIGATION: ("勘察", "site investigation", "geotechnical", "地层分层"),
+    Target.SITE_INVESTIGATION: (
+        "勘察",
+        "site investigation",
+        "geotechnical",
+        "地层分层",
+        "覆盖层",
+        "基岩面",
+        "地基",
+    ),
 }
 
 MEDIUM_PRIORITY: tuple[Medium, ...] = (
@@ -74,6 +82,13 @@ TARGET_NOTES: dict[Target, str] = {
     Target.UXO: "异常幅度随距离三次方衰减，探测概率随埋深/目标尺寸下降，必须按安全规程开挖验证。",
     Target.LIQUEFACTION: "液化判别需要 Vs 或 SPT/CPT，加上地下水位与砂层分布，物探只提供速度结构。",
     Target.SITE_INVESTIGATION: "物探提供间接参数，需钻孔与原位测试标定后才能用于设计。",
+}
+
+#: GPR 小目标所需的最小垂向分辨率（m）：管线/UXO 尺寸小，必须选更高频率才能分辨。
+#: 其余大目标（溶洞/含水层/分层等）不设此约束，仍按深度覆盖选频。
+GPR_TARGET_RESOLUTION_M: dict[Target, float] = {
+    Target.UTILITY: 0.15,
+    Target.UXO: 0.05,
 }
 
 # ============================================================
@@ -124,6 +139,24 @@ BASE_MAX_DEPTH: dict[Method, dict[Medium, float]] = {
         Medium.FILL: 10.0,
         Medium.LIMESTONE: 25.0,
         Medium.BEDROCK: 20.0,
+    },
+    Method.REFRACTION: {
+        Medium.CLAY: 25.0,
+        Medium.SOFT_SOIL: 30.0,
+        Medium.SILT: 30.0,
+        Medium.SAND: 35.0,
+        Medium.FILL: 20.0,
+        Medium.LIMESTONE: 40.0,
+        Medium.BEDROCK: 50.0,
+    },
+    Method.TEM: {
+        Medium.CLAY: 30.0,
+        Medium.SOFT_SOIL: 40.0,
+        Medium.SILT: 50.0,
+        Medium.SAND: 60.0,
+        Medium.FILL: 30.0,
+        Medium.LIMESTONE: 60.0,
+        Medium.BEDROCK: 60.0,
     },
     Method.DAS: {medium: 50.0 for medium in Medium},
 }
@@ -176,6 +209,24 @@ TARGET_DEPTH_FACTOR: dict[Method, dict[Target, float]] = {
         Target.LIQUEFACTION: 1.0,
         Target.SITE_INVESTIGATION: 1.0,
     },
+    Method.REFRACTION: {
+        Target.PLUME: 0.5,
+        Target.UTILITY: 0.3,
+        Target.KARST: 0.8,
+        Target.AQUIFER: 1.0,
+        Target.UXO: 0.3,
+        Target.LIQUEFACTION: 1.0,
+        Target.SITE_INVESTIGATION: 1.0,
+    },
+    Method.TEM: {
+        Target.PLUME: 1.0,
+        Target.UTILITY: 0.8,
+        Target.KARST: 1.2,
+        Target.AQUIFER: 1.2,
+        Target.UXO: 0.6,
+        Target.LIQUEFACTION: 1.0,
+        Target.SITE_INVESTIGATION: 1.0,
+    },
     Method.DAS: {target: 1.0 for target in Target},
 }
 
@@ -187,56 +238,70 @@ BASE_SUITABILITY: dict[Target, dict[Method, Suitability]] = {
         Method.GPR: Suitability.SUPPORT,
         Method.DC: Suitability.PRIMARY,
         Method.SURFACE_WAVE: Suitability.SUPPORT,
+        Method.REFRACTION: Suitability.SUPPORT,
         Method.MAGNETIC: Suitability.NOT_APPLICABLE,
         Method.FDEM: Suitability.APPLICABLE,
+        Method.TEM: Suitability.APPLICABLE,
         Method.DAS: Suitability.SUPPORT,
     },
     Target.UTILITY: {
         Method.GPR: Suitability.PRIMARY,
         Method.DC: Suitability.SUPPORT,
         Method.SURFACE_WAVE: Suitability.NOT_APPLICABLE,
+        Method.REFRACTION: Suitability.NOT_APPLICABLE,
         Method.MAGNETIC: Suitability.APPLICABLE,
         Method.FDEM: Suitability.APPLICABLE,
+        Method.TEM: Suitability.SUPPORT,
         Method.DAS: Suitability.NOT_APPLICABLE,
     },
     Target.KARST: {
         Method.GPR: Suitability.PRIMARY,
         Method.DC: Suitability.APPLICABLE,
         Method.SURFACE_WAVE: Suitability.APPLICABLE,
+        Method.REFRACTION: Suitability.APPLICABLE,
         Method.MAGNETIC: Suitability.NOT_APPLICABLE,
         Method.FDEM: Suitability.SUPPORT,
+        Method.TEM: Suitability.SUPPORT,
         Method.DAS: Suitability.NOT_APPLICABLE,
     },
     Target.AQUIFER: {
         Method.GPR: Suitability.SUPPORT,
         Method.DC: Suitability.PRIMARY,
         Method.SURFACE_WAVE: Suitability.APPLICABLE,
+        Method.REFRACTION: Suitability.APPLICABLE,
         Method.MAGNETIC: Suitability.NOT_APPLICABLE,
         Method.FDEM: Suitability.APPLICABLE,
+        Method.TEM: Suitability.APPLICABLE,
         Method.DAS: Suitability.SUPPORT,
     },
     Target.UXO: {
         Method.GPR: Suitability.SUPPORT,
         Method.DC: Suitability.NOT_APPLICABLE,
         Method.SURFACE_WAVE: Suitability.NOT_APPLICABLE,
+        Method.REFRACTION: Suitability.NOT_APPLICABLE,
         Method.MAGNETIC: Suitability.PRIMARY,
         Method.FDEM: Suitability.PRIMARY,
+        Method.TEM: Suitability.SUPPORT,
         Method.DAS: Suitability.NOT_APPLICABLE,
     },
     Target.LIQUEFACTION: {
         Method.GPR: Suitability.SUPPORT,
         Method.DC: Suitability.SUPPORT,
         Method.SURFACE_WAVE: Suitability.PRIMARY,
+        Method.REFRACTION: Suitability.APPLICABLE,
         Method.MAGNETIC: Suitability.NOT_APPLICABLE,
         Method.FDEM: Suitability.SUPPORT,
+        Method.TEM: Suitability.SUPPORT,
         Method.DAS: Suitability.APPLICABLE,
     },
     Target.SITE_INVESTIGATION: {
         Method.GPR: Suitability.APPLICABLE,
         Method.DC: Suitability.APPLICABLE,
         Method.SURFACE_WAVE: Suitability.PRIMARY,
+        Method.REFRACTION: Suitability.PRIMARY,
         Method.MAGNETIC: Suitability.SUPPORT,
         Method.FDEM: Suitability.SUPPORT,
+        Method.TEM: Suitability.SUPPORT,
         Method.DAS: Suitability.SUPPORT,
     },
 }
@@ -271,6 +336,8 @@ INAPPLICABLE_REASON: dict[tuple[Method, Target], str] = {
     ): "DAS 只测量沿光纤的应变/振动，不能直接探测管线，且需钻孔或既有光缆",
     (Method.DAS, Target.KARST): "DAS 只测量沿光纤的应变/振动，不能直接探测溶洞",
     (Method.DAS, Target.UXO): "DAS 只测量沿光纤的应变/振动，不能直接探测 UXO",
+    (Method.REFRACTION, Target.UTILITY): "地震折射垂向分辨率低（米级），无法识别小口径管线",
+    (Method.REFRACTION, Target.UXO): "地震折射无法识别小型 UXO",
 }
 
 # 目标专用补充限制（追加到方法限制列表前面）。

@@ -1,4 +1,4 @@
-"""六种方法的元数据：物理依据、部署要求、成本量级、通用局限。
+"""八种方法的元数据：物理依据、部署要求、成本量级、通用局限。
 
 这里的成本指数是**教学用相对值**（以每 100 m 测线为基准，GPR=1.0），
 只用于方案之间的相对比较，不代表任何市场报价。
@@ -88,6 +88,32 @@ METHOD_META: dict[Method, MethodMeta] = {
             "探测深度与线圈距、频率强相关，需按目标深度选配置",
         ),
     ),
+    Method.REFRACTION: MethodMeta(
+        physics_basis="折射波沿速度界面传播，首波到达时间反映界面深度与层速度（临界折射/首波）",
+        deployment_requirement="需要直线排列与可控震源（锤击/落重），排列长度约为目标深度的 3–5 倍",
+        relative_cost="低",
+        cost_index_per_100m=2.5,
+        base_limitations=(
+            "低速层可造成速度反转/隐藏层问题，折射解释需谨慎",
+            "只对速度随深度增大的层状介质有效，横向分辨率低",
+            "城市交通与机械振动降低首波信噪比",
+            "目标尺寸远小于排列长度时响应弱，无法识别小尺度异常体",
+            "只能给出速度分层，不能直接识别岩性/承载力",
+        ),
+    ),
+    Method.TEM: MethodMeta(
+        physics_basis="发射电流关断后，地下导体感应的二次场随时间扩散衰减（烟圈扩散），晚时间对应深部",
+        deployment_requirement="铺设发射回线，接收线圈测量二次场衰减；需避开强电磁干扰",
+        relative_cost="中",
+        cost_index_per_100m=4.0,
+        base_limitations=(
+            "扩散场垂向分辨率低，层状解释多解",
+            "电力线、管线等强电磁干扰压制信号",
+            "浅部存在早期时间盲区，受发射关断影响",
+            "高导覆盖层会屏蔽深部响应",
+            "针对具体目标需数值模拟评估可探测性",
+        ),
+    ),
     Method.DAS: MethodMeta(
         physics_basis="光纤瑞利散射的相位变化测量应变率，沿光纤连续观测振动",
         deployment_requirement="需要钻孔内光缆或既有通信光缆；无光缆时无法开展",
@@ -133,6 +159,17 @@ INTERFERENCE_CONSTRAINTS: dict[Method, dict[Interference, str]] = {
         Interference.FENCE: "金属栅栏形成强响应，压制小目标异常",
         Interference.MACHINERY: "施工机械金属体产生强响应，干扰剖面解释",
     },
+    Method.REFRACTION: {
+        Interference.VIBRATION: "持续振动抬高背景噪声，首波拾取不稳定",
+        Interference.TRAFFIC: "交通振动与车辆通过造成瞬态强噪声",
+        Interference.MACHINERY: "施工机械振动与撞击破坏首波记录质量",
+    },
+    Method.TEM: {
+        Interference.POWERLINE: "电力线强电磁干扰严重压制二次场信号",
+        Interference.FENCE: "金属栅栏产生强响应，干扰剖面解释",
+        Interference.MACHINERY: "施工机械金属体产生强响应",
+        Interference.REBAR: "钢筋网产生浅层强响应，压制目标信号",
+    },
     Method.DAS: {},
 }
 
@@ -143,9 +180,11 @@ SEVERE_INTERFERENCE: dict[Method, frozenset[Interference]] = {
     Method.GPR: frozenset(),
     Method.DC: frozenset({Interference.REBAR, Interference.POWERLINE}),
     Method.SURFACE_WAVE: frozenset(),
+    Method.REFRACTION: frozenset(),
     Method.MAGNETIC: frozenset(
         {Interference.REBAR, Interference.FENCE, Interference.MACHINERY, Interference.POWERLINE}
     ),
     Method.FDEM: frozenset({Interference.FENCE, Interference.MACHINERY, Interference.POWERLINE}),
+    Method.TEM: frozenset({Interference.POWERLINE, Interference.FENCE, Interference.MACHINERY}),
     Method.DAS: frozenset(),
 }
