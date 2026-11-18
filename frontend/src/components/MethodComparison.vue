@@ -1,5 +1,5 @@
 <script setup lang="ts">
-/** 方法比选表：六种方法的判定、余量、分辨率、成本与方案角色。 */
+/** 方法比选表：八种方法的判定、余量、分辨率、成本与方案角色。 */
 import { computed } from 'vue'
 
 import type { MethodAssessment, PlanItem } from '../api/types'

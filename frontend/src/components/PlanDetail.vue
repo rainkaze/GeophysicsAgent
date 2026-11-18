@@ -19,7 +19,9 @@ const primaryAssessment = computed<MethodAssessment | null>(() => {
   return props.assessments.find((a) => a.method === item.method) ?? null
 })
 
-const supports = computed(() => props.plan.items.filter((item) => item.role === '辅助方法'))
+const supports = computed(() =>
+  props.plan.items.filter((item) => item.role === '辅助方法' || item.role === '验证方法'),
+)
 const excluded = computed(() => props.plan.items.filter((item) => item.role === '不建议采用'))
 
 /** 排除方法的原因前缀：深度不足 / 物性不匹配 / 其他 */

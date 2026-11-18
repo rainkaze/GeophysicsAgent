@@ -18,7 +18,9 @@ const result = ref<RecommendResponse | null>(null)
 const conversationId = ref<string | null>(null)
 const scenarios = ref<Scenario[]>([])
 
-const canSubmit = computed(() => input.value.trim().length >= 8 && !loading.value)
+// 只挡"空输入"和误触：信息不全交给后端走追问，不要用字数门槛把演示句挡在外面
+// （"我想做个物探" 只有 6 个字）
+const canSubmit = computed(() => input.value.trim().length >= 2 && !loading.value)
 
 const renderedNarrative = computed(() => {
   if (!result.value) return ''
@@ -94,7 +96,7 @@ function newConversation(): void {
       <div class="brand">GEOPHYSICS · AGENT</div>
       <h1>工程物探勘察方案推荐</h1>
       <p class="muted">
-        自然语言场景 → 六种方法确定性评估 → 模型决策 → 规则校验 → 结构化方案
+        自然语言场景 → 八种方法确定性评估 → 模型决策 → 规则校验 → 结构化方案
       </p>
     </header>
 
