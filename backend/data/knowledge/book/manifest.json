@@ -1,0 +1,147 @@
+{
+  "source": "D:\\QQDownload\\研一上\\工程地球物理概论\\geophysics_agent_demo2\\backend\\data\\book\\An Introduction to Geophysical Exploration.pdf",
+  "output": "D:\\QQDownload\\研一上\\工程地球物理概论\\geophysics_agent_demo2\\backend\\data\\knowledge\\book",
+  "chapters": [
+    {
+      "file": "01_principles.md",
+      "chapter": 1,
+      "title": "The principles and limitations of geophysical exploration methods",
+      "printed_pages": [
+        1,
+        7
+      ],
+      "page_markers": 7,
+      "chars": 18563
+    },
+    {
+      "file": "02_data_processing.md",
+      "chapter": 2,
+      "title": "Geophysical data processing",
+      "printed_pages": [
+        8,
+        20
+      ],
+      "page_markers": 13,
+      "chars": 32812
+    },
+    {
+      "file": "03_seismic_elements.md",
+      "chapter": 3,
+      "title": "Elements of seismic surveying",
+      "printed_pages": [
+        21,
+        42
+      ],
+      "page_markers": 22,
+      "chars": 61641
+    },
+    {
+      "file": "04_seismic_reflection.md",
+      "chapter": 4,
+      "title": "Seismic reflection surveying",
+      "printed_pages": [
+        43,
+        98
+      ],
+      "page_markers": 56,
+      "chars": 129893
+    },
+    {
+      "file": "05_seismic_refraction.md",
+      "chapter": 5,
+      "title": "Seismic refraction surveying",
+      "printed_pages": [
+        99,
+        124
+      ],
+      "page_markers": 26,
+      "chars": 63669
+    },
+    {
+      "file": "06_gravity.md",
+      "chapter": 6,
+      "title": "Gravity surveying",
+      "printed_pages": [
+        125,
+        154
+      ],
+      "page_markers": 30,
+      "chars": 75289
+    },
+    {
+      "file": "07_magnetic.md",
+      "chapter": 7,
+      "title": "Magnetic surveying",
+      "printed_pages": [
+        155,
+        182
+      ],
+      "page_markers": 28,
+      "chars": 63034
+    },
+    {
+      "file": "08_electrical.md",
+      "chapter": 8,
+      "title": "Electrical surveying",
+      "printed_pages": [
+        183,
+        207
+      ],
+      "page_markers": 25,
+      "chars": 64230
+    },
+    {
+      "file": "09_electromagnetic.md",
+      "chapter": 9,
+      "title": "Electromagnetic surveying",
+      "printed_pages": [
+        208,
+        230
+      ],
+      "page_markers": 23,
+      "chars": 58160
+    },
+    {
+      "file": "10_radiometric.md",
+      "chapter": 10,
+      "title": "Radiometric surveying",
+      "printed_pages": [
+        231,
+        235
+      ],
+      "page_markers": 5,
+      "chars": 12896
+    },
+    {
+      "file": "11_borehole_logging.md",
+      "chapter": 11,
+      "title": "Geophysical borehole logging",
+      "printed_pages": [
+        236,
+        249
+      ],
+      "page_markers": 14,
+      "chars": 31883
+    },
+    {
+      "file": "12_appendix.md",
+      "chapter": 12,
+      "title": "Appendix: SI, c.g.s. and Imperial units and conversion factors",
+      "printed_pages": [
+        250,
+        250
+      ],
+      "page_markers": 1,
+      "chars": 1509
+    }
+  ],
+  "total_chars": 613579,
+  "total_page_markers": 250,
+  "cleaning": {
+    "ligatures_fixed": 2845,
+    "running_head_hits": 976,
+    "math_fragments_dropped": 54,
+    "line_hyphens_joined": 2187,
+    "missing_spaces_fixed": 909
+  }
+}

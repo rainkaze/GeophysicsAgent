@@ -1,0 +1,798 @@
+# 4 Seismic reflection surveying
+
+> An Introduction to Geophysical Exploration（地球物理勘探导论，3rd ed., Kearey, Brooks & Hill, 2002）第 4 章，印刷页 43–98。
+> 页码标记 [p.N] 指书的印刷页码（PDF 页码 = 印刷页码 + 13）。
+
+[p.43]
+
+### 4.1 Introduction
+
+Seismic reflection surveying is the most widely used and well-known geophysical technique. The current state of sophistication of the technique is largely a result of the enormous investment in its development made by the hydrocarbon industry, coupled with the development of advanced electronic and computing technology. Seismic sections can now be produced to reveal details of geological structures on scales from the top tens of metres of drift to the whole lithosphere. Part of the spectacular success of the method lies in the fact that the raw data are processed to produce a seismic section which is an image of the subsurface structure.
+
+[p.43] This also provides a trap for the unwary, since the seismic section is similar to, but fundamentally different from, a depth section of the geology. Only by understanding how the reflection method is used and seismic sections are created, can the geologist make informed interpretations. This chapter provides the essential knowledge and understanding to support interpretation of seismic reflection data. It builds up systematically from the basics of seismic wave reflection from rock layers, and refers back to relevant material in Chapters 2 and 3.
+
+### 4.2 Geometry of reflected ray paths
+
+[p.43] In seismic reflection surveys seismic energy pulses are reflected from subsurface interfaces and recorded at near-normal incidence at the surface. The travel times are measured and can be converted into estimates of depths to the interfaces. Reflection surveys are most commonly carried out in areas of shallowly dipping sedimentary sequences. In such situations, velocity varies as a function of depth, due to the differing physical properties of the individual layers. Velocity may also vary horizontally, due to lateral lithological changes within the individual layers. As a first approximation, the horizontal variations of velocity may be ignored.
+
+[p.43] Figure 4.1 shows a simple physical model of horizontally-layered ground with vertical reflected ray paths from the various layer boundaries. This model assumes each layer to be characterized by an interval velocity vi, which may correspond to the uniform velocity within a homogeneous geological unit or the average velocity over a depth interval containing more than one unit. If zi is the thickness of such an interval and ti is the one-way travel time of a ray through it, the interval velocity is given by The interval velocity may be averaged over several depth intervals to yield a time-average velocity or, simply, average velocity .Thus the average velocity of the top nlayers in
+
+[p.43] Fig. 4.1 is given by or, if Zn is the total thickness of the top n layers and Tn is the total one-way travel time through the nlayers,
+
+### 4.2.1 Single horizontal reflector
+
+[p.43] The basic geometry of the reflected ray path is shown in
+
+[p.43] Fig. 4.2(a) for the simple case of a single horizontal re- V Z T n n = V zvi i n i i n ii i n i i = = = Â Â Â Â t t t V v z i i i = t
+
+[p.44]
+
+flector lying at a depth z beneath a homogeneous top layer of velocity V. The equation for the travel time tof the reflected ray from a shot point to a detector at a horizontal offset, or shot–detector separation, x is given by the ratio of the travel path length to the velocity (4.1) In a reflection survey, reflection time tis measured at an offset distance x. These values can be applied to equation (4.1), but still leave two unknown values which are related to the subsurface structure, z and V. If many reflection times tare measured at different offsets x, there will be enough information to solve equation (4.1) for both these unknown values.
+
+[p.44] The graph of travel time of reflected rays plotted against offset distance (the time– distance curve) is a hyperbola whose axis of symmetry is the time axis (Fig. 4.2(b)). Substituting x = 0 in equation (4.1), the travel time t0 of a vertically reflected ray is obtained: (4.2)t z V0 2= tx z V=+( )2212 4 This is the intercept on the time axis of the time–distance curve (see Fig. 4.2(b)). Equation (4.1) can be written (4.3) Thus (4.4) This form of the travel-time equation (4.4) suggests the simplest way of determining the velocity V. If t2 is plotted against x2, the graph will produce a straight line of slope 1/V2.The intercept on the time axis will also give the vertical two-way time, t0, from which the depth to the reflector can be found.
+
+[p.44] In practice, however, this method is unsatisfactory since the range of values of xis restricted, and the slope of the best-fit straight line has large uncertainty. A much better method of determining ttx V 2=+ t z V x V 4=+ v1 v2 v3 vn–1 vn
+
+[p.44] Fig. 4.1 Vertical reflected ray paths in a horizontally-layered ground. (a) (b) xx Vz t x tx ΔT –x O +x t0
+
+[p.44] Fig. 4.2 (a) Section through a single horizontal layer showing the geometry of reflected ray paths and (b) time–distance curve for reflected rays from a horizontal reflector. DT = normal moveout (NMO).
+
+[p.45]
+
+velocity is by considering the increase of reflected travel time with offset distance, the moveout, as discussed below. Equation (4.3) can also be rearranged (4.5) This form of the equation is useful since it indicates clearly that the travel time at any offset x will be the vertical travel time plus an additional amount which increases as x increases, V and t0 being constants. This relationship can be reduced to an even simpler form with a little more rearrangement. Using the standard binomial expansion of equation (4.5) gives Remembering that t0 = 2z/V, the term x/Vt0 can be written as x/2z. If x = z, the second term in this series becomes 1/8 of (1/2)4, i.e. 0.0078, which is less than a 1% change in the value of t.
+
+[p.45] For small offset/depth ratios (i.e. x/z << 1), the normal case in reflection surveying, this equation may be truncated after the first term to obtain the approximation (4.6) This is the most convenient form of the time–distance equation for reflected rays and it is used extensively in the processing and interpretation of reflection data. Moveout is defined as the difference between the travel times t1 and t2 of reflected-ray arrivals recorded at two offset distances x1 and x2. Substituting t1, x1 and t2, x2 in equation (4.6), and subtracting the resulting equations gives Normal moveout (NMO) at an offset distance x is the difference in travel time DT between reflected arrivals at x and at zero offset (see Fig.
+
+[p.45] 4.2) (4.7) DTt t x Vtx=-ª0 2 2 02 tt xx Vt21 -ª - Note that NMO is a function of offset, velocity and reflector depth z (since z = Vt0/2).The concept of moveout is fundamental to the recognition, correlation and enhancement of reflection events, and to the calculation of velocities using reflection data. It is used explicitly or implicitly at many stages in the processing and interpretation of reflection data. As an important example of its use, consider the T–DT method of velocity analysis. Rearranging the terms of equation (4.7) yields (4.8) Using this relationship, the velocity V above the reflector can be computed from knowledge of the zero-offset reflection time (t0) and the NMO (DT ) at a particular offset x.
+
+[p.45] In practice, such velocity values are obtained by computer analysis which produces a statistical estimate based upon many such calculations using large numbers of reflected ray paths (see Section 4.7). Once the velocity has been derived, it can be used in conjunction with t0 to compute the depth z to the reflector using z = Vt0/2.
+
+### 4.2.2 Sequence of horizontal reflectors
+
+[p.45] In a multilayered ground, inclined rays reflected from the nth interface undergo refraction at all higher interfaces to produce a complex travel path (Fig. 4.3(a)). At offset distances that are small compared to reflector depths, the travel-time curve is still essentially hyperbolic but the homogeneous top layer velocity Vin equations (4.1) and (4.7) is replaced by the average velocity or, to a closer approximation (Dix 1955), the root-meansquare velocity Vrms of the layers overlying the reflector. As the offset increases, the departure of the actual traveltime curve from a hyperbola becomes more marked (Fig. 4.3(b)).
+
+[p.45] The root-mean-square velocity of the section of ground down to the nth interface is given by where vi is the interval velocity of the ith layer and ti is the one-way travel time of the reflected ray through the ith layer. Vvnii i n i i n tt V V x tT ª ( )2 0 12D
+
+[p.46]
+
+Thus at small offsets x(x << z), the total travel time tn of the ray reflected from the nth interface at depth z is given to a close approximation by cf. equation (4.1) and the NMO for the nth reflector is given by cf. equation (4.7) The individual NMO value associated with each reflection event may therefore be used to derive a root-meansquare velocity value for the layers above the reflector. Values of Vrms down to different reflectors can then be used to compute interval velocities using the Dix formula. To compute the interval velocity vn for the nth interval where V2 rms, n-1, tn-1 and Vrms, n, tn are, respectively, the root-mean-square velocity and reflected ray travel times to the (n - 1)th and nth reflectors (Dix 1955).
+
+[p.46] v VtV t ttn nn n n nn = - - È ÎÍ ˘ - - rms, rms, 1 1 DT x Vtn n ª 2 2 02 rms, txz Vn =+( )2212 4 rms
+
+### 4.2.3 Dipping reflector
+
+[p.46] In the case of a dipping reflector (Fig. 4.4(a)) the value of dip q enters the time–distance equation as an additional unknown. The equation is derived similarly to that for horizontal layers by considering the ray path length divided by the velocity: cf. equation (4.1) The equation still has the form of a hyperbola, as for the horizontal reflector, but the axis of symmetry of the hyperbola is now no longer the time axis (Fig. 4.4(b)). Proceeding as in the case of a horizontal reflector, using a truncated binomial expansion, the following expression is obtained: (4.9) Consider two receivers at equal offsets x updip and downdip from a central shot point (Fig. 4.4).
+
+[p.46] Because of the dip of the reflector, the reflected ray paths are of different length and the two rays will therefore have different travel times. Dip moveout DTd is defined as the tt xxz Vtª+ +( ) 0 2 2 0 4 2 sinq t xzxz V= ++( )22 12 4 4 sinq Actual curve Hyperbolic curve t2 = t0 2 + x2 V2 rms t x v1 v2 v3 vn–1 vn Vrms, nz (a) (b)
+
+[p.46] Fig. 4.3 (a) The complex travel path of a reflected ray through a multilayered ground, showing refraction at layer boundaries. (b) The time–distance curve for reflected rays following such a travel path. Note that the divergence from the hyperbolic travel-time curve for a homogeneous overburden of velocity Vrms increases with offset.
+
+[p.47]
+
+difference in travel times tx and t-x of rays reflected from the dipping interface to receivers at equal and opposite offsets x and -x Using the individual travel times defined by equation (4.9) Rearranging terms, and for small angles of dip (when sinq ª q ) Hence the dip moveoutDTd may be used to compute the reflector dip q if V is known. V can be derived via equation (4.8) using the NMO DT which, for small dips, may be obtained with sufficient accuracy by averaging the updip and downdip moveouts: DTtt txxª+-( )- 220 q ªVT xD d 2 DTx Vd = 2 sinq DTttxxd =--
+
+### 4.2.4 Ray paths of multiple reflections
+
+[p.47] In addition to rays that return to the surface after reflection at a single interface, known as primary reflections, there are many paths in a layered subsurface by which rays may return to the surface after reflection at more than one interface. Such rays are called reverberations, multiple reflections or simplymultiples. A variety of possible ray paths involving multiple reflection is shown in Fig. 4.5(a). Generally, multiple reflections tend to have lower amplitudes than primary reflections because of the loss of energy at each reflection. However, there are two types of multiple that are reflected at interfaces of high reflection coefficient and therefore tend to have amplitudes comparable with primary reflections: 1.
+
+[p.47] Ghost reflections, where rays from a buried explosion on land are reflected back from the ground surface or the base of the weathered layer (see Section 4.6) to produce a reflection event, known as a ghost reflection, that arrives a short time after the primary. 2. Water layer reverberations, where rays from a marine source are repeatedly reflected at the sea bed and sea surface. Multiple reflections that involve only a short additional path length arrive so soon after the primary event that they merely extend the overall length of the (a) (b) θ xx Vz t ΔTd tx t–x –x +x x
+
+[p.47] Fig. 4.4 (a) Geometry of reflected ray paths and (b) time–distance curve for reflected rays from a dipping reflector. DTd = dip moveout.
+
+[p.48]
+
+recorded pulse. Such multiples are known as short-path multiples (or short-period reverberations) and these may be contrasted with long-path multiples whose additional path length is sufficiently long that the multiple reflection is a distinct and separate event in the seismic record (Fig. 4.5(b)). The correct recognition of multiples is essential. Misidentification of a long-path multiple as a primary event, for example, would lead to serious interpretation error. The arrival times of multiple reflections are predictable, however, from the corresponding primary reflection times. Multiples can therefore be suppressed by suitable data processing techniques to be described later (Section 4.8).
+
+### 4.3 The reflection seismogram
+
+[p.48] The graphical plot of the output of a single detector in a reflection spread is a visual representation of the local pattern of vertical ground motion (on land) or pressure variation (at sea) over a short interval of time following the triggering of a nearby seismic source. This seismic trace represents the combined response of the layered ground and the recording system to a seismic pulse. Any display of a collection of one or more seismic traces is termed a seismogram. A collection of such traces representing the responses of a series of detectors to the energy from one shot is termed a shot gather. A collection of the traces relating to the seismic response at one surface mid-point is termed a common mid-point gather (CMP gather).
+
+[p.48] The collection of the seismic traces for each CMP and their transformation to a component of the image presented as a seismic section is the main task of seismic reflection processing.
+
+### 4.3.1 The seismic trace
+
+[p.48] At each layer boundary a proportion of the incident energy in the pulse is reflected back towards the detector. The proportion is determined by the contrast in acoustic impedances of the two layers, and for a vertically travelling ray, the reflection coefficient can be simply calculated (see Section 3.6). Figure 4.6 shows the relationship of the geological layering, the variation in acoustic impedance and the reflection coefficients as a function of depth. The detector receives a series of reflected pulses, scaled in amplitude according to the distance travelled and the reflection coefficients of the various layer boundaries.
+
+[p.48] The pulses arrive at times determined by the depths to the boundaries and the velocities of propagation between them. Assuming that the pulse shape remains unchanged as it propagates through such a layered ground, the resultant seismic trace may be regarded as the convolution of the input pulse with a time series known as a reflectivity function composed of a series of spikes. Each spike has an amplitude related to the reflection coefficient of a boundary and a travel time equivalent to the two-way reflection time for that boundary. This time series represents the impulse responseof the layered ground (i.e. the output for a spike input). The convolution model is illustrated schematically in Fig. 4.6.
+
+[p.48] Since the pulse has a finite length, individual reflections from closely-spaced boundaries are seen to overlap in time on the resultant seismogram. Primary Double-path multiple Near-surface multiples Peg-leg multiple (a) (b) Short-path multiples extend pulse length Long-path multiples generate discrete pulse
+
+[p.48] Fig. 4.5 (a) Various types of multiple reflection in a layered ground. (b) The difference between short-path and long-path multiples.
+
+[p.49]
+
+In practice, as the pulse propagates it lengthens due to the progressive loss of its higher frequency components by absorption. The basic reflection seismic trace may then be regarded as the convolution of the reflectivity function with a time-varying seismic pulse. The trace will be further complicated by the superposition of various types of noise such as multiple reflections, direct and refracted body waves, surface waves (ground roll), air waves and coherent and incoherent noise unconnected with the seismic source. In consequence of these several effects, seismic traces generally have a complex appearance and reflection events are often not recognizable without the application of suitable processing techniques.
+
+[p.49] In seismic reflection surveying, the seismic traces are recorded, and the purpose of seismic processing can be viewed as an attempt to reconstruct the various columns of Fig. 4.6, moving from right to left. This will involve: • removing noise • determining the input pulse and removing that to give the reflectivity function • determining the velocity function to allow conversion from time to depth axis • determination of the acoustic impedances (or related properties) of the formations.
+
+### 4.3.2 The shot gather
+
+[p.49] The initial display of seismic profile data is normally in groups of seismic traces recorded from a common shot, known as common shot point gathersor, simply, shot gathers. The seismic detectors (e.g. geophones) may be distributed on either side of the shot, or only on one side as illustrated in Fig. 4.7. The display of shot gathers at the time of field recording provides a means of checking that a satisfactory recording has been achieved from any v v vvv v vv Geological section Acoustic impedance log Reflection coefficient log Reflectivity function Input pulse Seismic trace Depth Time * =
+
+[p.49] Fig. 4.6 The convolutional model of the reflection seismic trace, showing the trace as the convolved output of a reflectivity function with an input pulse, and the relationship of the reflectivity function to the physical properties of the geological layers. (a) (b) Detectors DetectorsCentral shot End shot Detectors
+
+[p.49] Fig. 4.7 Shot–detector configurations used in multichannel seismic reflection profiling. (a) Split spread, or straddle spread. (b) Singleended or on-end spread.
+
+[p.50]
+
+particular shot. In shot gathers, the seismic traces are plotted side by side in their correct relative positions and the records are commonly displayed with their time axes arranged vertically in a draped fashion. In these seismic records, recognition of reflection events and their correlation from trace to trace is much assisted if one half of the normal 'wiggly-trace' waveform is blocked out. Figure 4.8 shows a draped section with this mode of display, derived from a split-spread multichannel survey. A short time after the shot instant the first arrival of seismic energy reaches the innermost geophones (the central traces) and this energy passes out symmetrically through the two arms of the split spread.
+
+[p.50] The first arrivals are followed by a series of reflection events revealed by their hyperbolic moveout.
+
+### 4.3.3 The CMP gather
+
+[p.50] Each seismic trace has three primary geometrical factors which determine its nature. Two of these are the shot position and the receiver position. The third, and perhaps most critical, is the position of the subsurface reflection point. Before seismic processing this position is unknown, but a good approximation can be made by assuming this reflection point lies vertically under the position on the surface mid-way between the shot and receiver for that trace. This point is termed the mid-point. Older terminology is to call this point the depth point, but the former term is a description of what the position is, rather than what it is wished to represent, and is hence preferred.
+
+[p.50] Collecting all the traces with a common midpoint forms a common mid-point (CMP) gather (Fig. 4.9). The seismic industry and the literature use the older term common depth point (CDP) interchangeably for CMP. The CMP gather lies at the heart of seismic processing for two main reasons: 1. The simple equations derived in Section 4.2 assume horizontal uniform layers. They can be applied with less error to a set of traces that have passed through the same geological structure. The simplest approximation to such a set of traces is the CMP gather. In the case of horizontal layers, reflection events on each CMP gather are reflected from a common depth point (CDP – see
+
+[p.50] Fig. 4.9(a)). For these traces, the variation of travel time with offset, the moveout, will depend only on the velocity of the subsurface layers, and hence the subsurface velocity can be derived. 2. The reflected seismic energy is usually very weak. It is imperative to increase the signal-to-noise ratio of most data. Once the velocity is known, the traces in a CMP can be corrected for NMO to correct each trace to the equivalent of a zero-offset trace. These will all have the same reflected pulses at the same times, but different
+
+[p.50] Fig. 4.8 A draped seismic record of a shot gather from a split spread (courtesy Prakla-Seismos GmbH). Sets of reflected arrivals from individual interfaces are recognizable by the characteristic hyperbolic alignment of seismic pulses. The late-arriving, highamplitude, low-frequency events, defining a triangular-shaped central zone within which reflected arrivals are masked, represent surface waves (ground roll).These latter waves are a typical type of coherent noise.
+
+[p.51]
+
+random and coherent noise. Combining all the traces in a CMP together will average out the noise, and increase the signal-to-noise ratio (SNR).This process is termed stacking. Strictly, the common mid-point principle breaks down in the presence of dip because the common depth point then no longer directly underlies the shot– detector mid-point and the reflection point differs for rays travelling to different offsets (see Fig. 4.9(b)). Nevertheless, the method is sufficiently robust that CMP stacks almost invariably result in marked improvements in SNR compared to single traces.
+
+[p.51] In two-dimensional CMP surveying, known as CMP profiling, the reflection points are all assumed to lie within the vertical section containing the survey line; in three-dimensional surveying, the reflection points are distributed across an area of any subsurface reflector, and the CMP is defined as a limited area on the surface.
+
+### 4.4 Multichannel reflection survey design
+
+[p.51] The basic requirement of a multichannel reflection survey is to obtain recordings of reflected pulses at several offset distances from a shot point. As discussed in Chapter 3, this requirement is complicated in practice by the fact that the reflected pulses are never the first arrivals of seismic energy, and they are generally of very low amplitude. Owing to this and other problems to be discussed later, each individual reflection survey is designed specifically to optimize the data for the required purpose. It is essential that the geologists and interpreting geophysicists commissioning a survey understand this, and communicate their requirements to the geophysical contractor performing the survey.
+
+[p.51] In two-dimensional surveys (reflection profiling), data are collected along survey lines that nominally contain all shot points and receivers. For the purpose of data processing, reflected ray paths are assumed to lie in the vertical plane containing the survey line. Thus, in the presence of cross-dip the resultant seismic sections do not provide a true representation of the subsurface structure, since actual reflection points then lie outside the vertical plane. Two-dimensional survey methods are adequate for the mapping of structures (such as cylindrical folds, or faults) which maintain uniform geometry along strike.
+
+[p.51] They may also be used to investigate threedimensional structures by mapping lateral changes S4 S3 S2 S1 S4 S3 S2 S1 D4D3D2D1 D4D3D2D1 Shot–detector midpoint(a) (b) CMP CDP CMP
+
+[p.51] Fig. 4.9 Common mid-point (CMP) reflection profiling. (a) A set of rays from different shots to detectors reflected off a common depth point (CDP) on a horizontal reflector. (b) The common depth point is not achieved in the case of a dipping reflector.
+
+[p.52]
+
+across a series of closely-spaced survey lines or around a grid of lines. However, as discussed later in Section 4.10, three-dimensional surveys provide a much better means of mapping three-dimensional structures and, in areas of structural complexity, they may provide the only means of obtaining reliable structural interpretations. Reflection profiling is normally carried out along profile lines with the shot point and its associated spread of detectors being moved progressively along the line to build up lateral coverage of the underlying geological section. This progression is carried out in a stepwise fashion on land but continuously, by a ship under way, at sea.
+
+[p.52] The two most common shot–detector configurations in multichannel reflection profiling surveys are the split spread (or straddle spread) and the single-ended spread (Fig. 4.7), where the number of detectors in a spread may be several hundred. In split spreads, the detectors are distributed on either side of a central shot point; in singleended spreads, the shot point is located at one end of the detector spread. Surveys on land are commonly carried out with a split-spread geometry, but in marine reflection surveys single-ended spreads are the normal configuration due to the constraint of having to tow equipment behind a ship.
+
+[p.52] The marine source is towed close behind the ship, with the hydrophone streamer (which may be several kilometers long) trailing behind.
+
+### 4.4.1 Vertical and horizontal resolution
+
+[p.52] Reflection surveys are normally designed to provide a specified depth of penetration and a particular degree of resolution of the subsurface geology in both the vertical and horizontal dimensions. The vertical resolution is a measure of the ability to recognize individual, closelyspaced reflectors and is determined by the pulse length on the recorded seismic section.
+
+[p.52] For a reflected pulse represented by a simple wavelet, the maximum resolution possible is between one-quarter and one-eighth of the dominant wavelength of the pulse (Sheriff & Geldart 1983).Thus, for a reflection survey involving a signal with a dominant frequency of 50Hz propagating in sedimentary strata with a velocity of 2.0kms -1, the dominant wavelength would be 40m and the vertical resolution may therefore be no better than about 10m. This figure is worth noting since it serves as a reminder that the smallest geological structures imaged on seismic sections tend to be an order of magnitude larger than the structures usually seen by geologists at rock exposures.
+
+[p.52] Since deeper-travelling seismic waves tend to have a lower dominant frequency due to the progressive loss of higher frequencies by absorption (Section 3.5) and higher velocity due to the effects of sediment compaction, vertical resolution decreases as a function of depth. It should be noted that the vertical resolution of a seismic survey may be improved at the data processing stage by a shortening of the recorded pulse length using inverse filtering (deconvolution) (Section 4.8). There are two main controls on the horizontal resolution of a reflection survey, one being intrinsic to the physical process of reflection and the other being determined by the detector spacing.
+
+[p.52] To deal with the latter point first, the horizontal resolution is clearly determined by the spacing of the individual depth estimates from which the reflector geometry is reconstructed. From Fig. 4.10 it can be seen that, for a flat-lying reflector, the horizontal sampling is equal to half the detector spacing. Note, also, that the length of reflector sampled by any detector spread is half the spread length. The spacing of detectors must be kept small to ensure that reflections from the same interface can be correlated reliably from trace to trace in areas of complex geology. Notwithstanding the above, there is an absolute limit to the achievable horizontal resolution in consequence of the actual process of reflection.
+
+[p.52] The path by which energy from a source is reflected back to a detector may be expressed geometrically by a simple ray path. However, such a ray path is only a geometrical abstraction. The actual reflection process is best described by considering any reflecting interface to be composed of an infinite number of point scatterers, each of which contributes energy to the reflected signal (Fig. 4.11).The actual reflected pulse then results from interference of an infinite number of backscattered rays. Energy that is returned to a detector within half a wavelength of the initial reflected arrival interferes conx 0.5x
+
+[p.52] Fig. 4.10 The horizontal sampling of a seismic reflection survey is half the detector spacing.
+
+[p.53]
+
+structively to build up the reflected signal, and the part of the interface from which this energy is returned is known as the first Fresnel zone(Fig. 4.11) or, simply, the Fresnel zone. Around the first Fresnel zone are a series of annular zones from which the overall reflected energy tends to interfere destructively and cancel out. The width of the Fresnel zone represents an absolute limit on the horizontal resolution of a reflection survey since reflectors separated by a distance smaller than this cannot be individually distinguished. The width w of the Fresnel zone is related to the dominant wavelength l of the source and the reflector depth z by The size of the first Fresnel zone increases as a function of reflector depth.
+
+[p.53] Also, as noted in Section 3.5, deepertravelling reflected energy tends to have a lower dominant frequency due to the effects of absorption. The lower dominant frequency is coupled with an increase in interval velocity, and both lead to an increase in the wavelength. For both these reasons the horizontal resolution, like the vertical resolution, reduces with increasing reflector depth. As a practical rule of thumb, the Fresnel zone width for the target horizons should be estimated, then the wz z= ( ) >>( )2 12llfor geophone spacing fixed at no more than one-quarter of that width. In this case the horizontal resolution will be limited only by the physics of the seismic wave, not by the survey design.
+
+### 4.4.2 Design of detector arrays
+
+[p.53] Each detector in a conventional reflection spread consists of an array (or group) of several geophones or hydrophones arranged in a specific pattern and connected together in series or parallel to produce a single channel of output. The effective offset of an array is taken to be the distance from the shot to the centre of the array. Arrays of geophones provide a directional response and are used to enhance the near-vertically travelling reflected pulses and to suppress several types of horizontally travelling coherent noise. Coherent noise is that which can be correlated from trace to trace as opposed to random noise (Fig.
+
+[p.53] 4.12).To exemplify this, consider a Rayleigh surface wave (a vertically polarized wave travelling along the surface) and a vertically travelling compressional wave reflected from a deep interface to pass simultaneously through two geophones connected in series and spaced at half the wavelength of the Rayleigh wave. At any given instant, ground motions associated with the Rayleigh wave will be in opposite directions at the two geophones and the individual outputs of the geophones at any instant will therefore be equal and opposite and be cancelled by summing.
+
+[p.53] However, ground motions associated with the reflected compressional wave will be in phase at the two geophones and the summed outputs of the geophones will therefore be twice their individual outputs. The directional response of any linear array is governed by the relationship between the apparent wavelength la of a wave in the direction of the array, the number of elements n in the array and their spacing Dx. The response is given by a response function R where R is a periodic function that is fully defined in the interval 0 £ Dx/la £ 1 and is symmetrical about Dx/la = 0.5. Typical array response curves are shown in Fig. 4.13. bp l= Dx a R n= sin sin b b Source Reflector Fresnel zone λ
+
+[p.53] Fig. 4.11 Energy is returned to source from all points of a reflector. The part of the reflector from which energy is returned within half a wavelength of the initial reflected arrival is known as the Fresnel zone.
+
+[p.54]
+
+Fig. 4.12 Noise test to determine the appropriate detector array for a seismic reflection survey. (a) Draped seismic record obtained with a noise spread composed of clustered (or 'bunched') geophones. (b) Seismic record obtained over the same ground with a spread composed of 140mlong geophone arrays. (From Waters 1978.)
+
+[p.55]
+
+Fig. 4.12 Continued
+
+[p.56]
+
+Arrays comprising areal rather than linear patterns of geophones may be used to suppress horizontal noise travelling along different azimuths. The initial stage of a reflection survey involves field trials in the survey area to determine the most suitable combination of source, offset recording range, array geometry and detector spacing (the horizontal distance between the centres of adjacent geophone arrays, often referred to as the group interval) to produce good seismic data in the prevailing conditions. Source trials involve tests of the effect of varying, for example, the shot depth and charge size of an explosive source, or the number, chamber sizes and trigger delay times of individual guns in an air gun array.
+
+[p.56] The detector array geometry needs to be designed to suppress the prevalent coherent noise events (mostly sourcegenerated). On land, the local noise is investigated by means of a noise testin which shots are fired into a spread of closely-spaced detectors (noise spread) consisting of individual geophones, or arrays of geophones clustered together to eliminate their directional response. A series of shots is fired with the noise spread being moved progressively out to large offset distances. For this reason such a test is sometimes called a walk-away spread.
+
+[p.56] The purpose of the noise test is to determine the characteristics of the coherent noise, in particular, the velocity across the spread and dominant frequency of the air waves (shot noise travelling through the air), surface waves (ground roll), direct and shallow refracted arrivals, that together tend to conceal the low-amplitude reflections. A typical noise section derived from such a test is shown in Fig. 4.12(a).This clearly reveals a number of coherent noise events that need to be suppressed to enhance the SNR of reflected arrivals. Such noise sections provide the necessary information for the optimal design of detector phone arrays.
+
+[p.56] Figure 4.12(b) shows a time section obtained with suitable array geometry designed to suppress the local noise events and reveals the presence of reflection events that were totally concealed in the noise section. It is apparent from the above account that the use of suitably designed arrays can markedly improve the SNR of reflection events on field seismic recordings. Further improvements in SNR and survey resolution are achievable by various types of data processing discussed later in the chapter. Unfortunately, the noise characteristics tend to vary along any seismic line, due to near-surface geological variations and cultural effects.
+
+[p.56] With the technical ability of modern instrumentation to record many hundreds of separate channels of data, there is an increasing tendency to use smaller arrays in the field, record more separate channels of data, then have the ability to experiment with different array types by combining recorded traces during processing. This allows more sophisticated noise cancellation, at the cost of some increase in processing time.
+
+### 4.4.3 Common mid-point (CMP) surveying
+
+[p.56] If the shot–detector spread in a multichannel reflection survey is moved forward in such a way that no two reflected ray paths sample the same point on a subsurface Array response function R 1.0 n = 2 0 0.5 1.0 Detector spacing Δx Wavelength λ
+
+[p.56] Fig. 4.13 Response functions for different detector arrays. (After Al-Sadi 1980.)
+
+[p.57]
+
+reflector, the survey coverage is said to be single-fold. Each seismic trace then represents a unique sampling of some point on the reflector. In common mid-point (CMP) profiling, which has become the standard method of two-dimensional multichannel seismic surveying, it is arranged that a set of traces recorded at different offsets contains reflections from a common depth point (CDP) on the reflector (Fig. 4.14). The fold of the stacking refers to the number of traces in the CMP gather and may conventionally be 24, 30, 60 or, exceptionally, over 1000.The fold is alternatively expressed as a percentage: single-fold = 100% coverage, six-fold = 600% coverage and so on.
+
+[p.57] The fold of a CMP profile is determined by the quantity N/2n, where N is the number of geophone arrays along a spread and n is the number of geophone array spacings by which the spread is moved forward between shots (the move-up rate). Thus with a 96-channel spread ( N = 96) and a move-up rate of 8 array spacings per shot interval (n = 8), the coverage would be 96/16 = 6-fold. A field procedure for the routine collection of six-fold CMP coverage using a single-ended 12-channel spread configuration progressively moved forward along a profile line is shown in Fig. 4.14. The theoretical improvement in SNR brought about by stacking ntraces containing a mixture of coherent inphase signals and random (incoherent) noise is .
+
+[p.57] Stacking also attenuates long-path multiples. They have travelled in nearer-surface, lower velocity layers and have a significantly different moveout from the primary reflections. When the traces are stacked with the correct velocity function, the multiples are not in phase and do not sum. The stacked trace is the equivalent of a trace recorded with a vertical ray path, and is often referred to as a zero-offsettrace.
+
+### 4.4.4 Display of seismic reflection data
+
+[p.57] Profiling data from two-dimensional surveys are conventionally displayed as seismic sections in which the individual stacked zero-offsettraces are plotted side by side, in close proximity, with their time axes arranged vertically. Reflection events may then be traced across the section by correlating pulses from trace to trace and in this way the distribution of subsurface reflectors beneath the survey line may be mapped. However, whilst it is tempting to envisage seismic sections as straightforward images of geological cross-sections it must not be forgotten that the vertical dimension of the sections is time, not depth. n
+
+### 4.5 Time corrections applied to seismic traces
+
+[p.57] Two main types of correction need to be applied to reflection times on individual seismic traces in order that the resultant seismic sections give a true representation of geological structure. These are the static and dynamic corrections, so-called because the former is a fixed time correction applied to an entire trace whereas the latter varies as a function of reflection time.
+
+### 4.6 Static correction
+
+[p.57] All previous consideration in this chapter on reflected seismic traces has assumed that the source and detector Path 1 Path 2 Path 3 Path 4 Path 5 Path 6 D2 S1 D4 S2 D6 S3 D8 S4 D10 S5 D12 S6 Common depth (reflection) point
+
+[p.57] Fig. 4.14 A field procedure for obtaining six-fold CDP coverage with a single-ended 12-channel detector spread moved progressively along the survey line.
+
+[p.58]
+
+are placed on the planar horizontal surface of a uniform velocity layer. This is clearly not true for field data where the surface elevations vary, and the near-surface geology is usually highly variable, primarily due to variable weathering of bedrock, drift deposits and variable depth of the water table. Reflection times on seismic traces have to be corrected for time differences introduced by these nearsurface irregularities, which have the effect of shifting reflection events on adjacent traces out of their true time relationships. If the static corrections are not performed accurately, the traces in a CMP gather will not stack correctly.
+
+[p.58] Furthermore, the near-surface static effects may be interpreted as spurious structures on deeper reflectors. Accurate determination of static corrections is one of the most important problems which must be overcome in seismic processing (Cox 2001). In order to have enough information to arrive at a satisfactory correction, the data collection must be carefully designed to include information on the weathered layer. Two reflected pulses on traces within a CMP gather will only add together provided that the time offset between them is less than one-quarter of a period of the pulse.
+
+[p.58] For typical deep seismic data with a dominant frequency of 50Hz, this implies that static errors will be less than 5ms.A 2m thick layer of sand, soil or peat under one geophone station is sufficient to produce a local delay in a vertically travelling ray of about 5ms. Separate components of these static corrections are caused by the near-surface structure under each shot and each geophone for each trace. The corrections for each survey station occupied by either a shot and/or geophone comprise two components: 1. Elevation static corrections, which correct for the surface heights of the shot and geophone above a standard height datum (usually taken at sea-level). 2.
+
+[p.58] Weathering static corrections, which correct for the heterogeneous surface layer, a few metres to several tens of metres thick, of abnormally low seismic velocity. The weathered layer is mainly caused by the presence within the surface zone of open joints and micro-fractures and by the unsaturated state of the zone. Although it may be only a few metres thick, its abnormally low velocity causes large time delays to rays passing through it. Thus variations in thickness of the weathered layer may, if not corrected for, lead to false structural relief on underlying reflectors shown on resulting seismic sections.
+
+[p.58] In marine surveys there is no elevation difference between individual shots and detectors but the water layer represents a surface layer of anomalously low velocity in some ways analogous to the weathered layer on land. Static corrections are calculated on the assumption that the reflected ray path is effectively vertical immediately beneath any shot or detector. The travel time of the ray is then corrected for the time taken to travel the vertical distance between the shot or detector elevation and the survey datum (Fig. 4.15). Survey datum may lie above the local base of the weathered layer, or even above the local land surface.
+
+[p.58] In adjusting travel times to datum, the height interval between the base of the weathered layer and datum is effectively replaced by material with the velocity of the main top layer, the subweathering velocity. The elevation staticcorrection is normally applied first. The global positioning system (GPS)satellite location system is now almost universally used for determination of the precise heights of all survey stations. Using differential GPS systems (DGPS), positions and heights can be determined in real time to an accuracy of better than 1m, which is quite adequate for most surveys. Providing the subweathering velocity is also known, the corrections to datum can be computed very easily.
+
+[p.58] Calculation of the weathering staticcorrection requires knowledge of the variable velocity and thickness of the weathered layer. The first arrivals of energy at detectors in a reflection spread are normally rays that have been refracted along the top of the subweathering layer. These arrivals can be used in a seismic refraction interpretation to determine the thickness and velocity of the various units within the weathered layer using methods discussed in Chapter 5.This procedure is termed a refraction statics analysis and is a routine part of seismic reflection processing.
+
+[p.58] If the normal reflection spread does not contain recordings at sufficiently small offsets to detect these shallow refracted rays and the direct rays defining the weathered layer velocity vw, special short refraction surveys may be carried out for this purpose. It is quite common for a seismic reflection recording crew to include a separate 'weathering' team, who conduct small-scale refraction surveys along the survey lines specifically to determine the structure of the weathered layer.
+
+[p.58] Direct measurements of the weathered layer velocity may also be obtained by uphole surveys in which small shots are fired at various depths down boreholes penetrating through the weathered layer and the velocities of rays travelling from the shots to a surface detector are calculated. Conversely, a surface shot may be recorded by downhole detectors. In reflection surveys using buried shots, a geophone is routinely located at the surface close
+
+[p.59]
+
+to the shot hole to measure the vertical time(VT ) or uphole time, from which the velocity of the surface layer above the shot may be calculated. The complex variations in velocity and thickness within the weathered layer can never be precisely defined. The best estimate of the static correction derived from the field data is usually referred to as the field static. It always contains errors, or residuals, which have the effect of diminishing the SNR of CMP stacks and reducing the coherence of reflection events on time sections. These residuals can be investigated using sophisticated statistical analysis in a residual static analysis .
+
+[p.59] This purely empirical approach assumes that the weathered layer and surface relief are the only cause of irregularities in the travel times of rays reflected from a shallow interface. It then operates by searching through all the data traces for systematic residual effects associated with individual shot and detector locations and applying these as corrections to the individual traces before the CMP stack. Figure 4.16 shows the marked improvement in SNR and reflection coherence achievable by the application of these automatically computed residual static corrections. In marine reflection surveys the situation is much simpler since the shot and receivers are situated in a medium with a level surface and a constant velocity.
+
+[p.59] The static correction is commonly restricted to a conversion of travel times to mean sea-level datum, without removing the overall effect of the water layer. Travel times are increased by (d s + dh)vw, where ds and dh are the depths below mean sea-level of the source and hydrophone array and vw is the seismic velocity of sea water. The effect of marine tidal height is often significant, especially in coastal waters, and demands a timevariant static correction. Tidal height data are usually readily available and the only complexity to the correction is their time-variant nature.
+
+### 4.7 Velocity analysis
+
+[p.59] The dynamic correctionis applied to reflection times to remove the effect of normal moveout. The correction is therefore numerically equal to the NMO and, as such, is a function of offset, velocity and reflector depth. Consequently, the correction has to be calculated separately for each time increment of a seismic trace. Adequate correction for normal moveout is dependent on the use of accurate velocities. In common midpoint surveys the appropriate velocity is derived by D1 t12 S1D1 Vw V1 t Surface Datum Ba se of weathered layer D2 D3 S1 S2 S3 t12 t12 t23 t23 S2D2 S3D3 S1D1 S2D2 S3D3 S1 D1 S2 D2 S3 D3 (b)(a) V1 Datum t23
+
+[p.59] Fig. 4.15 Static corrections. (a) Seismograms showing time differences between reflection events on adjacent seismograms due to the different elevations of shots and detectors and the presence of a weathered layer. (b) The same seismograms after the application of elevation and weathering corrections, showing good alignment of the reflection events. (After O'Brien, 1974.)
+
+[p.60]
+
+computer analysis of moveout in the groups of traces from a common mid-point (CMP gathers). Prior to this velocity analysis, static corrections must be applied to the individual traces to remove the effect of the lowvelocity surface layer and to reduce travel times to a common height datum. The method is exemplified with reference to Fig. 4.17 which illustrates a set of statically corrected traces containing a reflection event with a zero-offset travel time of t0. Dynamic corrections are calculated for a range of velocity values and the dynamically corrected traces are stacked. The stacking velocity V st is defined as that velocity value which produces the maximum amplitude of the reflection event in the stack of traces.
+
+[p.60] This clearly represents the condition of successful removal of NMO. Since the stacking velocity is that which removes NMO, it is given by the equation (cf. equation (4.4))ttx V 2=+ st As previously noted, the travel-time curve for reflected rays in a multilayered ground is not a hyperbola (see Fig. 4.3(b)). However, if the maximum offset value x is small compared with reflector depth, the stacking velocity closely approximates the root-mean-square velocity Vrms, though it is obviously also affected by any reflector dip. Values of Vst for different reflectors can therefore be used in a similar way to derive interval velocities using the Dix formula (see Section 4.2.2).
+
+[p.60] In practice, NMO corrections are computed for narrow time windows down the entire trace, and for a range of velocities, to produce a velocity spectrum (Fig. 4.18). The suitability of each velocity value is assessed by calculating a form of multitrace correlation, the semblance, between the corrected traces of the CMP gather. This assesses the power of the stacked reflected wavelet. The semblance values are contoured, such that contour peaks occur at times corresponding to reflected wavelets, and at velocities which produce an optimum
+
+[p.60] Fig. 4.16 Major improvement to a seismic section resulting from residual static analysis. (a) Field statics only. (b) After residual static correction. (Courtesy Prakla Seismos GmbH.)
+
+[p.61]
+
+stacked wavelet. A velocity function defining the increase of velocity with depth for that CMP is derived by picking the location of the peaks on the velocity spectrum plot. Velocity functions are derived at regular intervals along a CMP profile to provide stacking velocity values for use in the dynamic correction of each individual trace.
+
+### 4.8 Filtering of seismic data
+
+[p.61] Several digital data processing techniques are available for the enhancement of seismic sections. In general, the aim of reflection data processing is to increase further the SNR and improve the vertical resolution of the individual seismic traces. As a broad generalization, these dual objectives have to be pursued independently. The two D1 D2 D3 D4 D5 D6 t0 Reflection time Offset V1 V2 V3 V3 V2 V1 t0 Velocity Peak power defines correct stacking velocity Cross-power x
+
+[p.61] Fig. 4.17 A set of reflection events in a CMP gather is corrected for NMO using a range of velocity values. The stacking velocity is that which produces peak cross-power from the stacked events; that is, the velocity that most successfully removes the NMO. In the case illustrated, V2 represents the stacking velocity. (After Taner & Koehler 1969.)
+
+[p.61] Fig. 4.18 The velocity spectrum is used to determine the stacking velocity as a function of reflection time. The cross-power function (semblance) is calculated over a large number of narrow time windows down the seismic trace, and for a range of possible velocities for each time window. The velocity spectrum is typically displayed alongside the relevant CMP gather as shown. Peaks in the contoured semblance values correspond to appropriate velocities for that travel time, where a reflection phase occurs in the CMP gather.
+
+[p.62]
+
+main types of waveform manipulation are frequency filtering and inverse filtering (deconvolution). Frequency filtering can improve the SNR but potentially damages the vertical resolution, while deconvolution improves the resolution, but at the expense of a decrease in the SNR. As with many aspects of seismic processing, compromises must be struck in each process to produce the optimum overall result.
+
+### 4.8.1 Frequency filtering
+
+[p.62] Any coherent or incoherent noise event whose dominant frequency is different from that of reflected arrivals may be suppressed by frequency filtering (see Chapter 2). Thus, for example, ground roll in land surveys and several types of ship-generated noise in marine seismic surveying can often be significantly attenuated by lowcut filtering. Similarly, wind noise may be reduced by high-cut filtering. Frequency filtering may be carried out at several stages in the processing sequence. Normally, shot records would be filtered at a very early stage in the processing to remove obvious noise. Later applications of filters are used to remove artefacts produced by other processing stages.
+
+[p.62] The final application of filters is to produce the sections to be used by the seismic interpreters, and here the choice of filters is made to produce the optimum visual display. Since the dominant frequency of reflected arrivals decreases with increasing length of travel path, due to the selective absorption of the higher frequencies, the characteristics of frequency filters are normally varied as a function of reflection time. For example, the first second of a 3 s seismic trace might typically be band-pass filtered between limits of 15 and 75Hz, whereas the frequency limits for the third second might be 10 and 45Hz. The choice of frequency bands is made by inspection of filter panels (Fig. 4.19).
+
+[p.62] As the frequency characteristics of reflected arrivals are also influenced by the prevailing geology, the appropriate time-variant frequency filtering may also vary as a function of distance along a seismic profile. The filtering may be carried out by computer in the time domain or the frequency domain (see
+
+[p.62] Chapter 2).
+
+### 4.8.2 Inverse filtering (deconvolution)
+
+[p.62] Many components of seismic noise lie within the frequency spectrum of a reflected pulse and therefore cannot be removed by frequency filtering. Inverse filters discriminate against noise and improve signal character using criteria other than simply frequency. They are thus able to suppress types of noise that have the same frequency characteristics as the reflected signal. A wide range of inverse filters is available for reflection data
+
+[p.62] Fig. 4.19 Filter panels showing the frequency content of a panel of reflection records by passing them through a series of narrow-band frequencies. This plot allows the geophysicist to assess the frequency band that maximises the signal-to-noise ratio. Note that this may vary down the traces due to frequency-dependent absorption. (From Hatton et al. 1986, p. 88)
+
+[p.63]
+
+processing, each designed to remove some specific adverse effect of filtering in the ground along the transmission path, such as absorption or multiple reflection. Deconvolution is the analytical process of removing the effect of some previous filtering operation (convolution). Inverse filters are designed to deconvolve seismic traces by removing the adverse filtering effects associated with the propagation of seismic pulses through a layered ground or through a recording system. In general, such effects lengthen the seismic pulse; for example, by the generation of multiple wave trains and by progressive absorption of the higher frequencies.
+
+[p.63] Mutual interference of extended reflection wave trains from individual interfaces seriously degrades seismic records since onsets of reflections from deeper interfaces are totally or partially concealed by the wave trains of reflections from shallower interfaces. Examples of inverse filtering to remove particular filtering effects include: • dereverberation to remove ringing associated with multiple reflections in a water layer; • deghosting to remove the short-path multiple associated with energy travelling upwards from the source and reflected back from the base of the weathered layer or the surface; and • whitening to equalize the amplitude of all frequency components within the recorded frequency band (see below).
+
+[p.63] All these deconvolution operations have the effect of shortening the pulse length on processed seismic sections and, thus, improve the vertical resolution. Consider a composite waveform wk resulting from an initial spike source extended by the presence of shortpath multiples near source such as, especially, water layer reverberations. The resultant seismic trace x k will be given by the convolution of the reflectivity function rk with the composite input waveform wk as shown schematically in Fig. 4.6 (neglecting the effects of attenuation and absorption) Reflected waveforms from closely-spaced reflectors will overlap in time on the seismic trace and, hence, will interfere.
+
+[p.63] Deeper reflections may thus be concealed by the reverberation wave train associated with reflections from shallower interfaces, so that only by the elimination of the multiples will all the primary reflections be revealed. Note that short-path multiples have effectively the same normal moveout as the related primary reflection and are xrwkk k= ( )* plus noise therefore not suppressed by CDP stacking, and they have similar frequency content to the primary reflection so that they cannot be removed by frequency filtering.
+
+[p.63] Deconvolution has the general aim, not fully realizable, of compressing every occurrence of a composite waveform wk on a seismic trace into a spike output, in order to reproduce the reflectivity function rk that would fully define the subsurface layering. This is equivalent to the elimination of the multiple wave train.
+
+[p.63] The required deconvolution operator is an inverse filter ik which, when convolved with the composite waveform wk, yields a spike function dk Convolution of the same operator with the entire seismic trace yields the reflectivity function Where wk is known, deconvolution can be achieved by the use of matched filters which effectively crosscorrelate the output with the known input signal (as in the initial processing of Vibroseis ® seismic records to compress the long source wave train; see Section 3.8.1). Wiener filters may also be used when the input signal is known. A Wiener filter (Fig. 4.20) converts the known input signal into an output signal that comes closest, in a least-squares sense, to a desired output signal.
+
+[p.63] The filter optimizes the output signal by arranging that the sum of squares of differences between the actual output and the desired output is a minimum. Although special attempts are sometimes made in marine surveys to measure the source signature directly, by suspending hydrophones in the vicinity of the source, both wk and rk are generally unknown in reflection surveying. The reflectivity function rk is, of course, the main target of reflection surveying. Since, normally, only the seismic time series xk is known, a special approach is required to design suitable inverse filters.
+
+[p.63] This approach uses statistical analysis of the seismic time series, as in predictive deconvolution which attempts to remove the effect of multiples by predicting their arrival times from knowledge of the arrival times of the relevant primary events. Two important assumptions underlying predictive deconvolution (see e.g. Robinson & Treitel 2000) are: 1. that the reflectivity function represents a random series (i.e. that there is no systematic pattern to the distribution of reflecting interfaces in the ground); and ix rkkk* = iw dkkk* =
+
+[p.64]
+
+2. that the composite waveform wk for an impulsive source is minimum delay (i.e. that its contained energy is concentrated at the front end of the pulse; see
+
+[p.64] Chapter 2).
+
+[p.64] From assumption (1) it follows that the autocorrelation function of the seismic trace represents the autocorrelation function of the composite waveform wk. From assumption (2) it follows that the autocorrelation function can be used to define the shape of the waveform, the necessary phase information coming from the minimum-delay assumption. Such an approach allows prediction of the shape of the composite waveform for use in Wiener filtering. A particular case of Wiener filtering in seismic deconvolution is that for which the desired output is a spike function. This is the basis of spiking deconvolution, also known as whitening deconvolutionbecause a spike has the amplitude spectrum of white noise (i.e.
+
+[p.64] all frequency components have the same amplitude). A wide variety of deconvolution operators can be designed for inverse filtering of real seismic data, facilitating the suppression of multiples (dereverberation and deghosting) and the compression of reflected pulses. The presence of short-period reverberation in a seismogram is revealed by an autocorrelation function with a series of decaying waveforms (Fig. 4.21(a)). Long-period reverberations appear in the autocorrelation function as a series of separate side lobes (Fig. 4.21(b)), the lobes occurring at lag values for which the primary reflection aligns with a multiple reflection. Thus the spacing of the side lobes represents the periodicity of the reverberation pattern.
+
+[p.64] The first multiple is phase-reversed with respect to the primary reflection, due to reflection at the ground surface or the base of the weathered layer. Thus the first side lobe has a negative peak resulting from crosscorrelation of the out-of-phase signals. The second multiple undergoes a further phase reversal so that it is in phase with the primary reflection and therefore gives rise to a second side lobe with a positive peak (see Fig. 4.21(b)).Autocorrelation functions such as those shown in Fig. 4.21 form the basis of predictive deconvolution operators for removing reverberation events from seismograms. Input waveform Filter operator Filtered output Desired output = *
+
+[p.64] Fig. 4.20 The principle of Wiener filtering. φxx(τ) α (a) (b) α φxx(τ) Fig. 4.21 Autocorrelation functions of seismic traces containing reverberations. (a) A gradually decaying function indicative of short-period reverberation. (b) A function with separate side lobes indicative of long-period reverberation.
+
+[p.65]
+
+Practically achievable inverse filters are always approximations to the ideal filter that would produce a reflectivity function from a seismic trace: firstly, the ideal filter operator would have to be infinitely long; secondly, predictive deconvolution makes assumptions about the statistical nature of the seismic time series that are only approximately true. Nevertheless, dramatic improvements to seismic sections, in the way of multiple suppression and associated enhancement of vertical resolution, are routinely achieved by predictive deconvolution. An example of the effectiveness of predictive deconvolution in improving the quality of a seismic section is shown in Fig. 4.22.
+
+[p.65] Deconvolution may be carried out on individual seismic traces before stacking (deconvolution before stacking: DBS) or on CMP stacked traces ( deconvolution after stacking: DAS), and is commonly employed at both these stages of data processing.
+
+### 4.8.3 Velocity filtering
+
+[p.65] The use of velocity filtering (also known as fan filtering or pie slice filtering) is to remove coherent noise events from seismic records on the basis of the particular angles at which the events dip (March & Bailey 1983). The angle of dip of an event is determined from the apparent velocity with which it propagates across a spread of detectors. A seismic pulse travelling with velocity vat an angle a to the vertical will propagate across the spread with an apparent velocity v a = v/sina (Fig. 4.23). Along the spread direction, each individual sinusoidal component of the pulse will have an apparent wavenumber ka related to its individual frequency f, where f = vaka
+
+[p.65] Fig. 4.22 Removal of reverberations by predictive deconvolution. (a) Seismic record dominated by strong reverberations. (b) Same section after spiking deconvolution. (Courtesy Prakla Seismos GmbH.)
+
+[p.66]
+
+Hence, a plot of frequency f against apparent wavenumber ka for the pulse will yield a straight-line curve with a gradient of va (Fig. 4.24).Any seismic event propagating across a surface spread will be characterized by an f–k curve radiating from the origin at a particular gradient determined by the apparent velocity with which the event passes across the spread. The overall set of curves for a typical shot gather containing reflected and surface propagating seismic events is shown in Fig. 4.25. Events that appear to travel across the spread away from the source will plot in the positive wavenumber field; events travelling towards the source, such as backscattered rays, will plot in the negative wavenumber field.
+
+[p.66] It is apparent that different types of seismic event fall within different zones of the f–k plot and this fact provides a means of filtering to suppress unwanted events on the basis of their apparent velocity. The normal means by which this is achieved, known as f–k filtering, is to enact a two-dimensional Fourier transformation of the seismic data from the t–x domain to the f–k domain, then to filter the f–k plot by removing a wedge-shaped zone or zones containing the unwanted noise events (March & Bailey 1983), and finally to transform back into the t–x domain. An important application of velocity filtering is v/sin a v Surface Wavefront a
+
+[p.66] Fig. 4.23 A wave travelling at an angle a to the vertical will pass across an in-line spread of surface detectors at a velocity of v/sin a. Frequency ( f ) Apparent wavenumber ka Seismic event of velocity v (Gradient = va)
+
+[p.66] Fig. 4.24 An f–k plot for a seismic pulse passing across a surface spread of detectors. Back-scattered noise Reflected events (signal) High-velocity noise Ground roll –ka ka f
+
+[p.66] Fig. 4.25 An f–k plot for a typical shot gather (such as that illustrated in Fig. 4.8) containing reflection events and different types of noise.
+
+[p.67]
+
+the removal of ground roll from shot gathers. This leads to marked improvement in the subsequent stacking process, facilitating better estimation of stacking velocities and better suppression of multiples. Velocity filtering can also be applied to portions of seismic record sections, rather than individual shot gathers, in order to suppress coherent noise events evident because of their anomalous dip, such as diffraction patterns. An example of such velocity filtering is shown in Fig. 4.26. It may be noted that individual detector arrays operate selectively on seismic arrivals according to their apparent velocity across the array (Section 4.4.2), and therefore function as simple velocity filters at the data acquisition stage.
+
+### 4.9 Migration of reflection data
+
+[p.67] On seismic sections such as that illustrated in Fig. 4.22 each reflection event is mapped directly beneath the mid-point of the appropriate CMP gather. However, the reflection point is located beneath the mid-point only if the reflector is horizontal. In the presence of a component of dip along the survey line the actual reflection point is displaced in the up-dip direction; in the presence of a component of dip across the survey line (cross-dip) the reflection point is displaced out of the plane of the section. Migration is the process of reconstructing a seismic section so that reflection events are repositioned under their correct surface location and at a corrected vertical reflection time.
+
+[p.67] Migration also improves the resolution of seismic sections by focusing energy spread over a Fresnel zone and by collapsing diffraction patterns produced by point reflectors and faulted beds. In time migration, the migrated seismic sections still have time as the vertical dimension. In depth migration, the migrated reflection times are converted into reflector depths using appropriate velocity information. Two-dimensional survey data provide no information on cross-dip and, hence, in the migration of twodimensional data the migrated reflection points are constrained to lie within the plane of the section. In the presence of cross-dip, this two-dimensional migration is clearly an imperfect process.
+
+[p.67] Its inability to deal with effects of cross-dip mean that, even when the seismic line is along the geological strike, migration will be imperfect since the true reflection points are themselves out of the vertical section. The conversion of reflection times recorded on nonmigrated sections into reflector depths, using one-way reflection times multiplied by the appropriate velocity, yields a reflector geometry known as the record surface. This coincides with the actual reflector surface only when the latter is horizontal. In the case of dipping reflectors the record surface departs from the reflector surface; that is, it gives a distorted picture of the reflector geometry.
+
+[p.67] Migration removes the distorting effects of dipping reflectors from seismic sections and their associated record surfaces. Migration also removes the diffracted arrivals resulting from point sources since every diffracted arrival is migrated back to the position of the point source. A variety of geological structures and sources of diffraction are illustrated in Fig. 4.27(a) and the resultant non-migrated seismic section is shown in
+
+[p.67] Fig. 4.27(b). Structural distortion in the non-migrated section (and record surfaces derived from it) includes a broadening of anticlines and a narrowing of synclines. The edges of fault blocks act as point sources and typically give rise to strong diffracted phases, represented by hyperbolic patterns of events in the seismic section. Synclines within which the reflector curvature exceeds the curvature of the incident wavefront are represented on non-migrated seismic sections by a 'bow-tie' event resulting from the existence of three discrete reflection points for any surface location (see Fig. 4.28).
+
+[p.67] Various aspects of migration are discussed below using the simplifying assumption that the source and detector have a common surface position (i.e. the detector has a zero offset, which is approximately the situation involved in CMP stacks). In such a case, the incident and reflected rays follow the same path and the rays are normally incident on the reflector surface. Consider a source–detector on the surface of a medium of constant seismic velocity (Fig. 4.29). Any reflection event is conventionally mapped to lie directly beneath the source–detector but in fact it may lie anywhere on the locus of equal two-way reflection times, which is a semi-circle centred on the source–detector position.
+
+[p.67] Now consider a series of source–detector positions overlying a planar dipping reflector beneath a medium of uniform velocity (Fig. 4.30). The reflection events are mapped to lie below each source–detector location but the actual reflection points are offset in the updip direction. The construction of arcs of circles (wavefront segments) through all the mapped reflection points enables the actual reflector geometry to be mapped. This represents a simple example of migration. The migrated section indicates a steeper reflector dip than the record surface derived from the non-migrated section. In gen-
+
+[p.68]
+
+Fig. 4.26 The effect of f–k filtering of a seismic section. (a) Stacked section showing steeply-dipping coherent noise events, especially below 4.5s two-way reflection time. (b) The same section after rejection of noise by f–k filtering (Courtesy Prakla-Seismos GmbH).
+
+[p.69]
+
+eral, if as is the dip of the record surface and at is the true dip of the reflector, sinat = tanas. Hence the maximum dip of a record surface is 45° and represents the case of horizontal reflection paths from a vertical reflector. This wavefront common-envelope method of migration can be extended to deal with reflectors of irregular geometry. If there is a variable velocity above the reflecting surface to be migrated, the reflected ray paths are not straight and the associated wavefronts are not circular. In such a case, a wavefront chart is constructed for the prevailing 0123km 0123km (a) (b) Depth (km) Reflection time (s)
+
+[p.69] Fig. 4.27 (a) A structural model of the subsurface and (b) the resultant reflection events that would be observed in a non-migrated seismic section, containing numerous diffraction events. (After Sheriff 1978.) DistanceAB W X Y Z DistanceAB(b) (a) Depth Time tAW tBX tBZ tBY
+
+[p.69] Fig. 4.28 (a) A sharp synclinal feature in a reflecting interface, and (b) the resultant 'bow-tie'shape of the reflection event on the non-migrated seismic section.
+
+[p.70]
+
+velocity–depth relationship and this is used to construct the wavefront segments passing through each reflection event to be migrated. An alternative approach to migration is to assume that any continuous reflector is composed of a series of closely-spaced point reflectors, each of which is a source of diffractions, and that the continuity of any reflection event results from the constructive and destructive interference of these individual diffraction events. A set of diffracted arrivals from a single point reflector embedded in a uniform-velocity medium is shown in Fig. 4.31. The two-way reflection times to different surface locations define a hyperbola.
+
+[p.70] If arcs of circles (wavefront segments) are drawn through each reflection event, they intersect at the actual point of diffraction (Fig. 4.31). In the case of a variable velocity above the point reflector the diffraction event will not be a hyperbola but a curve of similar convex shape. No reflection event on a seismic section can have a greater convexity than a diffraction event, hence the latter is referred to as a curve of maximum convexity. In diffraction migration all dipping reflection events are assumed to be tangential to some curve of maximum convexity.
+
+[p.70] By the use of a wavefront chart appropriate to the prevailing velocity–depth relationship, wavefront segments can be drawn through dipping reflection events on seismic sections and the events migrated back to their diffraction points (Fig. 4.31). Events so migrated will, overall, map the prevailing reflector geometry. All modern approaches to migration use the seismic wave equation which is a partial differential equation describing the motion of waves within a medium that have been generated by a wave source. The migration problem can be considered in terms of wave propagation through the ground in the following way.
+
+[p.70] For any reflection event, the form of the seismic wavefield at the surface can be reconstructed from the travel times of reflected arrivals to different source–detector locations. For the purpose of migration it is required to reconstruct the form of the wavefield within the ground, in the vicinity of a reflecting interface. This reconstruction can be achieved by solution of the wave equation, effectively tracing the propagation of the wave backwards in time. Propagation of the wavefield of a reflection event halfway back to its origin time should place the wave on the reflecting interface, hence, the form of the wavefield at that time should define the reflector geometry.
+
+[p.70] Migration using the wave equation is known as wave equation migration (Robinson & Treitel 2000). There are several approaches to the problem of solving the wave equation and these give rise to specific types of wave equation migration such as finite difference migration, in which the wave equation is approximated by a finite difference equation suitable for solution by computer, and frequency-domain migration, in which the wave equation is solved by means of Fourier transformations, the necessary spatial transformations to achieve migration being enacted in the frequency domain and recovered by an inverse Fourier transformation.
+
+[p.70] Migration by computer can also be carried out by Source–detector Actual reflection point Locus of all reflection points with equal travel timesDisplay position on seismic section
+
+[p.70] Fig. 4.29 For a given reflection time, the reflection point may be anywhere on the arc of a circle centred on the source–detector position. On a non-migrated seismic section the point is mapped to be immediately below the source–detector. Reflector surface Record surface αt αs
+
+[p.70] Fig. 4.30 A planar-dipping reflector surface and its associated record surface derived from a non-migrated seismic section.
+
+[p.71]
+
+direct modelling of ray paths through hypothetical models of the ground, the geometry of the reflecting interfaces being adjusted iteratively to remove discrepancies between observed and calculated reflection times. Particularly in the case of seismic surveys over highly complex subsurface structures, for example those encountered in the vicinity of salt domes and salt walls, this ray trace migrationmethod may be the only method capable of successfully migrating the seismic sections. In order to migrate a seismic section accurately it would be necessary to define fully the velocity field of the ground; that is, to specify the value of velocity at all points.
+
+[p.71] In practice, for the purposes of migration, an estimate of the velocity field is made from prior analysis of the non-migrated seismic section, together with information from borehole logs where available. In spite of this approximation, migration almost invariably leads to major improvement in the seismic imaging of reflector geometry. Migration of seismic profile data is normally carried out on CMP stacks, thus reducing the number of traces to be migrated by a factor equal to the fold of the survey and thereby reducing the computing time and associated costs.
+
+[p.71] Migration of stacked traces is based on the assumption that the stacks closely resemble the form of individual traces recorded at zero offset and containing only normal-incidence reflection events. This assumption is clearly invalid in the case of recordings over a wide range of offsets in areas of structural complexity. A better approach is to migrate the individual seismic traces (assembled into a series of profiles containing all traces with a common offset), then to assemble the migrated traces into CMP gathers and stacks.
+
+[p.71] Such an approach is not necessarily cost-effective in the case of high-fold CMP surveys, and a compromise is to migrate subsets of CMP stacks recorded over a narrow range of offset distances, and then produce a full CMP stack by summing the migrated partial stacks after correction for normal moveout. Procedures involving migration before final stacking involve extra cost but can lead to significant improvements in the migrated sections and to more reliable stacking velocities. 1234567 123 4 567 Point reflector Wavefront Reflection event on seismic section Curve of maximum convexity Diffraction migrated position of event (c) (a) (b)Reflection time Curve of maximum convexity Distance
+
+[p.71] Fig. 4.31 Principles of diffraction migration. (a) Reflection paths from a point reflector. (b) Migration of individual reflection events back to position of point reflector. (c) Use of wavefront chart and curve of maximum convexity to migrate a specific reflection event; the event is tangential to the appropriate curve of maximum convexity, and the migrated position of the event is at the intersection of the wavefront with the apex of the curve.
+
+[p.72]
+
+Any system of migration represents an approximate solution to the problem of mapping reflecting surfaces into their correct spatial positions and the various methods have different performances with real data. For example, the diffraction method performs well in the presence of steep reflector dips but is poor in the presence of a low SNR. The best all round performance is given by frequency-domain migration. Examples of the migration of seismic sections are illustrated in Figs 4.32 and 4.33. Note in particular the clarification of structural detail, including the removal of bow-tie effects, and the repositioning of structural features in the migrated sections.
+
+[p.72] Clearly, when planning to test hydrocarbon prospects in areas of structural complexity (as on the flank of a salt dome) it is important that drilling locations are based on interpretation of migrated rather than non-migrated seismic sections. 4.10 3D seismic reflection surveys The general aim of three-dimensional surveys is to achieve a higher degree of resolution of the subsurface geology than is achievable by two-dimensional surveys. Three-dimensional survey methods involve collecting field data in such a way that recorded arrivals are not re-
+
+[p.72] Fig. 4.32 (a) A non-migrated seismic section. (b) The same seismic section after wave equation migration. (Courtesy Prakla-Seismos GmbH.)
+
+[p.73]
+
+stricted to rays that have travelled in a single vertical plane. In a three-dimensional survey, the disposition of shots and receivers is such that groups of recorded arrivals can be assembled that represent rays reflected from an area of each reflecting interface. Three-dimensional surveying therefore samples a volume of the subsurface rather than an area contained in a vertical plane, as in two-dimensional surveying. In three-dimensional surveying the common midpoint principle applies similarly, but each CMP gather involves an areal rather than a linear distribution of shot points and detector locations (Fig. 4.34).
+
+[p.73] Thus, for example, a 20-fold coverage is obtained in a crossed-array three-dimensional survey if reflected ray paths from five shots along different shot lines to four detectors along different recording lines all have a common reflection point. On land, three-dimensional data are normally collected using the crossed-array method in which shots and detectors are distributed along orthogonal sets of lines (in-lines and cross-lines) to establish a grid of recording points. For a single pair of lines, the areal coverage of a subsurface reflector is illustrated in Fig. 4.35.
+
+[p.73] At sea, three-dimensional data may be collected along closely-spaced parallel tracks with the hydrophone streamer feathered to tow obliquely to the ship's track such that it sweeps across a swathe of the sea floor as the vessel proceeds along its track. By ensuring that the swathes associated with adjacent tracks overlap, data may be assembled to provide areal coverage of subsurface reflectors. In the alternative dual source array method, sources are deployed on side gantries to port and starboard of the hydrophone streamer and fired alternately (Fig. 4.36). Multiple streamers may similarly be deployed to obtain both a wider swath and a denser fold of threedimensional data.
+
+[p.73] High-quality position fixing is a prerequisite of threedimensional marine surveys in order that the locations of
+
+[p.73] Fig. 4.33 (a) A non-migrated seismic section. (b) The same seismic section after diffraction migration. (Courtesy Prakla-Seismos GmbH.)
+
+[p.74]
+
+all shot–detector mid-points are accurately determined. Position fixing is normally achieved using the global positioning system (GPS).The standard form of the system, as now widely available in personal handsets, is not accurate enough for seismic surveying due to the errors induced by radio wave distortion in the atmosphere. This can be corrected using a reference ground station of known position. In this case the system is termed differential GPS (DGPS) and can give real-time accuracy to within a few metres. In near-shore areas use may be made of radio navigation systems, in which a location is determined by calculation of range from onshore radio transmitters.
+
+[p.74] Doppler sonar may also be employed to determine the velocity of the vessel along the survey track for comparison with GPS satellite fixes (Lavergne 1989). The areal reflector coverage obtained in threedimensional surveying provides the additional information necessary to permit full three-dimensional migration in which reflection points can be migrated in any azimuthal direction. This ability fully to migrate threedimensional survey data further enhances the value of such surveys over two-dimensional surveys in areas of complex structure. The essential difference between two-dimensional and three-dimensional migration may be illustrated with reference to a point reflector embedded in a homogeneous medium.
+
+[p.74] On a seismic section derived from a two-dimensional survey the point reflector is imaged as a diffraction hyperbola, and migration involves summing amplitudes along the hyperbolic curve and plotting the resultant event at the apex of the hyperbola (see
+
+[p.74] Fig. 4.31).The actual three-dimensional pattern associated with a point reflector is a hyperboloid of rotation, Recording lines Shot lines Reflector CDP
+
+[p.74] Fig. 4.34 Reflected ray paths defining a common depth point from an areal distribution of shot points and detector locations in a three-dimensional survey. Shot line Recording line Subsurface coverage
+
+[p.74] Fig. 4.35 The areal coverage derived from a single pair of crossing lines in a three-dimensional survey. Each dot represents the midpoint between a shot and a detector.
+
+[p.75]
+
+the diffraction hyperbola recorded in a two-dimensional survey representing a vertical slice through this hyperboloid. In a three-dimensional survey, reflections are recorded from a surface area of the hyperboloid and three-dimensional migration involves summing amplitudes over the surface area to define the apex of the hyperboloid. A practical way of achieving this aim with crossedarray data from a three-dimensional land survey is the two-pass method (Fig. 4.37).The first pass involves collapsing diffraction hyperbolas recorded in vertical sections along one of the orthogonal line directions. The series of local apices in these sections together define a hyperbola in a vertical section along the perpendicular direction.
+
+[p.75] This hyperbola can then be collapsed to define the apex of the hyperboloid. The product of three-dimensional seismic surveying is a volume of data (Fig. 4.38, Plate 4.1) representing reflection coverage from an area of each subsurface reflector. From this reflection data volume, conventional two-dimensional seismic sections may be constructed not only along the actual shot lines and recording lines employed but also along any other vertical slice through the data volume. Hence, seismic sections may be simulated for any azimuth across the survey area by taking a vertical slice through the data volume, and this enables optimal two-dimensional representation of any recorded structural features.
+
+[p.75] More importantly, horizontal slices may be taken through the data volume to display the pattern of reflections intersected by any time plane. Such a representation of the three-dimensional data is known as a time slice or seiscrop, and analysis of reflection patterns displayed in time slices provides a powerful means of mapping threedimensional structures (see Plates 4.1 & 4.2). In particular, structures may be traced laterally through the data volume, rather than having to be interpolated between adjacent lines as is the case in two-dimensional surveys. The manipulation of data volumes obtained from three- * * * Source 1 Hydrophone streamer Source 2 Shot point positions Receiver positions Source–receiver mid-points
+
+[p.75] Fig. 4.36 The dual source array method of collecting three-dimensional seismic data at sea. Alternate firing of sources 1 and 2 into the hydrophone streamer produces two parallel sets of source–detector mid-points.
+
+[p.75] Fig. 4.37 The two-pass method of three-dimensional migration for the case of a point reflector. The apices of diffraction hyperbolas in one line direction may be used to construct a diffraction hyperbola in the orthogonal line direction. The apex of the latter hyperbola defines the position of the point reflector.
+
+[p.76]
+
+dimensional surveys is carried out at computer work stations using software routines that enable seismic sections and time slices to be displayed as required. Automatic event picking and contouring are also facilitated (Brown 1986). On high-quality modern seismic data it is quite common to image the oil–water contact within a hydrocarbon reservoir (Fig. 4.39), or the bright spot, a particularly strong reflection, caused by the high reflection coefficient at the top of a gas-filled formation.
+
+### 4.11 Three component (3C) seismic reflection surveys
+
+[p.76] All the previous discussion has only considered seismic recording using vertical geophones. These only record one component of the total seismic wave motion. Vertical geophones are chosen in preference since they are most sensitive to vertically travelling P-waves. The actual ground motion consists of movement in all directions. This can be measured fully by having three geophones at each location, oriented mutually at right angles, and each recording one component. Thus three components of the ground motion are recorded, giving the method its name. Often these are labelled as having their sensitive axes oriented to vertical, north–south and east–west, though any set of orthogonal components is sufficient.
+
+[p.76] In this case the true ground motion is fully recorded, and can be analysed in detail. The three component (3C) technique requires three times as many recording sensors, and more stages of data analysis than vertical component recording. With developing technology, the additional sophistication of the field equipment (Fig. 4.40) and the availability of large computing power for the data analysis have made 3C recording practicable. In fact, 3C data recording is becoming increasingly common, and is now a routine operation in the exploration for hydrocarbons. The analysis of 3C data provides two major benefits.
+
+[p.76] These are the ability to identify S-waves in addition to Pwaves in the same data, and the ability to perform more sophisticated filtering to identify and remove unwanted wave energy, whether from surface waves, or noise sources. Naturally the improved filtering contributes substantially to the ability to detect the separate P- and S-waves. S-waves are generated at any interface where a P-wave is obliquely incident (see Section 3.6.2). Thus, any seismic data will always contain energy from both Pand S-waves. With appropriate processing, principally exploiting the different particle motions and velocities of the two waves, the P-wave and S-wave energy can be separated and analysed.
+
+[p.76] Shot linesRecordinglinesTimesliceSectionalongshotlineRandomsectionSection alongrecording line
+
+[p.76] Fig. 4138The reflection data volume obtained from a three-dimensional seismic survey. By taking vertical slices through thisdata volume, it is possible to generate seismic sections in anyazimuthal direction; by taking horizontal slices (time slices), theareal distribution of reflection events can be studied at any two-way reflection time.
+
+[p.76] Fig. 4139Seismic section from a 3D data volume showing thehorizontal reflector produced by the oil–water contact. This isclearly distinguishable from the reflections from geologicalformations due to its strictly horizontal nature. Example from theFulmar field, UK North Sea. (From Jack 1997.)
+
+[p.77]
+
+Knowledge of the behaviour of both body waves provides important additional information. In a lithified rock formation, such as an oil reservoir, the P-wave is transmitted through both the rock matrix and the fluids in the pore spaces. The behaviour of the P-wave is thus determined by the average of the rock matrix and pore fluid properties, weighted with respect to the porosity of the rock. The S-wave on the other hand is only transmitted through the rock matrix, since the shear wave cannot propagate through a fluid. Comparison of the P-wave and S-wave velocities of the same formation thus can give information about the porosity of the formation and the nature of the fluids filling the pore spaces.
+
+[p.77] The relationships can be complex, but the presence of hydrocarbons, especially if accompanied by gas, can be identified directly from the seismic data in favourable circumstances. Derivation of measures which reliably predict the presence of hydrocarbons, direct hydrocarbon indicators (DHIs), is an important part of modern seismic processing (Yilmaz 1987, 2001), though the details of this are beyond the scope of this book. The ability to detect these features is an enormous advantage to the hydrocarbon industry and has had a marked effect on the success rate of exploration boreholes in locating oil or gas reservoirs.
+
+[p.77] Since the cost of drilling a borehole can often reach or exceed $10m, the additional effort in seismic data acquisition and processing is very cost-effective. 4.12 4D seismic surveys Once an oilfield is in production, the oil and/or gas is extracted and its place in the pore spaces of the reservoir rock is taken by inflowing groundwater. Since the pore fluids are changing, the seismic response of the formations also changes. Even in an extensively developed field with many wells, there are large intervals between the wells, of the order of 1km. It is impossible from monitoring the well-flow to be sure how much of the hydrocarbon is being extracted from any particular part of the reservoir.
+
+[p.77] Often oil reservoirs are cut by numerous faults and some of them may isolate a volume of the reservoir so that the hydrocarbons cannot flow to the nearby wells. If the location of such isolated 'pools' can be found, additional wells can be drilled to extract these pools and hence increase the overall hydrocarbon recovery from the reservoir. It is apparent that if the location of such features as the oil–water contact and gas accumulations can be mapped with a seismic survey, then repeated surveys at time intervals during the production of the field offer the prospect of monitoring the extraction of hydrocarbons, and contribute to the management of the production phase of the field operation.
+
+[p.77] This is the rationale for 4D seismic surveys, which essentially consist of the repeated shooting of 3D (and often 3C) surveys over a producing field at regular intervals. The fourth dimension is, of course, time. The practical implementation of 4D surveying is far from simple ( Jack 1997). The essential measurements made by a seismic survey are the values of amplitudes of seismic waves at specific locations and times after a seismic source has been fired. Any factor which affects the location, amplitude or timing of seismic waves must be allowed for when comparing two sets of data recorded in different surveys. Obvious effects would be different geophones in different locations, for each survey. Other effects are much more subtle.
+
+[p.77] The seasonal change in level of the water table may be enough to affect the travel time of seismic waves in the near-surface such that all deep reflections will be systematically mistimed between two surveys in different seasons. As an oilfield develops, the increased plant (pumps, drill-rigs, vehicles) changes (and increases) the background seismic noise with time. In the processing of the raw data to make the final seismic sections for comparison many different mathematical operations change the amplitudes of the data. Each of these must be rigorously checked and identical processing must be carried out for each separate dataset.
+
+[p.77] Fig. 4.40 A three-component geophone.
+
+[p.78]
+
+The primary properties of the reservoir which change with time as hydrocarbon extraction proceeds are the pore fluid pressure, the nature of the pore fluids, and the temperature. Each of these may have an effect on the seismic response. Changes in fluid pressure will affect the state of stress in the rock matrix combined with temperature, will directly affect factors such as the exsolution of gas from hydrocarbon fluids. That these features can be observed in seismic data has been tested directly by largescale experiments in producing fields. In some cases gas has been directly pumped into permeable formations to displace pore water, and repeat seismic surveys conducted to monitor the effect (Fig.
+
+[p.78] 4.41).There are also now well-documented case studies of clear location of the more complex effect of steam-flood of reservoirs (Fig. 4.42). In this case pumping of steam into a reservoir has a complex effect of liberating gas dissolved in oil, condensing to form water, and also replacing the oil and gas by uncondensed steam. The figure shows the observable seismic effects of this action over 31 months. The data can be modelled to show that the seismic monitoring is allowing real-time study of the fluid flow in the reservoir ( Jack 1997).This ability to monitor producing reservoirs has major importance in allowing sophisticated control of reservoir engineering and production operations.
+
+[p.78] The economic importance of 4D seismic surveying to the oil industry is apparent. Increasing the oil recovery from a producing oilfield increases the financial return on the huge investment needed to establish a new field and its infrastructure. Relative to this, a 4D seismic survey at perhaps $30m represents only a marginal cost. Plans are actively being developed to install permanent seismic recording instrumentation over oilfields to facilitate repeat surveys. If all the recording equipment is permanently installed, although this is a large initial expense, much of the difficulty in recording later directly comparable datasets is removed, and only a seismic source is needed. The future prospect is of hydro-
+
+[p.78] Fig. 4.41 Repeat surveys showing the effect of gas being pumped into a formation for storage. (a) Before gas injection; (b) after gas injection; (c) difference section composed by subtracting (b) from (a). (From Jack 1997.)
+
+[p.78] Fig. 4.42 Seismic sections from repeated 3D seismic surveys across an oilfield with steam injection at the well marked on the profile. With increasing duration of steam injection the seismic velocity of the reservoir formation changes progressively, shown by the pull-up, then push-down in the reflection from the base of the reservoir. These changes are due to the changing pore fluid with time. Duri oilfield, Indonesia. (From Jack 1997.)
+
+[p.79]
+
+carbon fields where 4D seismic surveys are routinely used for the management of the production from the field. It can be argued that there is more hydrocarbon resource to be recovered by careful monitoring of known fields, than by exploration for new fields.
+
+### 4.13 Vertical seismic profiling
+
+[p.79] Vertical seismic profiling (VSP) is a form of seismic reflection surveying that utilizes boreholes. Shots are normally fired at surface, at the wellhead or offset laterally from it, and recorded at different depths within the borehole using special detectors clamped to the borehole wall. Alternatively, small shots may be fired at different depths within the borehole and recorded at surface using conventional geophones, but in the following account the former configuration is assumed throughout. Typically, for a borehole 1km or more deep, seismic data are recorded at more than 100 different levels down the borehole.
+
+[p.79] If the surface shot location lies at the wellhead vertically above the borehole detector locations, so that the recorded rays have travelled along vertical ray paths, the method is known as zero-offset VSP. If the surface shot locations are offset laterally, so that the recorded rays have travelled along inclined ray paths, the method is known as offset VSP(Fig. 4.43). VSP has several major applications in seismic exploration (Cassell 1984). Perhaps most importantly, reflection events recorded on seismic sections obtained at surface from conventional reflection surveys can be traced by VSP to their point of origin in the subsurface, thus calibrating the seismic sections geologically.
+
+[p.79] Ambiguity as to whether particular events observed on conventional seismic sections represent primary or multiple reflections can be removed by direct comparison of the sections with VSP data. The reflection properties of particular horizons identified in the borehole section can be investigated directly using VSP and it can therefore be determined, for example, whether or not an horizon returns a detectable reflection to the surface. Uncertainty in interpreting subsurface geology using conventional seismic data is in part due to the surface location of shot points and detectors.
+
+[p.79] VSP recording in a borehole enables the detector to be located in the immediate vicinity of the target zone, thus shortening the overall path length of reflected rays, reducing the effects of attenuation, and reducing the dimensions of the Fresnel zone (Section 4.4.1). By these various means, the overall accuracy of a seismic interpretation may be markedly increased. A particular uncertainty in conventional seismics is the nature of the downgoing pulse that is reflected back to surface from layer boundaries. This uncertainty often reduces the effectiveness of deconvolution of conventional seismic data.
+
+[p.79] By contrast, an intrinsic feature of VSP surveys is that both downgoing and upgoing rays are recorded, and the waveform of the downgoing pulse may be used to optimize the design of a deconvolution operator for inverse filtering of VSP data to enhance resolution. Direct comparison with such VSP data leads to much improved reliability in the geological interpretation of seismic sections recorded at the surface in the vicinity of the borehole. The nature of VSP data may be considered by reference to Fig. 4.44, which illustrates a synthetic zero-offset VSP dataset for the velocity–depth model shown, each trace being recorded at a different depth. Two sets of events are recorded which have opposite directions of dip in the VSP section.
+
+[p.79] Events whose travel time increases as a function of detector depth represent downgoing rays; the weaker events, whose travel time reduces as a function of detector depth, represent upgoing, reflected rays. Note that the direct downgoing pulse (the first arrival, D0) is followed by other events (DS1, DS2, DS3) with the same dip, representing downgoing nearsurface and peg-leg multiples. Each reflected event (U1, U2, U3) terminates at the relevant reflector depth, where it intersects the direct downgoing event. For most purposes, it is desirable to separate downgo- Source Detector Reflector 1 Reflector 2
+
+[p.79] Fig. 4.43 An offset VSP survey configuration.
+
+[p.80]
+
+ing and upgoing events to produce a VSP section retaining only upgoing, reflected arrivals. The opposite dip of the two types of event in the originalVSP section enables this separation to be carried out by f–k filtering (see Section 4.8.3). Figure 4.45(a) illustrates a syntheticVSP section after removal of downgoing events. The removal of the stronger downgoing events has enabled representation of the upgoing events at enhanced amplitude, and weak multiple reflection events are now revealed. Note that these terminate at the same depth as the relevant primary event, and therefore do not extend to the point of intersection with the direct downgoing event.
+
+[p.80] It is now possible to apply a time correction to each trace in theVSP section, based on the travel time of the downgoing direct event, in order to predict the form of seismic trace that would be obtained at surface (Fig. 4.45(b)). By stacking these traces within a time corridor that avoids the multiple events, it is possible to produce a stacked trace containing only primary reflection events. Comparison of this stacked trace with a conventional seismic section from the vicinity of the borehole (Fig. 4.46) enables the geological content of the latter to be identified reliably.
+
+### 4.14 Interpretation of seismic reflection data
+
+[p.80] Differing procedures are adopted for the interpretation of two- and three-dimensional seismic data. The results of two-dimensional surveys are presented to the seismic interpreter as non-migrated and migrated seismic sections, from which the geological information is extracted by suitable analysis of the pattern of reflection events. Interpretations are correlated from line to line, and the reflection times of picked events are compared directly at profile intersections.
+
+[p.80] There are two main approaches to the interpretation of seismic sections: structural analysis, which is the study of reflector geometry on the basis of reflection times, and stratigraphical analysis (or seismic stratigraphy), which is the analysis of reflection sequences as the seismic expression of lithologically-distinct depositional sequences. Both structural and stratigraphical analyses are greatly assisted by seismic modelling, in which theoretical (synthetic) seismograms are constructed for layered models in order to derive insight into the physical significance of reflection events contained in seismic sections.
+
+[p.80] In the interpretation of three-dimensional survey data, the interpreter has direct access at a computer work station to all the reflection data contained within the seismic data volume (see Section 4.10), and is able to select various types of data for colour display, for example vertical sections or horizontal sections (time slices) through the data volume. The two most important shortcomings of two-dimensional interpretation are the problem of correlation between adjacent profile lines and the inaccuracy of reflector positioning due to the limitations of two-dimensional migration.
+
+[p.80] The improved coverage and resolution of three-dimensional data often lead to substantial improvements in interpretation as compared with pre-existing two-dimensional interpretation. As with two-dimensional interpretation,
+
+[p.80] Fig. 4.44 A synthetic zero-offset VSP record section for the velocity–depth model shown. The individual traces are recorded at the different depths shown. D0 is the direct downgoing wave; DS1, DS2 and DS3 are downgoing waves with multiple reflections between the surface and interfaces 1, 2 and 3 respectively. U1, U2 and U3 are primary reflections from the three interfaces; US3 is a reflection from the third interface with multiple reflection in the top layer. (From Cassell 1984.)
+
+[p.81]
+
+both structural and stratigraphic analysis may be carried out, and in the following sections examples are taken from both two- and three-dimensional survey applications.
+
+### 4.14.1 Structural analysis
+
+[p.81] The main application of structural analysis of seismic sections is in the search for structural traps containing hydrocarbons. Interpretation usually takes place against a background of continuing exploration activity and an associated increase in the amount of information related to the subsurface geology. Reflection events of interest are usually colour-coded initially and labelled as, for example 'red reflector', 'blue reflector', until their geological significance is established.
+
+[p.81] Whereas an initial interpretation of reflections displayed on seismic sections may lack geological control, at some point the geological nature of the reflectors is likely to become established by tracing reflection events back either to outcrop or to an existing borehole for stratigraphic control. Subsurface reflectors may then be referred to by an appropriate stratigraphical indicator such as 'base Tertiary','top Lias'. Most structural interpretation is carried out in units of two-way reflection time rather than depth, and timestructure maps are constructed to display the geometry of selected reflection events by means of contours of equal reflection time (Fig.
+
+[p.81] 4.47).Structural contour mapscan be produced from time-structure maps by conversion of reflection times into depths using appropriate velocity information (e.g. local stacking velocities derived from the reflection survey or sonic log data from boreholes). Time-structure maps obviously bear a close similarity to structural contour maps but are subject to distortion associated with lateral or vertical changes of velocity in the subsurface interval overlying the reflector.
+
+[p.81] Other aspects of structure may be revealed by contouring variations in the reflection time interval between two reflectors, sometimes referred to as isochron maps, and these can be converted into isopach mapsby the conversion of reflection time intervals into thicknesses using the appropriate interval velocity. Problems often occur in the production of timestructure or isochron maps. The difficulty of correlating reflection events across areas of poor signal-to-noise ratio, structural complexity or rapid stratigraphic transition often leaves the disposition of a reflector poorly resolved. Intersecting survey lines facilitate the checking of an interpretation by comparison of reflection times at intersection points.
+
+[p.81] Mapping reflection times around a
+
+[p.81] Fig. 4.45 (a) Synthetic VSP section of Fig. 4.44 with downgoing waves removed by filtering. (b) Each trace has been time shifted by the relevant uphole time to simulate a surface recording. (c) Stacked seismogram produced by stacking in the shaded corridor zone of part (b) to avoid multiple events. (From Cassell 1984.)
+
+[p.82]
+
+closed loop of survey lines reveals any errors in the identification or correlation of a reflection event across the area of a seismic survey. Reprocessing of data, or migration, may be employed to help resolve uncertainties of interpretation, but additional seismic lines are often needed to resolve problems associated with an initial phase of interpretation. It is common for several rounds of seismic exploration to be necessary before a prospective structure is sufficiently well defined to locate the optimal position of an exploration borehole.
+
+[p.82] Structural interpretation of three-dimensional data is able to take advantage of the areal coverage of reflection points, the improved resolution associated with threedimensional migration and the improved methods of data access, analysis and display provided by dedicated seismic work stations. Examples of the display of geological structures using three-dimensional data volumes are illustrated in Plates 4.1 and 4.2. Interpretation of threedimensional data is often crucial to the successful development of oilfields with a complex geological structure.
+
+[p.82] An example is the North Cormorant oilfield in the UK Sector of the North Sea, where three-dimensional seismics enabled the mapping of far more fault structures than had been possible using pre-existing twodimensional data, and revealed a set of NW–SE trending faults that had previously been unsuspected.
+
+### 4.14.2 Stratigraphical analysis
+
+[p.82] (seismic stratigraphy) Seismic stratigraphy involves the subdivision of seismic sections into sequences of reflections that are interpreted as the seismic expression of genetically related sedimentary sequences. The principles behind this seismic sequence analysis are two-fold. Firstly, reflections are taken to define chronostratigraphical units, since the types of rock interface that produce reflections are stratal surfaces and unconformities; by contrast, the boundaries of diachronous lithological units tend to be transitional and not to produce reflections.
+
+[p.82] Secondly, genetically related sedimentary sequences normally comprise a set of concordant strata that exhibit discordance with underlying and overlying sequences; that is, they are typically bounded by angular unconformities variously representing onlap, downlap, toplap or erosion (Fig. 4.48). A seismic sequence is the representation on a seismic section of a depositional sequence; as such, it is a group of concordant or near-concordant reflection events that terminate against the discordant reflections of adjacent seismic sequences. An example of a seismic sequence identified on a seismic section is illustrated in Plate 4.3.
+
+[p.82] Having subdivided a seismic section into its constituent sequences, each sequence may be analysed in terms of the internal disposition of reflection events and their character, to obtain insight into the depositional environments responsible for the sequence and into the range of lithofacies that may be represented within it. This use of reflection geometry and character to interpret sedimentary facies is known as seismic facies analysis. Individual seismic facies are identified within the seismic sequence illustrated in Plate 4.3. Different types of reflection configuration (Fig. 4.49) are diagnostic of different sedimentary environments. On a regional scale,
+
+[p.82] Fig. 4.46 Corridor stack of the zero-offset VSP section (Fig. 4.45(c)) reproduced eight times and spliced into a conventional seismic section based on surface profiling data from the vicinity of the borehole site. Comparison of the VSP stack with the surface recorded data enables the primary events in the seismic section to be reliably distinguished from multiple events. (From Cassell 1984.)
+
+[p.83]
+
+3 30'W 3 00'W 58 00'N Scotland Moray Firth Sealed outcrops Faults 0 20 km 800 700 700 700 600 600 500
+
+[p.83] Fig. 4.47 Time-structure map of reflector at the base of the Lower Cretaceous in the Moray Firth off northeast Scotland, UK. Contour values represent two-way travel times of reflection event in milliseconds. (Courtesy British Geological Survey, Edinburgh, UK.)
+
+[p.83] Fig. 4.48 Different types of geological boundary defining seismic sequences. (After Sheriff 1980. Erosional Toplap Concordant Onlap Downlap Concordant Upper boundary Lower boundary for example, parallel reflections characterize some shallow-water shelf environments whilst the deeperwater shelf edge and slope environments are often marked by the development of major sigmoidal or oblique cross-bedded units. The ability to identify particular sedimentary environments and predict lithofacies from analysis of seismic sections can be of great value to exploration programmes, providing a pointer to the location of potential source, reservoir and/or seal rocks.
+
+[p.83] Thus, organic-rich basinal muds represent potential source rocks; discrete sand bodies developed in shelf environments represent potential reservoir rocks; and coastal mud and evaporite sequences represent potential seals (Fig. 4.50); the identification of these components in seismic sequences can thus help to focus an exploration programme by identifying areas of high potential. An example of seismic stratigraphy based on threedimensional data is illustrated in Plate 4.4.The seiscrop of Plate 4.4(a) shows a meandering stream channel preserved in a Neogene sedimentary sequence in the Gulf of Thailand. The channel geometry and the distinctive lithofacies of the channel fill lead to its clear identification as a distinctive seismic facies.
+
+[p.83] Use of such seiscrops over a wider area enables the regional mapping of a Neogene deltaic environment (Plate 4.4(b)). Major seismic sequences can often be correlated across broad regions of continental margins and clearly give evidence of being associated with major sea-level changes. The application of seismic stratigraphy in areas of good chronostratigraphical control has led to the development of a model of global cycles of major sealevel change and associated transgressive and regressive depositional sequences throughout the Mesozoic and Cenozoic (Payton 1977).Application of the methods of seismic stratigraphy in offshore sedimentary basins with
+
+[p.84]
+
+little or no geological control often enables correlation of locally recognized depositional sequences with the worldwide pattern of sea-level changes (Payton 1977). It also facilitates identification of the major progradational sedimentary sequences which offer the main potential for hydrocarbon generation and accumulation. Stratigraphic analysis therefore greatly enhances the chances of successfully locating hydrocarbon traps in sedimentary basin environments. Hydrocarbon accumulations are sometimes revealed directly on true-amplitude seismic sections (see below) by localized zones of anomalously strong reflections known as bright spots. These high-amplitude reflection events (Fig.
+
+[p.84] 4.51) are attributable to the large reflection coefficients at the top and bottom of gas zones (typically, gas-filled sands) within a hydrocarbon reservoir. In the absence of bright spots, fluid interfaces may nevertheless be directly recognizable by flat spotswhich are horizontal or near-horizontal reflection events discordant to the local geological dip (see also Sections 4.10 and 4.11).
+
+### 4.14.3 Seismic modelling
+
+[p.84] Reflection amplitudes may be normalized prior to their presentation on seismic sections so that original distinctions between weak and strong reflections are suppressed. This practice tends to increase the continuity of reflection events across a section and therefore aids their identification and structural mapping. However, much valuable geological information is contained in the true amplitude of a reflection event, which can be recovered from suitably calibrated field recordings. Any lateral variation of reflection amplitude is due to lateral change in the lithology of a rock layer or in its pore fluid content.
+
+[p.84] Thus, whilst the production of normalized-amplitude sections may assist structural mapping of reflectors, it suppresses information that is vital to a full stratigraphic interpretation of the data. With increasing interest centring on stratigraphic interpretation, true-amplitude seismic sections are becoming increasingly important. In addition to amplitude, the shape and polarity of a reflection event also contain important geological information (Meckel & Nath 1977). Analysis of the significance of lateral changes of shape, polarity and amplitude Parallel Subparallel Divergent Sigmoidal Oblique Hummocky
+
+[p.84] Fig. 4.49 Various internal bedforms that give rise to different seismic facies within sedimentary sequences identified on seismic sections. (After Sheriff 1980.) Dark grey marls, black organic-rich mudstones Siltstones, shales, reef limestones Calcareous sandstones, oolites, bioclastic limestones Sandstones, mudstones, dolomitic mudstones, evaporites Very thin and continuous units Thin to intermediate tabular bodies with lensoid reef limestones 25–50 Basinal 150–450 Outer shelf Intermediate continuous to lensoid bodies 100–50 Inner shelf Irregular to discontinuous units 50–25 Coastal Typical lithologies Bed geometry Thickness (m) Environment Reservoir Source Seal
+
+[p.84] Fig. 4.50 The overall geometry of a typical depositional sequence and its contained sedimentary facies.
+
+[p.85]
+
+observed in true-amplitude seismic sections is carried out by seismic modelling, often referred to in this context as stratigraphic modelling. Seismic modelling involves the production of synthetic seismograms for layered sequences to investigate the effects of varying the model parameters on the form of the resulting seismograms. Synthetic seismograms and synthetic seismic sections can be compared with observed data, and models can be manipulated in order to simulate the observed data. By this means, valuable insights can be obtained into the subsurface geology responsible for a particular seismic section.
+
+[p.85] The standard type of synthetic seismogram represents the seismic response to vertical propagation of an assumed source wavelet through a model of the subsurface composed of a series of horizontal layers of differing acoustic impedance. Each layer boundary reflects some energy back to the surface, the amplitude and polarity of the reflection being determined by the acoustic impedance contrast. The synthetic seismogram comprises the sum of the individual reflections in their correct travel-time relationships (Fig. 4.52).
+
+[p.85] In its simplest form, a synthetic seismogram x(t) may be considered as the convolution of the assumed source function s (t) with a reflectivity function r (t) representing the acoustic impedance contrasts in the layered model: xt st rt( ) = ( ) ( )* However, filtering effects along the downgoing and upgoing ray paths and the overall response of the recording system need to be taken into account. Multiples may or may not be incorporated into the synthetic seismogram.
+
+[p.85] The acoustic impedance values necessary to compute the reflectivity function may be derived directly from sonic log data (as described in Section 11.8).This is normally achieved assuming density to be constant throughout the model, but it may be important to derive estimates of layer densities in order to compute more accurate impedance values. Synthetic seismograms can be derived for more complex models using ray-tracing techniques. Particular stratigraphic features that have been investigated by seismic modelling, to determine the nature of their representation on seismic sections, include thin layers, discontinuous layers, wedge-shaped layers, transitional layer boundaries, variable porosity and type of pore fluid.
+
+[p.85] Figure 4.53 illustrates synthetic seismograms computed across a section of stratigraphic change. These show how the varying pattern of interference between reflection events expresses itself in lateral changes of pulse shape and peak amplitude.
+
+### 4.14.4 Seismic attribute analysis
+
+[p.85] Conventional seismic reflection sections are displayed in variable-area format where positive half-cycles of the
+
+[p.85] Fig. 4.51 Part of a true-amplitude seismic section containing a seismic bright spot associated with a local hydrocarbon accumulation. (From Sheriff 1980, after Schramm et al. 1977.)
+
+[p.86]
+
+waveforms of seismic traces are filled in black. This has the desirable effect of merging the shaded areas from trace to trace to form continuous black lines across the section. These black lines guide the eye of the interpreter to correlate features across the section, and hence make a structural interpretation. The undesirable effect of this display is that the precise amplitude and shape of the waveform, which has been the subject of so much effort during data acquisition and processing, is lost. The amplitude of a normally reflected wave is directly related to the reflection coefficient at the interface, and hence the physical properties (density and velocity) of the formations.
+
+[p.86] Thus, variations in amplitude along a reflector should indicate changes in the properties of the formations. These properties can be viewed by presenting an image of the seismic section where the amplitude of the seismic wave is displayed as a colour scale. Changes of amplitude along a continuous reflector will then be emphasized by the colour change, rather than hidden in a broad black line. Such amplitude changes may be related to changes in the pore fluid in the rocks, and in favourable circumstances can be direct hydrocarbon indicators (DHIs). Amplitude is merely the simplest example of a property (attribute) of the seismic wave which can be examined for its geological significance.
+
+[p.86] Others include the seismic wave phase and the frequency content. From the waveform amplitudes the acoustic impedance of each formation can be estimated, and if S-wave data are available Poisson's ratio can be found. On a yet more detailed level, the amplitude variation of reflected wavelets with source–receiver offset (AVO) within each CMP gather can be analysed. This AVO effect can be particularly diagnostic in distinguishing between amplitude effects due to rock matrix variation and those due to pore fluids. An excellent review of this complex subject is given in Castagna and Bachus (1993).
+
+### 4.15 Single-channel marine reflection profiling
+
+[p.86] Single-channel reflection profiling is a simple but highly effective method of seismic surveying at sea that finds wide use in a variety of offshore applications. It represents reflection surveying reduced to its bare essentials: a marine seismic/acoustic source is towed behind a survey vessel and triggered at a fixed firing rate, and signals reflected from the sea bed and from sub-bottom reflectors are detected by a hydrophone streamer towed in the vicinity of the source (Fig. 4.54). The outputs of the individual hydrophone elements are summed and fed to a single-channel amplifier/processor unit and thence to a chart recorder.
+
+[p.86] This survey procedure is not possible on land because only at sea can the source and detectors be moved forward continuously, and a sufficiently high Geological section Acoustic impedance Reflection coefficient Synthetic seismogram
+
+[p.86] Fig. 4.52 The synthetic seismogram.
+
+[p.87]
+
+firing rate achieved, to enable surveys to be carried out continuously from a moving vehicle. The source and hydrophone array are normally towed at shallow depth but some deep-water applications utilize deep-tow systems in which the source and receiver are towed close to the sea bed. Deep-tow systems overcome the transmission losses associated with a long water path, thus giving improved penetration of seismic/ acoustic energy into the sea bed.
+
+[p.87] Moreover, in areas of rugged bathymetry they produce records that are much simpler to interpret; there is commonly a multiplicity of reflection paths from a rugged sea bed to a surface source–detector location, so that records obtained in deep water using shallow-tow systems commonly exhibit hyperbolic diffraction patterns, bow-tie effects and other undesirable features of non-migrated seismic sections. In place of the digital recorder used in multichannel 0 1000 2000 3000 m 1 10 20 30 SP no.
+
+[p.87] Fig. 4.53 A set of synthetic seismograms simulating a seismic section across a zone of irregular sandstone geometry. (From Neidell & Poggiagliolmi 1977.) (b) (a)
+
+[p.88]
+
+seismic surveying, single-channel profiling typically utilizes an oceanographic recorder in which a stylus repeatedly sweeps across the surface of an electricallyconducting recording paper that is continuously moving forward at a slow speed past a strip electrode in contact with the paper. A mark is burnt into the paper whenever an electrical signal is fed to the stylus and passes through the paper to the strip electrode. The seismic/acoustic source is triggered at the commencement of a stylus sweep and all seismic pulses returned during the sweep interval are recorded as a series of dark bands on the recording paper (Fig. 4.55). The triggering rate and sweep speed are variable over a wide range.
+
+[p.88] For a shallow penetration survey the source may be triggered every 500ms and the recording interval may be 0–250ms, whereas for a deep penetration survey in deep water the source may be triggered every 8s and the recording interval may be 2–6s. The analogue recording systems used in singlechannel profiling are relatively cheap to operate. There are no processing costs and seismic records are produced in real time by the continuous chart recording of bandpass filtered and amplified signals, sometimes with time variable gain (TVG).
+
+[p.88] When careful consideration is given to source and hydrophone array design and deployment, good basic reflection records may be obtained from a single-channel system, but they cannot compare in quality with the type of seismic record produced by computer processing of multichannel data. Moreover, single-channel recordings cannot provide velocity information so that the conversion of reflection times into reflector depths has to utilize independent estimates of seismic velocity. Nonetheless, single-channel profiling often provides good imaging of subsurface geology and permits estimates of reflector depth and geometry that are sufficiently accurate for many purposes.
+
+[p.88] The record sections suffer from the presence of multiple reflections, especially multiples of the sea bed reflection, which may obliterate primary reflection events in the later parts of the records. Multiples are a particular problem when surveying in very shallow Hydrophone array Vessel under way Acoustic source Buried channel Sea bed Sand layer Bedrock
+
+[p.88] Fig. 4.54 The survey set-up for single-channel seismic reflection profiling. Threshold level Time Negative values cut off Positive values recorded Peaks clipped Signal amplitude + – Pattern of marks on chart recording paper
+
+[p.88] Fig. 4.55 Seismic signals and their representation on the chart recording paper of an oceanographic recorder. (From Le Tirant 1979.)
+
+[p.89]
+
+water, since they then occur at a short time interval after the primary events (Fig. 4.56). Record sections are often difficult to interpret in areas of complex reflector geometry because of the presence of bow-tie effects, diffraction events and other features of non-migrated seismic sections.
+
+### 4.15.1 Shallow marine seismic sources
+
+[p.89] As discussed in Chapter 3 there are a variety of marine seismic/acoustic sources, operating at differing energy levels and characterized by different dominant frequencies. Consequently, by selection of a suitable source, single-channel profiling can be applied to a wide range of offshore investigations from high-resolution surveys of near-surface sedimentary layers to surveys of deep geological structure. In general, there is a trade-off between depth of penetration and degree of vertical resolution, since the higher energy sources required to transmit signals to greater depths are characterized by lower dominant frequencies and longer pulse lengths that adversely affect the resolution of the resultant seismic records.
+
+[p.89] Pingers are low-energy (typically about 5J), tunable sources that can be operated within the frequency range from 3 to 12kHz. The piezoelectric transducers used to generate the pinger signal also serve as receivers for reflected acoustic energy and, hence, a separate hydrophone streamer is not required in pinger surveying. Vertical resolution can be as good as 10–20cm but depth penetration is limited to a few tens of metres in muddy sediments or several metres in coarse sediments, with virtually no penetration into solid rock. Pinger surveys are commonly used in offshore engineering site investigation and are of particular value in submarine pipeline route surveys.
+
+[p.89] Repeated pinger surveying along a pipeline route enables monitoring of local sediment movement and facilitates location of the pipeline where it has become buried under recent sediments. A typical pinger record is shown in Fig. 4.57. Boomer sources provide a higher energy output (typically 300–500J) and operate at lower dominant frequencies (1–5kHz) than pingers. They therefore provide greater penetration (up to 100m in bedrock) with good resolution (0.5–1m). Boomer surveys are useful for mapping thick sedimentary sequences, in connection with channel dredging or sand and gravel extraction, or for high-resolution surveys of shallow geological structures. A boomer record section is illustrated in Fig. 4.58.
+
+[p.89] 0.1 0.2 0.3 0.4 0.5 02km D SB RH SBM1 RHM1 SBM2 d h S
+
+[p.89] Fig. 4.56 Air gun record from the Gulf of Patras, Greece, showing Holocene hemipelagic (h) and deltaic (d) sediments overlying an irregular erosion surface (rockhead, RH) cut into tectonized Mesozoic and Tertiary rocks of the Hellenide (Alpine) orogenic belt. SB= sea bed reflection; SBM1 and SBM2= first and second multiples of sea bed reflection; RHM1= first multiple of rockhead reflection.
+
+[p.90]
+
+Sparker sources can be operated over a wide range of energy levels (300–30000J), though the production of spark discharges of several thousand joules every few seconds requires a large power supply and a large bank of capacitors. Sparker surveying therefore represents a versatile tool for a wide range of applications, from shallow penetration surveys (100m) with moderate resolution (2m) to deep penetration surveys ( >1km) where resolution is not important. However, sparker surveying cannot match the resolution of precision boomer surveying, and sparkers do not offer as good a source signature as air guns for deeper penetration surveys.
+
+[p.90] By suitable selection of chamber size and rate of release of compressed air, air gun sources can be tailored to high resolution or deep penetration profiling applications and therefore represent the most versatile source for single-channel profiling. The reflection record shown in Fig. 4.56 was obtained in a shallow water area with a small air gun (40in3).
+
+### 4.15.2 Sidescan sonar systems
+
+[p.90] Single-channel reflection profiling systems (sometimes referred to as sub-bottom profiling systems) are commonly operated in conjunction with a precision echo-sounder, for high-quality bathymetric information, and/or with a sidescan sonar system. Sidescan sonar is a sidewaysscanning acoustic survey method in which the sea floor to one or both sides of the survey vessel is insonified by beams of high-frequency sound (30–110kHz) transmitted by hull-mounted or fish-mounted transceiving transducers (Fig. 4.59). Sea bed features facing towards the survey vessel, such as rock outcrops or sedimentary bedforms, reflect acoustic energy back towards the transducers.
+
+[p.90] In the case of features facing away from the vessel, or a featureless sea floor, the acoustic energy is reflected away from the transducers. Signals reflected back to the transducers are fed to the same type of recorder that is used to produce seismic profiling records, 0.1 0.2 0.3 0.4 0.5 0.6 S 2km
+
+[p.90] Fig. 4.57 Pinger record from the northern Aegean Sea, Greece, across a zone of active growth faults extending up to the sea bed. The sea floor is underlain by a layered sequence of Holocene muds and silts that can be traced to a depth of about 50m. Note the diffraction patterns associated with the edges of the individual fault blocks.
+
+[p.91]
+
+10 m 200 mSea floor Bedded marine sediments Bedrock Talus Bedrock Sea bed multiple (b)
+
+[p.91] Fig. 4.58 (a) Precision boomer record from a coastal area of the Irish Sea, UK, and (b) line drawing interpretation showing Holocene sediments up to 10m thick banked against a reef of Lower Palaeozoic rocks. (Courtesy C. R. Price.) (a) (b) Δt1 Δt2 > Δt1 Δx Δx
+
+[p.91] Fig. 4.59 Principles of sidescan sonar. (a) Individual reflected ray paths within the transmitted lobes, showing signal return from topographic features on the sea bed. (b) Scale distortion resulting from oblique incidence: the same widths of sea floor Dx are represented by different time intervals Dt1 and Dt2 at the inner and outer edges of the sonograph, respectively. (a)
+
+[p.92]
+
+and the resulting pattern of returned acoustic energy is known as a sonograph . The oblique insonification produces scale distortion resulting from the varying path lengths and angles of incidence of returning rays (Fig. 4.59(b)).This distortion can be automatically corrected prior to display so that the sonograph provides an isometric plan view of sea bed features. A sonograph is shown in Fig. 4.60. Although not strictly a seismic surveying tool, sidescan sonar provides valuable information on, for example, the configuration and orientation of sedimentary bedforms or on the pattern of rock outcrops. This information is often very useful in complementing the subsurface information derived from shallow seismic reflection surveys.
+
+[p.92] Sidescan sonar is also useful for locating artefacts on the sea floor such as wrecks, cables or pipes. As with sub-bottom profiling systems, results in deep water are much improved by the use of deep-tow systems.
+
+### 4.16 Applications of seismic reflection surveying
+
+[p.92] The 1980s and 1990s saw major developments in reflection seismic surveying. Over that period, the general quality of seismic record sections improved markedly due to the move to digital data acquisition systems and the use of increasingly powerful processing techniques. At the same time, the range of applications of the method increased considerably. Previously, reflection surveying was concerned almost exclusively with the search for hydrocarbons and coal, down to depths of a few kilometres. Now, the method is being used increasingly for studies of the entire continental crust and the uppermost mantle to depths of several tens of kilometres.
+
+[p.92] At the other end of the spectrum of target depths the method is increasingly applied for high-resolution onshore mapping of shallow geology to depths of a few tens or hundreds of metres.
+
+[p.92] Fig. 4.60 Sonograph obtained from a dual scan survey of a pipeline route across an area of linear sand waves in the southern North Sea. The inner edges of the two swathes define the bathymetry beneath the survey vessel. (Scanning range: 100m).
+
+[p.93]
+
+The search for hydrocarbons, onshore and offshore, nevertheless remains by far the largest single application of reflection surveying. This reflects the particular strength of the method in producing well-resolved images of sedimentary sequences down to a depth of several kilometres. The method is used at all stages of an exploration programme for hydrocarbons, from the early reconnaissance stage through to the detailed mapping of specific structural targets in preparation for exploration drilling, and on into the field development stage when the overall reservoir geometry requires further detailing.
+
+[p.93] Because of its relatively high cost, three-dimensional seismic surveying still does not find routine application in hydrocarbon exploration programmes. However, whereas it was originally used only at the field development stage, it now finds widespread application also at the exploration stage in some oilfields. Vertical seismic profiling is another important technique that is being applied increasingly at the stage of oilfield development because of its ability to reveal subsurface detail that is generally unobtainable from surface seismic data alone. In the quest for ever more detailed subsurface information, three component (3C) surveys are becoming more common.
+
+[p.93] The value of repeated surveys during oilfield production is now established and 'time lapse' or 4D surveys are also increasing in usage. The initial round of seismic exploration for hydrocarbons normally involves speculative surveys along widely-spaced profile lines covering large areas. In this way the major structural or stratigraphic elements of the regional geology are delineated, so enabling the planning of detailed, follow-up reflection surveys in more restricted areas containing the main prospective targets.
+
+[p.93] Where good geological mapping of known sedimentary sequences exists, the need for expenditure on initial speculative seismic surveys is often much reduced and effort can be concentrated from an early stage on the seismic investigation of areas of particular interest. Detailed reflection surveys involve closely-spaced profile lines and a high density of profile intersection points in order that reflection events can be traced reliably from profile to profile and used to define the prevailing structure. Initial seismic interpretation is likely to in-volve structural mapping, using time-structure and/or isochron maps (Section 4.14.1) in the search for the structural closures that may contain oil or gas.
+
+[p.93] Any closures that are identified may need further delineation by a second round of detailed seismic surveying before the geophysicist is sufficiently confident to select the location of an exploration borehole from a time-structure map. Three-dimensional seismics may need to be employed when critical structural details are unresolved by interpretation of the two-dimensional survey data. Exploration boreholes are normally sited on seismic profile lines so that the borehole logs can be correlated directly with the local seismic section. This facilitates precise geological identification of specific seismic reflectors, especially if vertical seismic profiling surveys (Section 4.13) are carried out at the site of the borehole.
+
+[p.93] Particularly in offshore areas, where the best quality seismic data are generally obtained, the methods of seismic stratigraphy (Section 4.14.2) are increasingly employed on sections displaying seismic sequences to obtain insight into the associated sedimentary lithologies and depositional environments. Such stratigraphic information, derived from seismic facies analysis of the individual sequences, is often of great value to an exploration programme in highlighting the location of potential source rocks (e.g. organic-rich mudstones) and potential reservoir rocks (e.g. a deltaic or reef facies). The contribution of reflection surveying to the development of hydrocarbon reserves does not end with the discovery of an oil or gas field.
+
+[p.93] Refinement of the seismic interpretation using information from, variously, additional seismic profiles, three-dimensional seismics and vertical seismic profiling data will assist in optimizing the location of production boreholes. In addition, seismic modelling (Section 4.14.3) of amplitude variations and other aspects of reflection character displayed on seismic sections across the producing zone can be used to obtain detailed information on the geometry of the reservoir and on internal lithological variations that may affect the hydrocarbon yield.
+
+[p.93] 4D surveying of producing fields (Section 4.12) has demonstrated that the detection of unexploited areas in a producing field is feasible and adequately repays the cost of the geophysical survey. Examples of seismic sections from hydrocarbon fields in the North Sea area are shown in Figs 4.61 and 4.62. Figure 4.61 represents a seismic section across the North Viking gas field in the southern North Sea. The gas is trapped in the core of a NW–SE trending anticlinal structure that is extensively faulted at the level of the Lower Permian. A typical combined structural/stratigraphic trap in the northern North Sea is represented by the Brent oilfield structure, and Fig. 4.62 illustrates a seismic section across the field.
+
+[p.93] A tilted fault block containing Upper Palaeozoic, Triassic and Jurassic strata is overlain unconformably by Upper Jurassic, Cretaceous and Tertiary sediments. Two Jurassic sands in the tilted
+
+[p.94]
+
+Fig. 4.61 Interpreted seismic section across the North Viking gas field, North Sea. (Courtesy Conoco UK Ltd. fault block constitute the main reservoirs, the oil and gas being trapped beneath a capping of unconformably overlying shales of Late Jurassic and Cretaceous age. Reflection profiling at crustal and lithospheric scale is now being carried out by many developed countries.
+
+[p.94] Following on from the extensive use of multichannel reflection profiling to investigate the crustal structure of oceanic areas, national programmes such as the US COCORP project (Consortium for Continental Reflection Profiling; Brewer & Oliver 1980) and the British BIRPS project (British Institutions Reflection Profiling Syndicate; Brewer 1983) have produced seismic sections through the entire continental crust and the uppermost part of the underlying mantle.
+
+[p.94] These national programmes utilize essentially the same data acquisition systems and processing techniques as the oil industry, whilst increasing the size of source arrays and detector spread lengths; recording times of 15s are commonly employed, as compared with a standard oil industry recording time of about 4s. A typical BIRPS section is illustrated in Fig. 4.63. Crustal reflection profiling results from several different continental areas reveal that the upper part of the continental crust typically has a rather transparent seismic character. Within this, localized bands of dipping reflectors, interpreted as fault zones, pass down into the lower crust (see e.g.
+
+[p.94] Barazangi & Brown (1986) and the special issue of Tectonophysics 173 (1990) for a wide range of relevant papers). By contrast, the lower crust is often found to be highly reflective with discontinuous horizontal or gently dipping events giving an overall layered appearance (Fig. 4.63).The origin of this layering is uncertain, but the main possibilities appear to be primary igneous layering, horizontal shear zones and zones of fluid concentration (e.g. Klemperer et al. 1987).All may contribute in some measure to the observed reflectivity.
+
+[p.94] Where refraction and reflection data both exist, the base of the zone of reflectivity is found to coincide with the Mohorovicic discontinuity as defined by refraction interpretation of head wave arrivals from the uppermost mantle (Barton 1986). The use of reflection seismics for high-resolution studies of shallow geology is a field of growing importance in which developments are linked directly to recent technical advances. Highly portable digital multichannel data acquisition systems, backed up by PC-based processing packages, make it possible to
+
+[p.95]
+
+Fig. 4.62 (a) Seismic section (courtesy Shell UK Ltd) and (b) line interpretation across the Brent oilfield, North Sea. G= gas; O = oil; W = water.
+
+[p.96]
+
+Fig. 4.63 A non-migrated crustal reflection section from the 1986/87 GRID survey of the BIRPS programme, collected along a west–east line about 30km north of Scotland, UK, and a migrated line drawing of the main reflection events. The main structures are interpreted to be of Caledonian age with later reactivation (FL = Flannan reflection; OIF = Outer Isles fault; MT = Moine thrust; NT = Naver thrust; M = Moho). (From Snyder & Flack 1990.)
+
+[p.97]
+
+Fig. 4.64 A near-surface seismic reflection section showing Mesozoic sediments (reflectors T1–T3 and B) with an angular unconformity (U) against Lower Palaeozoic rocks. (From Ali & Hill 1991.)
+
+[p.97] Problems
+
+[p.97] 1. A seismic wave is incident normally on a reflector with a reflection coefficient R of 0.01. What proportion of the incident energy is transmitted? 2. What is the root-mean-square velocity in reflection surveying, and how is it related to interval velocity and to stacking velocity? 3. A zero-offset reflection event at 1.000s has a normal moveout (NMO) of 0.005s at 200m offset. What is the stacking velocity? 4. (a) Calculate the approximate dimensions of the Fresnel zone in the following two cases: (i) Reflection profiling is used to investigate lower crustal structure at a depth of about 30km. The dominant frequency of the reflected pulse is found to be 10Hz. Using a typical average crustal velocity of 6.5kms-1.
+
+[p.97] (ii) A high-resolution reflection survey is used to map rockhead beneath a Quaternary sediment cover about 100m thick using a high-frequency source. The dominant frequency of the reflected pulse is found to be 150Hz. Use a sediment velocity of 2kms-1. (b) Discuss the importance of the above Fresnel zone dimensions as indications of the inherent limits on horizontal resolution achievable in different types of reflection survey. (c) Use the frequency and velocity information to calculate the vertical resolution of the two surveys above and again discuss the general importance of the results obtained to the vertical resolution that is achievable in reflection seismics. 5.
+
+[p.97] In the initial stages of a seismic reflection survey, a noise test indicates a direct wave with a velocity of 3.00kms-1 and a dominant frequency of 100Hz, and ground roll with a velocity of 1.80kms-1 and a dominant frequency of 30Hz. What is the optimum spacing of individual geophones in five-element linear arrays in order to suppress these horizontally-travelling phases? 6. In CDP stacking, the method of applying a NMO correction to individual seismic traces creates distortion in seismic pulses recorded at large offset that can degrade the stacking process. Why? 7. Along a two-dimensional marine survey line involving a 48-channel streamer with a hydrophone array interval of 10m, shots are fired every 40m. (a) What is the fold of CMP cover?
+
+[p.97] (b) If the cover is to be increased to 24-fold, what must the new shot interval be? 8. In single-channel seismic profiling, what is the optimum depth for towing an air gun source with a dominant frequency of 100Hz such that the reflected ray from the sea surface will interfere constructively with the downgoing primary pulse? (The compressional wave velocity in sea water is 1.505kms-1. 9. What is the significance of the curved boundary lines to the typical ground roll sector of the f–k plot illustrated in Fig. 4.25, and how may it be explained? 10. How may three-dimensional seismic survey data be used to study velocity anisotropy? produce seismic sections of shallow subsurface geology at reasonable cost.
+
+[p.97] High-resolution reflection seismology is particularly well suited to the investigation of Quaternary sedimentary sequences (Fig. 4.56) and for the detailed mapping of concealed bedrock surfaces of irregular geometry (Fig. 4.64).The contrast between the crustal (Fig. 4.63) and near-surface sections (Fig. 4.64) neatly emphasizes the scalability of the seismic reflection method. In both these applications it is also the geophysical method with the highest resolution, both vertically and horizontally.
+
+[p.98]
+
+Further reading
+
+[p.98] Ali, J. W. & Hill, I. A. (1991) Reflection seismics for shallow geological applications: a case study from Central England. J. Geol. Soc. London 148, 219–22. Al-Sadi, H. N. (1980) Seismic Exploration. Birhauser Verlag, Basel. Anstey, N. A. (1982) Simple Seismics. IHRDC, Boston. Bally, A.W. (ed. (1983) Seismic Expression of Structural Styles (a picture and work atlas): Vol 1 — The layered Earth; Vol 2 — Tectonics of extensional provinces; Vol 3 — Tectonics of compressional provinces / Strike-slip tectonics. AAPG Studies in Geology No. 15, American Association of Petroleum Geologists, Tulsa. Bally, A. W. (ed. (1987) Atlas of Seismic Stratigraphy(3 vols). AAPG Studies in Geology No. 27, American Association of Petroleum Geologists, Tulsa.
+
+[p.98] Barazangi, M. & Brown, L. (eds) (1986) Reflection Seismology: The Continental Crust. AGU Geodynamics Series, No. 14. American Geophysical Union, Washington. Berg, O. R. & Woolverton, D. G. (eds) (1985) Seismic Stratigraphy II: An Integrated Approach to Hydrocarbon Exploration . AAPG Memoir 39, American Association of Petroleum Geologists, Tulsa. Brown, A. R. (1986) Interpretation of Three-dimensional Seismic Data. AAPG Memoir 42, American Association of Petroleum Geologists, Tulsa. Camina, A. R. & Janacek, G. J. (1984) Mathematics for Seismic Data Processing and Interpretation. Graham & Trotman, London. Cassell, B. (1984) Vertical seismic profiles — an introduction. First Break, 2(11), 9–19. Castagna, J. P. & Bachus, M. M.
+
+[p.98] (1993) Offset-Dependent Reflectivity: Theory and Practice of AVO Analysis. Investigations in Geophysics. Society of Exploration Geophysicists, Tulsa. Claerbout, J. F. (1985) Fundamentals of Geophysical Data Processing. McGraw Hill, New York. Dobrin, M. B. & Savit, C. H. (1988) Introduction to Geophysical Prospecting (4th edn). McGraw Hill, New York. Hatton, L., Worthington, M. H. & Makin, J. (1986) Seismic Data Processing. Blackwell Scientific Publications, Oxford. Hubral, P. & Krey, T. (1980) Interval Velocities from Seismic Reflection Time Measurements. Society of Exploration Geophysicists, Tulsa. Jack, I. (1997) Time Lapse Seismic in Reservoir Management.
+
+[p.98] Society of Exploration Geophysicists, Short Course Notes, Society of Exploration Geophysicists, Tulsa. Kleyn, A.H. (1983) Seismic Reflection Interpretation. Applied Science Publishers, London. Lavergne, M. (1989) Seismic Methods. Editions Technip, Paris. McQuillin, R., Bacon, M. & Barclay, W. (1979) An Introduction to Seismic Interpretation. Graham & Trotman, London. Payton, C. E. (ed. (1977) Seismic Stratigraphy— Application to Hydrocarbon Exploration. AAPG Memoir 26, American Association of Petroleum Geologists, Tulsa. Robinson, E. A. (1983) Migration of Geophysical Data. IHRDC, Boston. Robinson, E. A. (1983) Seismic Velocity Analysis and the Convolutional Model. IHRDC, Boston. Robinson, E. S. & Çoruh, C.
+
+[p.98] (1988) Basic Exploration Geophysics. Wiley, New York. Sengbush, R. L. (1983) Seismic Exploration Methods . IHRDC, Boston. Sheriff, R. E. (1980) Seismic Stratigraphy. IHRDC, Boston. Sheriff, R. E. (1982) Structural Interpretation of Seismic Data. AAPG Continuing Education Course Note Series No. 23. Sheriff, R. E. & Geldart, L. P. (1983) Exploration Seismology, Vol. 2: Data-Processing and Interpretation. Cambridge University Press, Cambridge. Waters, K. H. (1978) Reflection Seismology — A Tool For Energy Resource Exploration. Wiley, New York. Ziolkowski, A. (1983) Deconvolution. IHRDC, Boston.
