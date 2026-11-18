@@ -15,7 +15,7 @@
               └─────────────┘  └────┬─────┘
                                     ▼
                               ┌──────────┐
-                              │  assess  │（六种方法确定性评估）
+                              │  assess  │（八种方法确定性评估）
                               └────┬─────┘
                                    ▼
                               ┌──────────┐   LLMError
@@ -48,7 +48,7 @@
 |---|---|---|---|
 | intake | 用户原文、会话旧条件 | `SiteConditions` | 抽取失败只会导致追问 |
 | retrieve | 用户原文 | `Evidence[]` + 相关性等级 | 知识库异常 → HTTP 503 |
-| assess | 完整条件 | 六种方法 `MethodAssessment` + `FieldDesign` | 条件不全 → 抛 `ValueError`（上游已拦截） |
+| assess | 完整条件 | 八种方法 `MethodAssessment` + `FieldDesign` | 条件不全 → 抛 `ValueError`（上游已拦截） |
 | plan | 条件、评估表、证据 | `PlanDraft`（JSON） | `LLMError` → 规则兜底 |
 | verify | 草案、条件、评估表 | `Violation[]` | 规则异常不被吞掉，直接进 trace |
 | repair | 草案 + 错误列表 | 新 `PlanDraft` | 调用失败 → 计数后兜底 |

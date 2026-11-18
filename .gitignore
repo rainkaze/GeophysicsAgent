@@ -26,6 +26,7 @@ node_modules/
 
 # 本地生成数据与系统文件
 data/local/
+backend/data/knowledge/.embedding_cache.json
 backend/data/source_documents/**
 !backend/data/source_documents/**/README.md
 backend/data/book/**

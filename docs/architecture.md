@@ -9,7 +9,7 @@
 │ agent/        编排层：抽取 → 检索 → 评估 → 规划 → 校验 → 渲染 │
 ├─────────────────────────────────────────────────────────┤
 │ analysis/     确定性计算层：方法元数据、物理关系、评估器    │
-│ knowledge/    检索层：BM25 索引与课程证据                  │
+│ knowledge/    检索层：混合检索（BM25+向量+Rerank）与课程证据 │
 ├─────────────────────────────────────────────────────────┤
 │ domain/       领域模型：枚举、条件、评估结果、方案、DTO     │
 │ core/         配置                                       │
@@ -35,10 +35,10 @@
 | `analysis/catalog.py` | 方法元数据、干扰严重度 | 否 |
 | `analysis/tables.py` | 课程数据表（深度、适用性、限制） | 否 |
 | `analysis/physics.py` | 波速、波长、排列长度、时窗、测网 | 否 |
-| `analysis/calculator.py` | 六种方法评估与主方法判定 | 否 |
+| `analysis/calculator.py` | 八种方法评估与主方法判定 | 否 |
 | `analysis/design.py` | 测线、工作量、相对成本 | 否 |
-| `knowledge/corpus.py` | 知识库加载与缓存 | 否 |
-| `knowledge/retriever.py` | BM25 检索与相关性分级 | 否 |
+| `knowledge/corpus.py` | 扫描知识库目录、把 Markdown 切分为片段并缓存 | 否 |
+| `knowledge/retriever.py` | 混合检索（BM25+向量+Rerank）与相关性分级 | 否 |
 
 ## 3. 一次请求的数据流
 
@@ -46,9 +46,9 @@
    与上一轮会话条件合并。
 2. **澄清判断**：缺 `target / medium / depth` 任一 → 直接返回 `mode=clarification`，
    不调用模型、不猜测。
-3. **retrieve**：BM25 检索课程知识，输出 `Evidence[]` 与相关性等级
+3. **retrieve**：混合检索课程知识（BM25 + 向量 + Rerank），输出 `Evidence[]` 与相关性等级
    （strong / weak / empty）。
-4. **assess**：`calculator.assess` 对六种方法逐一给出最大深度、余量、分辨率、
+4. **assess**：`calculator.assess` 对八种方法逐一给出最大深度、余量、分辨率、
    采集参数、限制与适用性，并选出推荐主方法；`design.build_design` 估算测线与成本。
 5. **plan**：模型读取评估表，输出 `PlanDraft`（只包含方法角色与定性理由）。
 6. **verify → repair**：14 条规则校验；出现 `error` 就把问题回灌模型重写（≤N 次）。
@@ -71,7 +71,7 @@
 
 ### 4.3 工具由运行时编排，而非模型自由调用
 
-模型不决定"要不要查参数表"，而是每次都由 `calculator` 全量评估六种方法后再让它选择。
+模型不决定"要不要查参数表"，而是每次都由 `calculator` 全量评估八种方法后再让它选择。
 理由：勘察方案必须**穷举比较**，让模型自由决定调用会造成漏评；同时保证同一输入的可复现性。
 
 ### 4.4 校验器是硬约束
@@ -97,9 +97,21 @@
 
 | 需求 | 改动位置 |
 |---|---|
+| 新增知识文件 | 把 `.md` 放入 `backend/data/knowledge/`（可建子目录），下次请求即被索引 |
 | 新增物探方法 | `domain/enums.py` 加枚举 → `analysis/tables.py` 补深度/适用性 → `analysis/physics.py` 补采集参数 |
 | 新增探测目标 | `domain/enums.py` + `analysis/tables.py`（别名、对比、适用性行） |
 | 调整判定策略 | `analysis/calculator.py` 的阈值常量与判定顺序 |
 | 新增校验规则 | `agent/verifier.py` 加一条 `Violation`，并在 `tests/test_verifier.py` 补用例 |
 | 更换模型供应商 | `agent/llm.py`（任何兼容 Chat Completions 的服务） |
 | 调整提示词 | `agent/prompts.py` |
+
+## 7. 课程公式落在哪（`analysis/physics.py`）
+
+| 方法 | 关系 | 用途 |
+|---|---|---|
+| GPR | `v = c/√εr`、`λ = v/f`、分辨率 ≈ `λ/4`、时窗 `t = 2d/v` | 天线频率与时窗 |
+| 直流电阻率 | 有效深度 ≈ 排列长度的 0.25 倍 | 电极距与排列长度 |
+| 面波 | 排列长度 ≈ 目标深度 × 2.5 | 检波器排列 |
+| FDEM | 垂向分辨率 ≈ 0.3–0.5 × 勘探深度 | 线圈距与频段 |
+| 磁法 | 无垂向分辨能力 | 测网密度按埋深取经验值 |
+| DAS | 通道间距约 1 m | 光缆长度与通道数 |
